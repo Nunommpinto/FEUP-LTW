@@ -7,6 +7,8 @@
     include_once('database/db_restaurants.php');
 
     $result = searchRestaurant($_GET['name']);
-
-    header('Location: view_restaurant.php?idRestaurant=<?=$result['idRestaurant']?>');
+    if($result ===false)
+        header('Location: homepage.php');
+    else
+        header('Location: view_restaurant.php?idRestaurant='.$result['idRestaurant']);
 ?>
