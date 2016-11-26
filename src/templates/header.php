@@ -15,7 +15,7 @@
                 <li><a href="">Top Restaurants</a></li>
                 <li><a href="">Write a Review</a></li>
                 <li><a href="">Profile</a></li>
-                <li><a href="">Search a restaurant</a></li>
+                <li><a href="search_restaurant.php">Search a restaurant</a></li>
                 <li><a href="add_restaurant.php">Add a new restaurant</a></li>
             </ul>
         </div>

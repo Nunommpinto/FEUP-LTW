@@ -1,4 +1,4 @@
-<form action="save_restaurant.php" method="post">
+<form action="action_save_restaurant.php" method="post">
     <input type="hidden" name="idOwner" value="1">
     <input type="hidden" name="idRestaurantInfo" value="1">
 

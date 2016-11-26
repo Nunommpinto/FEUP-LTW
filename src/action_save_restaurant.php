@@ -13,5 +13,5 @@
     registerRestaurant($_POST['name'], $_POST['description'], $_POST['idOwner'], $_POST['idRestaurantInfo']);
 
     //Redirects to the homepage
-    header('Location: '.'homepage.php');
+    header('Location: homepage.php');
 ?>

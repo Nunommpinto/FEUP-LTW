@@ -21,11 +21,20 @@ function getRestaurantById() {
     return $stmt->fetch();
 }
 
+//Inserts a new restaurant in the database ($_POST method)
 function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     global $db;
 
     $stmt = $db->prepare('INSERT INTO Restaurant VALUES (?, ?, ?, ?, ?)');
     $stmt->execute(array(null, $name, $description, $idOwner, $idRestaurantInfo));
+}
+
+function searchRestaurant($name) {
+    global $db;
+
+    $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name = ?');
+    $stmt->execute(array($name));
+    return $stmt->fetch();
 }
 
 ?>
