@@ -25,8 +25,12 @@ function getRestaurantById() {
 function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     global $db;
 
-    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array(null, $name, $description, $idOwner, $idRestaurantInfo));
+    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (null, :name, :description, :idOwner, :idRestaurantInfo)');
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':idOwner', $idOwner);
+    $stmt->bindParam(':idRestaurantInfo', $idRestaurantInfo);
+    $stmt->execute();
 }
 
 function searchRestaurant($name) {
