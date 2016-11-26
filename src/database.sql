@@ -22,9 +22,7 @@ CREATE TABLE Owner(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
     name        STRING NOT NULL,
     password    STRING NOT NULL,
-    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
-
-    FOREIGN KEY idUserInfo REFERENCES UserInfo(idUserInfo)
+    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo)
 );
 
 drop table if exists Reviewer;
@@ -32,9 +30,7 @@ CREATE TABLE Reviewer(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
     name        STRING NOT NULL,
     password    STRING NOT NULL,
-    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
-
-    FOREIGN KEY idUserInfo REFERENCES UserInfo(idUserInfo)
+    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo)
 );
 
 drop table if exists Restaurant;
@@ -88,3 +84,8 @@ CREATE TABLE Localization(
 );
 
 /********** MANY-TOO-MAY relationship table **********/
+
+/********** DEFAULT INSERTIONS **********/
+
+INSERT INTO Restaurant VALUES(null, 'Pizzaria MTV', 'Melhor de sempre!', 2, 1);
+INSERT INTO Restaurant VALUES(null, 'Pizzaria XPTO', 'Pior de sempre!', 1, 2);

@@ -5,8 +5,7 @@
 function getRestaurant($idRestaurant) {
     global $db;
 
-    //$stmt = $db->prepare('SELECT * FROM Restaurant where idRestaurant = ?');
-    $stmt = $db->prepare('SELECT * FROM post where title = ?');
+    $stmt = $db->prepare('SELECT * FROM Restaurant where idRestaurant = ?');
     $stmt->execute(array($idRestaurant));
 
     return $stmt->fetch();
@@ -15,8 +14,7 @@ function getRestaurant($idRestaurant) {
 function getAllRestaurants() {
     global $db;
 
-    //$stmt = $db->prepare('SELECT * FROM Restaurant');
-    $stmt = $db->prepare('SELECT * FROM post');
+    $stmt = $db->prepare('SELECT * FROM Restaurant');
     $stmt->execute();
     
     return $stmt->fetchAll();
@@ -25,12 +23,8 @@ function getAllRestaurants() {
 function getRestaurantById($idRestaurant) {
     global $db;
 
-    /*$stmt = $db->prepare('SELECT * from Restaurant WHERE idRestaurant = ?');
+    $stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurant = ?');
     $stmt->execute(array($_GET['idRestaurant']));
-    return $stmt->fetch();*/
-
-    $stmt = $db->prepare('SELECT * from post WHERE id = ?');
-    $stmt->execute(array($_GET['id']));
     return $stmt->fetch();
 }
 

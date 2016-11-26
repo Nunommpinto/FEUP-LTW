@@ -2,8 +2,7 @@
 
 <section>
     <article>
-        <h2><?=$restaurant['title']?></h2>
-        <h3><?=$restaurant['introduction']?></h3>
-        <p><?=$restaurant['fulltext']?></p>
+        <h2><?=$restaurant['name']?></h2>
+        <h3><?=$restaurant['description']?></h3>
     </article>
 </section>
