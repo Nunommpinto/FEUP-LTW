@@ -14,6 +14,6 @@
         die($e->getMessage());
     }
 
-    include_once('header.php');
+    include_once('templates/header.php');
     include_once('templates/restaurant.php');
 ?>

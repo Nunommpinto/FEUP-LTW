@@ -1,5 +1,4 @@
 <?php
-    include_once('header.php');
     include_once('database/connection.php');
     include_once('database/db_restaurants.php');
 
@@ -9,5 +8,6 @@
         die($e->getMessage());
     }
 
+    include_once('templates/header.php');
     include_once('templates/restaurants.php');
 ?>
