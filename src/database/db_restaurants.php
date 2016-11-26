@@ -28,12 +28,11 @@ function getRestaurantById($idRestaurant) {
     return $stmt->fetch();
 }
 
-function registerRestaurant($name, $description) {
+function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     global $db;
 
-    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (?, ?)');
-    $stmt->prerare(array($name, $description));
-    $stmt->execute();
+    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute(array(null, $name, $description, $idOwner, $idRestaurantInfo));
 }
 
 ?>
