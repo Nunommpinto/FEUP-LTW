@@ -9,7 +9,6 @@
         $restaurant = getRestaurantById($_GET['idRestaurant']);
         if($restaurant === false)
             die('There was no restaurant with the specified id');
-        //$p = explode("\n", $restaurant['fulltext']);
     } catch(PDOException $e) {
         die($e->getMessage());
     }
