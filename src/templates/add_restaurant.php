@@ -15,6 +15,11 @@
     <label>Open hours: </label><input type="time" name="openHours">
     <label>Close hours: </label><input type="time" name="closeHours">
 
+    <label>Country: </label> <input type="text" name="country">
+    <label>City: </label> <input type="text" name="city">
+    <label>Road: </label> <input type="text" name="road">
+    <label>Postal Code: </label> <input type="text" name="postalCode">
+
     <input type="submit" value="send">
     <!-- Do integration with google maps -->
 </form>
