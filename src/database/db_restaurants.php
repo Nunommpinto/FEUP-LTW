@@ -2,15 +2,7 @@
 
 <?php
 
-function getRestaurant($idRestaurant) {
-    global $db;
-
-    $stmt = $db->prepare('SELECT * FROM Restaurant where idRestaurant = ?');
-    $stmt->execute(array($idRestaurant));
-
-    return $stmt->fetch();
-}
-
+//Returns all restaurants
 function getAllRestaurants() {
     global $db;
 
@@ -20,7 +12,8 @@ function getAllRestaurants() {
     return $stmt->fetchAll();
 }
 
-function getRestaurantById($idRestaurant) {
+//Returns the restaurant with id 'idRestaurant' ($_GET method)
+function getRestaurantById() {
     global $db;
 
     $stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurant = ?');
