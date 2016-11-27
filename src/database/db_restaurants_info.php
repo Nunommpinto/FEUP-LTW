@@ -24,6 +24,7 @@
             $stmt->bindParam(':idLocalization', $idLocalization);
         $stmt->execute();
 
+        //Returns the id so that we can reference it on the restaurant
         return $db->lastInsertId();
     }
 ?>
