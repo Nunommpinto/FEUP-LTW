@@ -1,28 +1,27 @@
-var loginComponent;
-var registerComponent;
-//$('.login-box.login-component');
-//$('.login-box.register-component');
+var loginBox = $('.login-box');
+var loginLink = loginBox.children('.login-link');
+var registerLink = loginBox.children('.register-link');
+var loginComponent = loginBox.children('.login-component');
+var registerComponent = loginBox.children('.register-component');
+var showing;
 
-$('.login-box.login-link').on('click', function() {
-    console.log("Login called");
-    if(loginComponent) {
-        console.log("Login showed");
-        registerComponent = $('.login-box.register-component').detach();
-        loginComponent.appendTo(".login-box.container");
-        loginComponent = null;
+loginLink.on('click', function() {
+    if(showing != "login") {
+        registerComponent.detach();
+        loginComponent.appendTo(loginBox);
+        showing = "login";
     }
 });
 
-$('.login-box.register-link').on('click', function() {
-    console.log("Register called");
-    if(registerComponent) {
-        console.log("Register showed");
-        loginComponent = $('.login-box.login-component').detach();
-        registerComponent.appendTo(".login-box.container");
-        registerComponent = null;
+registerLink.on('click', function() {
+    if(showing != "register") {
+        loginComponent.detach();
+        registerComponent.appendTo(loginBox);
+        showing = "register";
     }
 });
 
 $(document).ready(function() {
-    registerComponent = $('.login-box.register-component').detach();
+    registerComponent.detach();
+    showing = "login";
 });
