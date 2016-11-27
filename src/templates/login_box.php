@@ -5,11 +5,12 @@
     <a href="#" class="register-link">Register</a>
     <div class="login-component">
         <!-- Insert Login form here-->
-        Hello
+        Login form goes here (can use php includes)
     </div>
     <div class="register-component">
         <!-- Insert Register form here-->
-        World
+        Register form goes here (can use php includes)
     </div>
     <script type="text/javascript" src="login_box.js"></script>
 </div>
+<p>Dont forget to remove jquery script from login_box.php when including on header</p>

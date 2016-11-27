@@ -7,7 +7,7 @@ var showing;
 
 loginLink.on('click', function() {
     if(showing != "login") {
-        registerComponent.detach();
+        registerComponent.remove();
         loginComponent.appendTo(loginBox);
         showing = "login";
     }
@@ -15,13 +15,13 @@ loginLink.on('click', function() {
 
 registerLink.on('click', function() {
     if(showing != "register") {
-        loginComponent.detach();
+        loginComponent.remove();
         registerComponent.appendTo(loginBox);
         showing = "register";
     }
 });
 
 $(document).ready(function() {
-    registerComponent.detach();
+    registerComponent.remove();
     showing = "login";
 });
