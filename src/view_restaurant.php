@@ -12,7 +12,7 @@
         if($restaurant === false)
             die('There was no restaurant with the specified id');
         $info = getInfoById($restaurant['idRestaurantInfo']);
-        $location = getLocalizationById($info['idLocalization']);
+        $localization = getLocalizationById($info['idLocalization']);
     } catch(PDOException $e) {
         die($e->getMessage());
     }
@@ -20,8 +20,8 @@
     include_once('templates/header.php');
     include_once('templates/restaurant.php');
 
-    if($info != null)
+    if($info)
         include_once('templates/restaurant_info.php');
-    if($location != null)
+    if($localization)
         include_once('templates/localization.php');
 ?>
