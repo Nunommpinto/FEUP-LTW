@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
     if(!isset($_POST['name'])
         || trim($_POST['name']) == ''
         || !isset($_POST['description'])
@@ -16,6 +19,6 @@
     registerRestaurantInfo($_POST['price'], $_POST['category'], $_POST['openHours'], $_POST['closeHours']);
     registerRestaurant($_POST['name'], $_POST['description'], $_POST['idOwner'], $_POST['idRestaurantInfo']);
 
-    //Redirects to the homepage
+    //Redirects to the homepage //TODO: redirect to manager of restaurants
     header('Location: homepage.php');
 ?>

@@ -2,7 +2,7 @@
     function registerLocalization($country, $city, $road, $postalCode) {
         global $db;
 
-        $stmt = $db->prepare('INSERT INTO Localization VALUES (null, :country, :city, :road, :postalCode, 1)');
+        $stmt = $db->prepare('INSERT INTO Localization VALUES (null, :country, :city, :road, :postalCode)');
         if($country != null)
             $stmt->bindParam(':country', $country);
         if($city != null)
