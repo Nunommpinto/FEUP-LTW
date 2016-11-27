@@ -21,6 +21,16 @@ function getRestaurantById() {
     return $stmt->fetch();
 }
 
+//Returns 'idRestaurantInfo' of the restaurant with idRestaurant = $idRestaurant
+function getLocalizationId($idRestaurant) {
+    global $db;
+
+    $stmt = $db->prepare('SELECT idRestaurantInfo FROM Restaurant WHERE idRestaurant = :id');
+    $stmt->bindParam(':id', $idRestaurant);
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
 //Inserts a new restaurant in the database ($_POST method)
 function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     global $db;

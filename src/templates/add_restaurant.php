@@ -1,6 +1,5 @@
 <form action="action_add_restaurant.php" method="post">
     <input type="hidden" name="idOwner" value="1">
-    <input type="hidden" name="idRestaurantInfo" value="1">
 
     <label>Name: </label> <input type="text" name="name" required="required"> *
     <label>Description: </label><textarea name="description" required="required" rows="4" cols="40"></textarea> *

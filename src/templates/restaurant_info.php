@@ -1,0 +1,1 @@
+<p>Price = <?=$info['price']?> </p>
