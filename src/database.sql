@@ -6,6 +6,15 @@ PRAGMA FOREIGN_KEY = ON; --Needed for the error compiling
 
 /********** CLASSES tables **********/
 
+DROP TABLE IF EXISTS users;
+CREATE TABLE IF NOT EXISTS users (
+	idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
+	email VARCHAR,
+	username VARCHAR PRIMARY KEY,
+	password VARCHAR,
+	privileges VARCHAR
+);
+
 drop table if exists UserInfo;
 CREATE TABLE UserInfo(
     idUserInfo      INTEGER PRIMARY KEY AUTOINCREMENT,
