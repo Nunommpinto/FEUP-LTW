@@ -1,7 +1,8 @@
 <?php
 
-include_once('database/db_users.php');
+include_once('database/db_user.php');
 
+session_start();
 
 $referer;
 if (isset($_COOKIE['redirect'])) $referer = $_COOKIE['redirect'];

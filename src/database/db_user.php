@@ -5,19 +5,19 @@ include_once('connection.php');
 function getUser($username) {
     global $db;
 
-    $a = $db->prepare('SELECT * FROM users WHERE username = ?');
-    $a->execute(array($username));
-
-    return $a->fetch();
+    $stmt = $db->prepare('SELECT * FROM Owner, Reviewer WHERE username = ?');
+    $stmt->execute(array($username));
+    return $stmt->fetch();
+	
 }
 
 function getAllUsers() {
     global $db;
 
-    $a = $db->prepare('SELECT username FROM users');
-    $a->execute();
+    $stmt = $db->prepare('SELECT username FROM Owner, Reviewer');
+    $stmt->execute();
 
-    return $a->fetchAll();
+    return $stmt->fetchAll();
 }
 
 function isRegistered($username) {
@@ -27,22 +27,38 @@ function isRegistered($username) {
 function checkCredentials($username, $password) {
     global $db;
 
-    $a = $db->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
-    $a->execute(array($username, sha1($password)));
+    $stmt = $db->prepare('SELECT * FROM Owner,Reviewer WHERE username = :username AND password = :password');
+	$stmt->bindParam(':username', $username);
+	$stmt->bindParam(':password', $password);
+	$stmt->execute();
 
-    return $a->fetch() !== false;
+    return $stmt->fetch() !== false;
 }
 
 // User actions
 function registerUser($email, $username, $password, $privileges) {
     global $db;
+	
+	if($privileges == "owner") {
+		$stmt = $db->prepare('INSERT INTO Owner VALUES (null, :email, :username, :password, null, null)');
+		$stmt->bindParam(':email', $email);
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':password', $password);
+		$stmt->execute();
+		return true;
+	}
+	
+	elseif($privileges == "reviewer") {
+		$stmt = $db->prepare('INSERT INTO Reviewer VALUES (null, :email, :username, :password, null, null)');
+		$stmt->bindParam(':email', $email);
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':password', $password);
+		$stmt->execute();
+		return true;
+	}
 
-    if (isRegistered($username)) return false;
-
-    $a = $db->prepare('INSERT INTO users VALUES (?, ?, ?, ?)');
-    $a->execute(array($email, $username, sha1($password), $privileges));
-
-    return true;
+    else
+		return false;
 }
 
 ?>

@@ -6,15 +6,6 @@ PRAGMA FOREIGN_KEY = ON; --Needed for the error compiling
 
 /********** CLASSES tables **********/
 
-drop table if exists User;
-CREATE TABLE User (
-	idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
-	email       VARCHAR,
-	username    VARCHAR,
-	password    VARCHAR,
-	privileges  VARCHAR
-);
-
 drop table if exists UserInfo;
 CREATE TABLE UserInfo(
     idUserInfo      INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,6 +20,7 @@ CREATE TABLE UserInfo(
 drop table if exists Owner;
 CREATE TABLE Owner(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
+	email		VARCHAR,
     name        STRING NOT NULL,
     password    STRING NOT NULL,
     idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
@@ -38,6 +30,7 @@ CREATE TABLE Owner(
 drop table if exists Reviewer;
 CREATE TABLE Reviewer(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
+	email		VARCHAR,
     name        STRING NOT NULL,
     password    STRING NOT NULL,
     idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
@@ -110,3 +103,5 @@ CREATE TABLE PhotoRestaurant(
 /********** MANY-TOO-MANY relationship table **********/
 
 /********** DEFAULT INSERTIONS **********/
+
+INSERT INTO Reviewer VALUES(null,'pintovic@gmail.com','pintovic65','reinaldovent',null,null);

@@ -25,13 +25,9 @@ include_once("templates/header.php");
     Confirm password: <input type="password" name="confirm">
     <br>
 	<br>
-	Privileges: <input type="radio" name="privileges"
-	<?php if (isset($privileges) && $privileges=="owner") echo "checked";?>
-	value="owner">Owner
-	<input type="radio" name="privileges"
-	<?php if (isset($privileges) && $privileges=="reviewer") echo "checked";?>
-	value="reviewer">Reviewer
-	<br>
+	User type: 
+	<input type="radio" name="privileges" <?php if (isset($privileges) && $privileges=="owner") echo "checked";?> value="owner">Owner
+	<input type="radio" name="privileges" <?php if (isset($privileges) && $privileges=="reviewer") echo "checked";?> value="reviewer">Reviewer
 	<br>
 	<br>
     <input type="button" value="Confirm"
@@ -40,6 +36,6 @@ include_once("templates/header.php");
                     this.form.username,
                     this.form.password,
 					this.form.confirm,
-					this.form,privileges);">
+					this.form.privileges);">
     <input type="submit" name="cancel_btn" value="Cancel">
 </form>
