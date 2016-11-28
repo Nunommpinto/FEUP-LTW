@@ -19,10 +19,6 @@
     <label>Road: </label> <input type="text" name="road">
     <label>Postal Code: </label> <input type="text" name="postalCode">
 
-    <form action="action_upload_image.php" method="post" enctype="multipart/form-data">
-        <label>Upload Image: </label> <input type="file" name="file">
-    </form>
-
     <input type="submit" value="send">
     <!-- Do integration with google maps -->
 </form>

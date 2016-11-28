@@ -12,6 +12,7 @@ ini_set('display_errors', 1);
     include_once('database/connection.php');
     include_once('database/db_localization.php');
     include_once('database/db_restaurants_info.php');
+    include_once('database/db_photo.php');
     include_once('database/db_restaurants.php');
 
     $idLocalization = registerLocalization($_POST['country'], $_POST['city'], $_POST['road'], $_POST['postalCode']);
@@ -19,5 +20,5 @@ ini_set('display_errors', 1);
     registerRestaurant($_POST['name'], $_POST['description'], $_POST['idOwner'], $idRestaurantInfo);
 
     //Redirects to the homepage //TODO: redirect to manager of restaurants
-    header('Location: homepage.php');
+    header('Location: add_photos.php');
 ?>

@@ -6,13 +6,13 @@ PRAGMA FOREIGN_KEY = ON; --Needed for the error compiling
 
 /********** CLASSES tables **********/
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE IF NOT EXISTS users (
+drop table if exists User;
+CREATE TABLE User (
 	idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
-	email VARCHAR,
-	username VARCHAR PRIMARY KEY,
-	password VARCHAR,
-	privileges VARCHAR
+	email       VARCHAR,
+	username    VARCHAR,
+	password    VARCHAR,
+	privileges  VARCHAR
 );
 
 drop table if exists UserInfo;
@@ -51,8 +51,7 @@ CREATE TABLE Restaurant(
     description         STRING,
 
     idOwner             INTEGER REFERENCES Owner(idOwner),
-    idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo),
-
+    idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo)
 );
 
 drop table if exists Review;
@@ -103,14 +102,11 @@ CREATE TABLE PhotoUser(
 
 drop table if exists PhotoRestaurant;
 CREATE TABLE PhotoRestaurant(
-    idPhoto         INTEGER PRIMARY KEY AUTOINCREMENT,
-    fileName        STRING,
-    idRestaurant    INTEGER REFERENCES Restaurant(idRestaurant)
+    idPhoto             INTEGER PRIMARY KEY AUTOINCREMENT,
+    title               STRING,
+    idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo)
 );
 
-/********** MANY-TOO-MAY relationship table **********/
+/********** MANY-TOO-MANY relationship table **********/
 
 /********** DEFAULT INSERTIONS **********/
-
-INSERT INTO Restaurant VALUES(null, 'Pizzaria MTV', 'Melhor de sempre!', 2, 1);
-INSERT INTO Restaurant VALUES(null, 'Pizzaria XPTO', 'Pior de sempre!', 1, 2);
