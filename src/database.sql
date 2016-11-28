@@ -31,7 +31,8 @@ CREATE TABLE Owner(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
     name        STRING NOT NULL,
     password    STRING NOT NULL,
-    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo)
+    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
+    idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
 );
 
 drop table if exists Reviewer;
@@ -39,7 +40,8 @@ CREATE TABLE Reviewer(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
     name        STRING NOT NULL,
     password    STRING NOT NULL,
-    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo)
+    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
+    idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
 );
 
 drop table if exists Restaurant;
@@ -49,7 +51,8 @@ CREATE TABLE Restaurant(
     description         STRING,
 
     idOwner             INTEGER REFERENCES Owner(idOwner),
-    idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo)
+    idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo),
+
 );
 
 drop table if exists Review;
@@ -90,6 +93,19 @@ CREATE TABLE Localization(
     city                STRING,
     road                STRING,
     postalCode          STRING
+);
+
+drop table if exists PhotoUser;
+CREATE TABLE PhotoUser(
+    idPhoto     INTEGER PRIMARY KEY AUTOINCREMENT,
+    fileName    STRING
+);
+
+drop table if exists PhotoRestaurant;
+CREATE TABLE PhotoRestaurant(
+    idPhoto         INTEGER PRIMARY KEY AUTOINCREMENT,
+    fileName        STRING,
+    idRestaurant    INTEGER REFERENCES Restaurant(idRestaurant)
 );
 
 /********** MANY-TOO-MAY relationship table **********/
