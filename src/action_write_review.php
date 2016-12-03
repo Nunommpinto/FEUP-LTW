@@ -5,7 +5,7 @@
     include_once('database/connection.php');
     include_once('database/db_review.php');
 
-    registerReview(3, $_POST['review'], 1, 1);
+    registerReview($_POST['rating'], $_POST['review'], $_POST['idRestaurant'], 1);
 
     header('Location: homepage.php');
 ?>

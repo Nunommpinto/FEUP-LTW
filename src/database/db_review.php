@@ -1,9 +1,9 @@
 <?php
-    function registerReview($score, $comment, $idRestaurant, $idReviewer) {
+    function registerReview($rating, $comment, $idRestaurant, $idReviewer) {
         global $db;
 
         $stmt = $db->prepare('INSERT INTO Review VALUES (null, :score, :comment, :idRestaurant, :idReviewer)');
-        $stmt->bindParam(':score', $score);
+        $stmt->bindParam(':score', $rating);
         $stmt->bindParam(':comment', $comment);
         $stmt->bindParam(':idRestaurant', $idRestaurant);
         $stmt->bindParam(':idReviewer', $idReviewer);
