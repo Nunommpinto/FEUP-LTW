@@ -28,7 +28,4 @@
         include_once('templates/localization.php');
     if($photo)
         include_once('templates/photo.php');
-
-    echo $info['idRestaurantInfo'] . " --> Ola --> ";
-    echo $photo['idPhoto'] . " --> Ola";
 ?>
