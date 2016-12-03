@@ -32,4 +32,6 @@
         include_once('templates/photo.php');
     if($reviews)
         include_once('templates/reviews.php');
+
+    include_once('write_review.php');
 ?>

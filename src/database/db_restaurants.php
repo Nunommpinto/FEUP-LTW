@@ -35,11 +35,38 @@ function getLocalizationId($idRestaurant) {
 function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     global $db;
 
-    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (null, :name, :description, :idOwner, :idRestaurantInfo)');
+    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (null, :name, :description, 0, :idOwner, :idRestaurantInfo)');
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':idOwner', $idOwner);
     $stmt->bindParam(':idRestaurantInfo', $idRestaurantInfo);
+    $stmt->execute();
+}
+
+function updateScore($idRestaurant, $newReviewScore) {
+    global $db;
+
+    //Gets an array of all the scores already given to a restaurant
+    $stmt = $db->prepare('SELECT score FROM Review WHERE idRestaurant = :id');
+    $stmt->bindParam(':id', $idRestaurant);
+    $stmt->execute();
+    $reviewsScore = $stmt->fetchAll();
+
+    //Gets the number of reviews given to a restaurant
+    $stmt = $db->prepare('SELECT count(*) FROM Review WHERE idRestaurant = :id');
+    $stmt->bindParam(':id', $idRestaurant);
+    $stmt->execute();
+    $numReviews = $stmt->fetch();
+
+    $totalScore = 0;
+    foreach($reviewsScore as $score)
+        $totalScore += $score;
+
+    $updatedScore = ($totalScore + $newReviewScore) / ($numReviews + 1);
+
+    $stmt = $db->prepare('UPDATE Restaurant SET score = :updatedScore WHERE idRestaurant = :id');
+    $stmt->bindParam(':updatedScore', $updatedScore);
+    $stmt->bindParam(':id', $idRestaurant);
     $stmt->execute();
 }
 
