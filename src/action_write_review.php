@@ -7,6 +7,7 @@
     include_once('database/db_restaurants.php');
 
     registerReview($_POST['rating'], $_POST['review'], $_POST['idRestaurant'], 1);
+    updateScore($_POST['idRestaurant']);
 
     header('Location: homepage.php');
 ?>

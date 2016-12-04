@@ -42,7 +42,7 @@ CREATE TABLE Restaurant(
     idRestaurant        INTEGER PRIMARY KEY AUTOINCREMENT,
     name                STRING NOT NULL,
     description         STRING NOT NULL,
-    score               INTEGER NOT NULL,
+    score               FLOAT NOT NULL,
 
     idOwner             INTEGER REFERENCES Owner(idOwner),
     idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo)

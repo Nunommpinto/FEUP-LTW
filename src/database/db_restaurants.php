@@ -43,7 +43,7 @@ function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     $stmt->execute();
 }
 
-function updateScore($idRestaurant, $newReviewScore) {
+function updateScore($idRestaurant) {
     global $db;
 
     //Gets an array of all the scores already given to a restaurant
@@ -58,11 +58,16 @@ function updateScore($idRestaurant, $newReviewScore) {
     $stmt->execute();
     $numReviews = $stmt->fetch();
 
+
     $totalScore = 0;
     foreach($reviewsScore as $score)
-        $totalScore += $score;
+        $totalScore += $score['score'];
 
-    $updatedScore = ($totalScore + $newReviewScore) / ($numReviews + 1);
+    var_dump($totalScore);
+    var_dump($reviewsScore);
+    var_dump($numReviews['count(*)']);
+
+    $updatedScore = $totalScore / $numReviews['count(*)'];
 
     $stmt = $db->prepare('UPDATE Restaurant SET score = :updatedScore WHERE idRestaurant = :id');
     $stmt->bindParam(':updatedScore', $updatedScore);
