@@ -43,6 +43,7 @@ function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     $stmt->execute();
 }
 
+//Updates the review score when a new review is registered
 function updateScore($idRestaurant) {
     global $db;
 
@@ -58,14 +59,9 @@ function updateScore($idRestaurant) {
     $stmt->execute();
     $numReviews = $stmt->fetch();
 
-
     $totalScore = 0;
     foreach($reviewsScore as $score)
         $totalScore += $score['score'];
-
-    var_dump($totalScore);
-    var_dump($reviewsScore);
-    var_dump($numReviews['count(*)']);
 
     $updatedScore = $totalScore / $numReviews['count(*)'];
 
@@ -75,12 +71,22 @@ function updateScore($idRestaurant) {
     $stmt->execute();
 }
 
+//Searches a restaurant with a given name
 function searchRestaurant($name) {
     global $db;
 
     $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name = ?');
     $stmt->execute(array($name));
     return $stmt->fetch();
+}
+
+//Searches the best 10 restaurants based on average score
+function searchTopRestaurants() {
+    global $db;
+
+    $stmt = $db->prepare('SELECT * FROM Restaurant ORDER BY score DESC LIMIT 3');
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 ?>

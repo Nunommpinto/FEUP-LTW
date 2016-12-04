@@ -15,7 +15,7 @@
         <div id="nav_btns">
             <ul>
                 <li><a href="homepage.php">Homepage</a></li>
-                <li><a href="">Top Restaurants</a></li>
+                <li><a href="top_restaurants.php">Top Restaurants</a></li>
                 <li><a href="myprofile.php">Profile</a></li>
                 <li><a href="search_restaurant.php">Search a restaurant</a></li>
                 <li><a href="add_restaurant.php">Add a new restaurant</a></li>
