@@ -95,30 +95,33 @@ function searchTopRestaurants() {
     return $stmt->fetchAll();
 }
 
+//Searches all the restaurants that match user's specifications
 function advancedSearch($name, $minScore, $maxScore) {
     global $db;
 
     $query = 'SELECT * FROM Restaurant WHERE';
-    $operator = null;
+    $operator = ' ';
 
     if(isset($name) && trim($name) != '') {
         $query .= ' name = ' . '\'' . $name . '\'';
         $operator = ' AND ';
     }
-    if(isset($minScore)) {
+    if(isset($minScore) && trim($minScore) != '') {
         $query .= $operator . 'score >= ' . $minScore;
         $operator = ' AND ';
     }
-    if(isset($maxScore) && $maxScore >= $minScore) {
-        $query .= $operator . 'score <= ' . $maxScore;
-        $operator = ' AND ';
+    if(isset($maxScore) && trim($maxScore) != '') {
+        if((isset($minScore) && $maxScore >= $minScore) || !isset($minScore)) {
+                $query .= $operator . 'score <= ' . $maxScore;
+                $operator = ' AND ';
+        }
     }
     
     var_dump($query);
 
     $stmt = $db->prepare($query);
     $stmt->execute();
-    return $stmt->fetchAll();    
+    return $stmt->fetchAll();
 }
 
 ?>

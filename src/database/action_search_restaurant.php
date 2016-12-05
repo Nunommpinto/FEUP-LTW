@@ -7,6 +7,7 @@
 
     $restaurants = advancedSearch($_GET['name'], $_GET['min-score'], $_GET['max-score']);
     $arrayCount = count($restaurants);
+    
     if($arrayCount > 1) {
         $_SESSION['restaurants'] = $restaurants;
         header('Location: ../templates/restaurants.php');
