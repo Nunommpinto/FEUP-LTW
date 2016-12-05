@@ -35,7 +35,7 @@ function getLocalizationId($idRestaurant) {
 function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     global $db;
 
-    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (null, :name, :description, :idOwner, :idRestaurantInfo)');
+    $stmt = $db->prepare('INSERT INTO Restaurant VALUES (null, :name, :description, 0, :idOwner, :idRestaurantInfo)');
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':idOwner', $idOwner);
@@ -43,12 +43,50 @@ function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     $stmt->execute();
 }
 
+//Updates the review score when a new review is registered
+function updateScore($idRestaurant) {
+    global $db;
+
+    //Gets an array of all the scores already given to a restaurant
+    $stmt = $db->prepare('SELECT score FROM Review WHERE idRestaurant = :id');
+    $stmt->bindParam(':id', $idRestaurant);
+    $stmt->execute();
+    $reviewsScore = $stmt->fetchAll();
+
+    //Gets the number of reviews given to a restaurant
+    $stmt = $db->prepare('SELECT count(*) FROM Review WHERE idRestaurant = :id');
+    $stmt->bindParam(':id', $idRestaurant);
+    $stmt->execute();
+    $numReviews = $stmt->fetch();
+
+    $totalScore = 0;
+    foreach($reviewsScore as $score)
+        $totalScore += $score['score'];
+
+    $updatedScore = $totalScore / $numReviews['count(*)'];
+
+    $stmt = $db->prepare('UPDATE Restaurant SET score = :updatedScore WHERE idRestaurant = :id');
+    $stmt->bindParam(':updatedScore', $updatedScore);
+    $stmt->bindParam(':id', $idRestaurant);
+    $stmt->execute();
+}
+
+//Searches a restaurant with a given name
 function searchRestaurant($name) {
     global $db;
 
     $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name = ?');
     $stmt->execute(array($name));
     return $stmt->fetch();
+}
+
+//Searches the best 10 restaurants based on average score
+function searchTopRestaurants() {
+    global $db;
+
+    $stmt = $db->prepare('SELECT * FROM Restaurant ORDER BY score DESC LIMIT 3');
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 ?>
