@@ -1,6 +1,6 @@
 <?php
-include_once('database/connection.php');
-include_once('database/db_user.php');
+include_once('connection.php');
+include_once('db_user.php');
 
 
 $referer;

@@ -1,6 +1,6 @@
 <?php
 
-include_once('database/db_user.php');
+include_once('db_user.php');
 
 session_start();
 

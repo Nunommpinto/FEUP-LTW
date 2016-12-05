@@ -8,7 +8,7 @@
                 integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
                 crossorigin="anonymous">
         </script>
-		<link rel="stylesheet" href="./header.css">
+		<link rel="stylesheet" href="../css/header.css">
     </head>
 
     <body>
@@ -18,12 +18,11 @@
         </div>
         <div id="nav-btns">
             <ul>
-                <li><a href="homepage.php">Homepage</a></li>
-                <li><a href="#">Top Restaurants</a></li>
-                <li><a href="#">Write a Review</a></li>
+                <li><a href="../pages/homepage.php">Homepage</a></li>
+                <li><a href="../pages/top_restaurants.php">Top Restaurants</a></li>
                 <li><a href="myprofile.php">Profile</a></li>
-                <li><a href="search_restaurant.php">Search a restaurant</a></li>
-                <li><a href="add_restaurant.php">Add a new restaurant</a></li>
+                <li><a href="../pages/search_restaurant.php">Search a restaurant</a></li>
+                <li><a href="../pages/add_restaurant.php">Add a new restaurant</a></li>
                 <div id="user-info"><a href="#"><?php echo(isset($username) ? $username : 'Login/Register') ?></a></div>  
             </ul>
         </div>

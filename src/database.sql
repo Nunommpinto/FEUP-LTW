@@ -106,3 +106,8 @@ CREATE TABLE PhotoRestaurant(
 /********** DEFAULT INSERTIONS **********/
 
 INSERT INTO Reviewer VALUES(null,'pintovic@gmail.com','pintovic65','reinaldovent',null,null);
+INSERT INTO Restaurant VALUES (null, 'Rest1', 'A', 0, 1, 1);
+INSERT INTO Restaurant VALUES (null, 'Rest2', 'A', 0, 1, 1);
+INSERT INTO Restaurant VALUES (null, 'Rest3', 'A', 0, 1, 1);
+INSERT INTO Restaurant VALUES (null, 'Rest4', 'A', 0, 1, 1);
+INSERT INTO Restaurant VALUES (null, 'Rest5', 'A', 0, 1, 1);

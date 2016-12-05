@@ -1,7 +1,7 @@
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="javascript/add_restaurant.js"></script>
+<script type="text/javascript" src="../javascript/add_restaurant.js"></script>
 
-<form id="form-component" action="action_add_restaurant.php" method="post" enctype="multipart/form-data">
+<form id="form-component" action="../database/action_add_restaurant.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="idOwner" value="1">
 
     <label>Name: </label> <input type="text" name="name" required="required"> *

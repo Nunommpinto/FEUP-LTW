@@ -13,11 +13,14 @@ function getAllRestaurants() {
 }
 
 //Returns the restaurant with id 'idRestaurant' ($_GET method)
-function getRestaurantById() {
+function getRestaurantById($idRestaurant) {
     global $db;
 
-    $stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurant = ?');
-    $stmt->execute(array($_GET['idRestaurant']));
+    $stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurant = :id');
+    if($stmt == false)
+        echo 'FALSE';
+    $stmt->bindParam(':id', $idRestaurant);
+    $stmt->execute();
     return $stmt->fetch();
 }
 
@@ -41,6 +44,8 @@ function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
     $stmt->bindParam(':idOwner', $idOwner);
     $stmt->bindParam(':idRestaurantInfo', $idRestaurantInfo);
     $stmt->execute();
+
+    return $db->lastInsertId();
 }
 
 //Updates the review score when a new review is registered
@@ -75,8 +80,9 @@ function updateScore($idRestaurant) {
 function searchRestaurant($name) {
     global $db;
 
-    $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name = ?');
-    $stmt->execute(array($name));
+    $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name = :name');
+    $stmt->bindParam(':name', $name);
+    $stmt->execute();
     return $stmt->fetch();
 }
 
@@ -84,9 +90,35 @@ function searchRestaurant($name) {
 function searchTopRestaurants() {
     global $db;
 
-    $stmt = $db->prepare('SELECT * FROM Restaurant ORDER BY score DESC LIMIT 3');
+    $stmt = $db->prepare('SELECT * FROM Restaurant ORDER BY score DESC LIMIT 10');
     $stmt->execute();
     return $stmt->fetchAll();
+}
+
+function advancedSearch($name, $minScore, $maxScore) {
+    global $db;
+
+    $query = 'SELECT * FROM Restaurant WHERE';
+    $operator = null;
+
+    if(isset($name) && trim($name) != '') {
+        $query .= ' name = ' . '\'' . $name . '\'';
+        $operator = ' AND ';
+    }
+    if(isset($minScore)) {
+        $query .= $operator . 'score >= ' . $minScore;
+        $operator = ' AND ';
+    }
+    if(isset($maxScore) && $maxScore >= $minScore) {
+        $query .= $operator . 'score <= ' . $maxScore;
+        $operator = ' AND ';
+    }
+    
+    var_dump($query);
+
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();    
 }
 
 ?>
