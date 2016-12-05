@@ -1,5 +1,5 @@
 <div class="login-dropdown">
-    <a href="#">Login/Register</a>
+    <a href="#">Sign In</a>
     <div class="login-dropdown-content">
         <ul class="login-dropdown-tabs">
             <li><a href="#" id="login-tablink" class="login-dropdown-tablinks">Login</a></li>

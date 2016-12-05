@@ -21,7 +21,7 @@
         </div>
         <div id="nav-btns" class="nav-btns">
             <ul>
-                <li><a href="homepage.php">Homepage</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#">Top Restaurants</a></li>
                 <li><a href="#">Write a Review</a></li>
                 <li><a href="myprofile.php">Profile</a></li>
