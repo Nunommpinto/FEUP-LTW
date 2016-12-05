@@ -15,7 +15,7 @@ html {
   margin: 0;
 }
 
-#nav-btns ul {
+.nav-btns ul {
   background-color: #626262;
   list-style-type: none;
   padding: 0;
@@ -23,21 +23,21 @@ html {
   overflow: hidden;
 }
 
-#nav-btns li, #back_btn {
+.nav-btns li {
   float: left;
   background: none;
   padding: 0;
 }
 
-#nav-btns li:hover, #user-info a:hover {
-  background: #444444;
+.nav-btns li:hover, #user-info a:hover {
+  background: #444;
 }
 
-#nav-btns li:active, #back_btn:active {
-  background: #444444;
+.nav-btns li:active, .header-elem-active{
+  background: #444;
 }
 
-#nav-btns a, #back_btn {
+.nav-btns a, #back_btn {
   text-align: center;
   display: block;
   padding: 5px 10px;
@@ -46,12 +46,8 @@ html {
   text-decoration: none;
 }
 
-#nav-btns a:hover, #user-info:hover {
+.nav-btns a:hover, #user-info:hover {
   color: white;
-}
-
-#user-info a {
-  float: right;
 }
 
 #panel {
