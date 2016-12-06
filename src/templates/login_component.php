@@ -1,4 +1,4 @@
-<form action="action_login.php" method="post">
+<form action="./database/action_login.php" method="post">
     <br>
 	Username: <input type="text" name="username" placeholder="username">
     <br>

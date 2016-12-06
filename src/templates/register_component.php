@@ -1,14 +1,6 @@
-<script type="text/javascript" src="templates/register_component.js"></script>
-<h1>Registration form</h1>
-<h3>Read the instructions carefully before you fill the form.</h3>
-<ul>
-	<li>Enter a valid email.</li>
-    <li>Username may contain only digits, upper and lowercase letters and underscores.</li>
-    <li>Password must be at least 6 characters long.</li>
-    <li>Passwords must match</li>
-</ul>
+<script type="text/javascript" src="register_component.js"></script>
 
-<form action="action_regist.php" method="post">
+<form action="./database/action_regist.php" method="post">
 	Email: <input type="text" name="email">
 	<br>
 	<br>

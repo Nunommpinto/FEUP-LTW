@@ -27,9 +27,9 @@ function isRegistered($username) {
 function checkCredentials($username, $password) {
     global $db;
 
-    $stmt = $db->prepare('SELECT * FROM Owner,Reviewer WHERE username = :username AND password = :password');
-	$stmt->bindParam(':username', $username);
-	$stmt->bindParam(':password', $password);
+    $stmt = $db->prepare('SELECT * FROM Reviewer WHERE username=:user AND password=:pw');
+	$stmt->bindParam(':user', $username);
+	$stmt->bindParam(':pw', sha1($password));
 	$stmt->execute();
 
     return $stmt->fetch() !== false;
@@ -39,11 +39,14 @@ function checkCredentials($username, $password) {
 function registerUser($email, $username, $password, $privileges) {
     global $db;
 	
+	if (isRegistered($username)) 
+		return false;
+	
 	if($privileges == "owner") {
 		$stmt = $db->prepare('INSERT INTO Owner VALUES (null, :email, :username, :password, null, null)');
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', $password);
+		$stmt->bindParam(':password', sha1($password));
 		$stmt->execute();
 		return true;
 	}
@@ -52,7 +55,7 @@ function registerUser($email, $username, $password, $privileges) {
 		$stmt = $db->prepare('INSERT INTO Reviewer VALUES (null, :email, :username, :password, null, null)');
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', $password);
+		$stmt->bindParam(':password', sha1($password));
 		$stmt->execute();
 		return true;
 	}

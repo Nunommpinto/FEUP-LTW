@@ -40,6 +40,17 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
+input[type=button] {
+    background-color: #4c95af;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+}
+
 button {
     background-color: #4c95af;
     color: white;

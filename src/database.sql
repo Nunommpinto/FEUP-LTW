@@ -22,7 +22,7 @@ CREATE TABLE Owner(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
 	email		VARCHAR,
     name        STRING NOT NULL,
-    password    STRING NOT NULL,
+    password    VARCHAR,
     idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
     idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
 );
@@ -32,7 +32,7 @@ CREATE TABLE Reviewer(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
 	email		VARCHAR,
     name        STRING NOT NULL,
-    password    STRING NOT NULL,
+    password    VARCHAR,
     idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
     idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
 );
@@ -105,7 +105,7 @@ CREATE TABLE PhotoRestaurant(
 
 /********** DEFAULT INSERTIONS **********/
 
-INSERT INTO Reviewer VALUES(null,'pintovic@gmail.com','pintovic65','reinaldovent',null,null);
+INSERT INTO Reviewer VALUES(null,'pintovic@gmail.com','pintovic','793f970c52ded1276b9264c742f19d1888cbaf73',null,null);
 INSERT INTO Restaurant VALUES (null, 'Rest1', 'A', 0, 1, 1);
 INSERT INTO Restaurant VALUES (null, 'Rest2', 'A', 0, 1, 1);
 INSERT INTO Restaurant VALUES (null, 'Rest3', 'A', 0, 1, 1);
