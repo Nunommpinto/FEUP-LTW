@@ -8,8 +8,10 @@
     $review = getReviewById($_GET['idReview']);
 ?>
 
-<form id='form-component' action='' method='post'>
-    <label>Comment: </label> <textarea rows='6' cols='80'><?=$review['comment']?></textarea>
+<form id='form-component' action='../database/action_edit_review.php' method='post'>
+    <input type="hidden" name="idReview" value="<?=$_GET['idReview']?>">
+
+    <label>Comment: </label> <textarea name="comment" rows="6" cols="80"><?=$review['comment']?></textarea>
     <label>Score: </label>  <input type="number" name="score" value="<?=$review['score']?>">
     <input type="submit" value="Save">
 </form>

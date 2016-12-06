@@ -8,14 +8,16 @@
     include_once('../database/db_localization.php');
     include_once('../database/db_review.php');
 
+    session_start();
     $restaurant;
 
     if(isset($_GET['idRestaurant'])) {
+        $_SESSION['idRestaurant'] = $_GET['idRestaurant'];
         $restaurant = getRestaurantById($_GET['idRestaurant']);
         if($restaurant == false)
             die('There was no restaurant with the specified id');
     } else {
-        session_start();
+        $_SESSION['idRestaurant'] = $_SESSION['restaurant'];
         $restaurant = $_SESSION['restaurant'];
         if($restaurant == false)
             die('There was no restaurant with the specified id');

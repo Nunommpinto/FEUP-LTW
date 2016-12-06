@@ -27,5 +27,15 @@
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch();
-    } 
+    }
+
+    function updateReview($id, $updatedScore, $updatedComment) {
+        global $db;
+
+        $stmt = $db->prepare('UPDATE Review SET score = :updatedScore, comment = :updatedComment WHERE idReview = :id');
+        $stmt->bindParam(':updatedScore', $updatedScore);
+        $stmt->bindParam(':updatedComment', $updatedComment);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
 ?>
