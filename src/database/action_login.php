@@ -11,15 +11,14 @@ else $referer = '../index.php';
 	if (checkCredentials($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $_POST['username'];
         echo "<script>alert('Login successful')</script>";
+        //header('Location: ' . $referer);
 	}
 
     else if (isRegistered($_POST['username'])) {
         echo "<script>alert('Wrong password!')</script>";
+        //header('Location: ' . $referer);
     }
     
 	else echo "<script>alert('User is not registered!')</script>";
-
-    header('Location: ' . $referer);
-
 
 ?>

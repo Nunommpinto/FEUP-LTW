@@ -28,8 +28,8 @@
                 <li><a href="../pages/add_restaurant.php">Add a new restaurant</a></li>
                 <div id="user-info">
                     <?php
-                        if (isset($username)) {
-                            echo $username;
+                        if (isset($_SESSION['username'])) {
+                            $_SESSION['username'];
                         } else { 
                             include_once("../templates/login_dropdown.php");
                         }

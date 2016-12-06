@@ -1,67 +1,55 @@
 <?php
-include_once('connection.php');
+	include_once('connection.php');
 
-// Database
-function getUser($username) {
-    global $db;
+	// Database
+	function getUser($username) {
+		global $db;
+		$stmt = $db->prepare('SELECT * FROM User WHERE name=:username');
+		$stmt->bindParam(':username', $username);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
 
-    $stmt = $db->prepare('SELECT * FROM Owner, Reviewer WHERE username = ?');
-    $stmt->execute(array($username));
-    return $stmt->fetch();
-	
-}
+	function getAllUsers() {
+		global $db;
 
-function getAllUsers() {
-    global $db;
+		$stmt = $db->prepare('SELECT name FROM User');
+		$stmt->execute();
 
-    $stmt = $db->prepare('SELECT username FROM Owner, Reviewer');
-    $stmt->execute();
+		return $stmt->fetchAll();
+	}
 
-    return $stmt->fetchAll();
-}
+	function isRegistered($username) {
+		return getUser($username) !== false;
+	}
 
-function isRegistered($username) {
-    return getUser($username) !== false;
-}
+	function checkCredentials($username, $password) {
+		global $db;
+		$shaPassword = sha1($password);
+		
+		$stmt = $db->prepare('SELECT * FROM User WHERE name=:username AND password=:password');
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':password', $shaPassword);
+		$stmt->execute();
 
-function checkCredentials($username, $password) {
-    global $db;
+		return $stmt->fetch() !== false;
+	}
 
-    $stmt = $db->prepare('SELECT * FROM Reviewer WHERE username=:user AND password=:pw');
-	$stmt->bindParam(':user', $username);
-	$stmt->bindParam(':pw', sha1($password));
-	$stmt->execute();
-
-    return $stmt->fetch() !== false;
-}
-
-// User actions
-function registerUser($email, $username, $password, $privileges) {
-    global $db;
-	
-	if (isRegistered($username)) 
-		return false;
-	
-	if($privileges == "owner") {
-		$stmt = $db->prepare('INSERT INTO Owner VALUES (null, :email, :username, :password, null, null)');
+	// User actions
+	function registerUser($email, $username, $password, $owner) {
+		global $db;
+		
+		if (isRegistered($username)) 
+			return false;
+		$shaPassword = sha1($password);
+		
+		$stmt = $db->prepare('INSERT INTO User (email, name, password, owner) VALUES (:email, :username, :password, :owner)');
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', sha1($password));
+		$stmt->bindParam(':password', $shaPassword);
+		$stmt->bindParam(':owner', $owner);
 		$stmt->execute();
 		return true;
 	}
-	
-	elseif($privileges == "reviewer") {
-		$stmt = $db->prepare('INSERT INTO Reviewer VALUES (null, :email, :username, :password, null, null)');
-		$stmt->bindParam(':email', $email);
-		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', sha1($password));
-		$stmt->execute();
-		return true;
-	}
-
-    else
-		return false;
-}
 
 ?>

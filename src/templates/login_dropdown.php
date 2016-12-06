@@ -19,7 +19,7 @@
             </form>
         </div>
         <div id="register-tab" class="login-dropdown-tabcontent">
-            <form action="../database/action_regist.php" method="post">
+            <form action="../database/action_register.php" method="post">
                 <div class="container">
                     <label class="login-label"><b>Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required>
@@ -36,7 +36,7 @@
                     <div class="login-switch-container">
                         <label class="login-label">Reviewer</label>
                         <label class="login-switch">
-                            <input type="checkbox" name="privileges">
+                            <input type="checkbox" name="owner">
                             <div class="login-switch-slider"></div>
                         </label>
                         <label class="login-label">Owner</label>

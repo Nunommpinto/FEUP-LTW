@@ -17,22 +17,13 @@ CREATE TABLE UserInfo(
     FOREIGN KEY(idUser) REFERENCES User(idUser)
 );
 
-drop table if exists Owner;
-CREATE TABLE Owner(
+drop table if exists User;
+CREATE TABLE User(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
 	email		VARCHAR,
     name        STRING NOT NULL,
     password    VARCHAR,
-    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
-    idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
-);
-
-drop table if exists Reviewer;
-CREATE TABLE Reviewer(
-    idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
-	email		VARCHAR,
-    name        STRING NOT NULL,
-    password    VARCHAR,
+    owner       BOOLEAN NOT NULL,       
     idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
     idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
 );
@@ -55,7 +46,7 @@ CREATE TABLE Review(
     comment     STRING,
 
     idRestaurant    INTEGER REFERENCES Restaurant(idRestaurant),
-    idReviewer      INTEGER REFERENCES Reviewer(idReviewer)
+    idUser      INTEGER REFERENCES User(idUser)
 );
 
 drop table if exists Reply;
@@ -104,8 +95,8 @@ CREATE TABLE PhotoRestaurant(
 /********** MANY-TOO-MANY relationship table **********/
 
 /********** DEFAULT INSERTIONS **********/
-
-INSERT INTO Reviewer VALUES(null,'pintovic@gmail.com','pintovic','793f970c52ded1276b9264c742f19d1888cbaf73',null,null);
+/* Non-SHA1 password:  */
+INSERT INTO User VALUES(null,'pintovic@gmail.com','pintovic','793f970c52ded1276b9264c742f19d1888cbaf73', 1, null,null);
 INSERT INTO Restaurant VALUES (null, 'Rest1', 'A', 0, 1, 1);
 INSERT INTO Restaurant VALUES (null, 'Rest2', 'A', 0, 1, 1);
 INSERT INTO Restaurant VALUES (null, 'Rest3', 'A', 0, 1, 1);
