@@ -32,16 +32,18 @@ $(document).mousedown(function (e)
 });
 
 $(document).ready(function() {
-    // Add login/register link click handler
-    $('.login-dropdown').children('a').on('click', function() {
-        $('.login-dropdown').children('a').toggleClass('header-elem-active');
-        $('.login-dropdown-content').toggleClass('show');
-    });
-    
-    // Add login and register tablinks functionality
-    $('#login-tablink').on('click', function() { loginDropdownTablinks('login-tab'); });
-    $('#register-tablink').on('click', function() { loginDropdownTablinks('register-tab'); });
-    
-    // Open default tab
-    loginDropdownTablinks('login-tab'); 
+    if (document.getElementsByTagName('login-dropdown').length > 0) {
+        // Add login/register link click handler
+        $('.login-dropdown').children('a').on('click', function() {
+            $('.login-dropdown').children('a').toggleClass('header-elem-active');
+            $('.login-dropdown-content').toggleClass('show');
+        });
+
+        // Add login and register tablinks functionality
+        $('#login-tablink').on('click', function() { loginDropdownTablinks('login-tab'); });
+        $('#register-tablink').on('click', function() { loginDropdownTablinks('register-tab'); });
+
+        // Open default tab
+        loginDropdownTablinks('login-tab'); 
+    }
 });
