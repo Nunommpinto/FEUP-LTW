@@ -3,10 +3,10 @@
 <?php
 
 //Returns all restaurants
-function getAllRestaurants() {
+function getNewestRestaurants() {
     global $db;
 
-    $stmt = $db->prepare('SELECT * FROM Restaurant');
+    $stmt = $db->prepare('SELECT * FROM Restaurant ORDER BY idRestaurant DESC LIMIT 5');
     $stmt->execute();
     
     return $stmt->fetchAll();

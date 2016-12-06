@@ -5,7 +5,7 @@
     include_once('../database/db_restaurants.php');
 
     try {
-        $restaurants = getAllRestaurants();
+        $restaurants = getNewestRestaurants();
         $_SESSION['restaurants'] = $restaurants;
     } catch(PDOException $e) {
         die($e->getMessage());

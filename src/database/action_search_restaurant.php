@@ -15,5 +15,5 @@
         $_SESSION['restaurant'] = $restaurants[0];
         header('Location: ../templates/restaurant.php');
     } else
-        header('Location: ../pages/homepage.php');
+        header('Location: ../pages/index.php');
 ?>
