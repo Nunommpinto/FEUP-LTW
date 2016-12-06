@@ -10,6 +10,7 @@
         $stmt->execute();
     }
 
+    //Returns all review for the same restaurant
     function getAllReviews($id) {
         global $db;
 
@@ -18,4 +19,13 @@
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    function getReviewById($id) {
+        global $db;
+
+        $stmt = $db->prepare('SELECT * FROM Review WHERE idReview = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    } 
 ?>

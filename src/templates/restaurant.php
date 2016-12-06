@@ -95,6 +95,10 @@
                 <label>Review: </label><?=$review['comment']?>
                 <br>
                 <label>Score: </label><?=$review['score']?>
+                <br>
+                <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
+                <a href="">Remove</a>
+                <a href="">Reply</a>
                 <br><br>
             <?php } ?>
     </div>

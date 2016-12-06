@@ -9,5 +9,5 @@
     registerReview($_POST['rating'], $_POST['review'], $_POST['idRestaurant'], 1);
     updateScore($_POST['idRestaurant']);
 
-    header('Location: ../pages/homepage.php');
+    header('Location: ../templates/restaurant.php?idRestaurant=' . $_POST['idRestaurant']);
 ?>
