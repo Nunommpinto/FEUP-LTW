@@ -80,3 +80,53 @@ button {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+
+/* Register switch style */
+.login-switch-container {
+    text-align: center;
+}
+
+.login-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  line-height: 60px;
+  vertical-align: middle;
+}
+
+.login-switch input {display:none;}
+
+.login-switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4c95af;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.login-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .login-switch-slider {
+  background-color: #8bc34a;
+}
+
+input:checked + .login-switch-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}

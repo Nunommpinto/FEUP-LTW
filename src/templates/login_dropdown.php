@@ -33,6 +33,15 @@
                     <label class="login-label"><b>Confirm Password</b></label>
                     <input type="password" placeholder="Re-enter Password" name="repassword" required>
 
+                    <div class="login-switch-container">
+                        <label class="login-label">Reviewer</label>
+                        <label class="login-switch">
+                            <input type="checkbox">
+                            <div class="login-switch-slider"></div>
+                        </label>
+                        <label class="login-label">Owner</label>
+                    </div>
+
                     <button type="submit">Register</button>
                 </div>
             </form>
