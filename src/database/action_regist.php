@@ -15,11 +15,8 @@ if (isset($_POST['confirm_btn'])) {
 
     header('Location: ' . $referer);
 }
-else if(isset($_POST['cancel_btn'])) {
-	header('Location: ' . $referer);
-}
 else {
-    echo "<h1>Please go back to homepage.</h1>";
+    header('Location: ../pages/');
 }
 
 ?>
