@@ -1,0 +1,24 @@
+/* Login dropdown on the right */
+.user-dropdown {
+    float: right;
+    position: relative;
+}
+
+/* Login dropdown content (hidden by default) */
+.user-dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #626262;
+    min-width: 200px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 8px;
+}
+
+#user-dropdown-content a:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+/* Class to show a hidden object */
+.show {display:block;}

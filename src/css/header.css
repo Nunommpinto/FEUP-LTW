@@ -46,7 +46,7 @@ html {
   text-decoration: none;
 }
 
-.nav-btns a:hover, #user-info:hover {
+.nav-btns a:hover {
   color: white;
 }
 

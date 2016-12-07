@@ -10,8 +10,11 @@
         </script>
         <script type="text/javascript" src="../javascript/header.js"></script>
         <script type="text/javascript" src="../javascript/login_dropdown.js"></script>
-		<link rel="stylesheet" href="../css/header.css">
+        <script type="text/javascript" src="../javascript/user_dropdown.js"></script>
+		<link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/login_dropdown.css">
+        <link rel="stylesheet" href="../css/user_dropdown.css">
     </head>
 
     <body>
@@ -29,7 +32,7 @@
                 <div id="user-info">
                     <?php
                         if (isset($_SESSION['username'])) {
-                            $_SESSION['username'];
+                            include_once("../templates/user_dropdown.php");
                         } else { 
                             include_once("../templates/login_dropdown.php");
                         }

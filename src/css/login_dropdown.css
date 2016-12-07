@@ -62,11 +62,6 @@ button {
     font-size: 1em;
 }
 
-/* Add padding to containers */
-.container {
-    padding: 16px;
-}
-
 /* Making tabs fill the container */
 .login-dropdown-tabs li {
     width: 50%;

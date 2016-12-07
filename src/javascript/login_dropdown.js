@@ -13,7 +13,7 @@ loginDropdownTablinks = function (tabName) {
 // Close the dropdown menu if the user clicks outside of it
 $(document).mousedown(function (e)
 {
-    var container =  $('.login-dropdown')
+    var container = $('.login-dropdown')
 
     // if the target of the click isn't the container neither a child of it 
     if (!container.is(e.target) && container.has(e.target).length === 0) {

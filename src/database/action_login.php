@@ -5,13 +5,12 @@ include_once('db_user.php');
 session_start();
 
 $referer;
-if (isset($_COOKIE['redirect'])) $referer = $_COOKIE['redirect'];
-else $referer = '../index.php';
+    if (isset($_COOKIE['redirect'])) $referer = $_COOKIE['redirect'];
+    else $referer = '../index.php';
 
 	if (checkCredentials($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $_POST['username'];
-        echo "<script>alert('Login successful')</script>";
-        //header('Location: ' . $referer);
+        header('Location: ' . $referer);
 	}
 
     else if (isRegistered($_POST['username'])) {
