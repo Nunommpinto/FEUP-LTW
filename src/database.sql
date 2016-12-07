@@ -21,7 +21,7 @@ drop table if exists User;
 CREATE TABLE User(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
 	email		VARCHAR,
-    name        STRING NOT NULL,
+    username    STRING NOT NULL,
     password    VARCHAR,
     owner       BOOLEAN NOT NULL,       
     idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),

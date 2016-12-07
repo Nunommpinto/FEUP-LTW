@@ -38,4 +38,14 @@
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
+
+    //Returns the id of the user who wrote the review
+    function getUserId($idReview) {
+        global $db;
+
+        $stmt = $db->prepare('SELECT idUser FROM Review WHERE idReview = :idReview');
+        $stmt->bindParam('idReview', $idReview);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 ?>

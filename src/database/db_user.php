@@ -4,7 +4,7 @@
 	// Database
 	function getUser($username) {
 		global $db;
-		$stmt = $db->prepare('SELECT * FROM User WHERE name=:username');
+		$stmt = $db->prepare('SELECT * FROM User WHERE username=:username');
 		$stmt->bindParam(':username', $username);
 		$stmt->execute();
 		return $stmt->fetch();
@@ -13,7 +13,7 @@
 	function getAllUsers() {
 		global $db;
 
-		$stmt = $db->prepare('SELECT name FROM User');
+		$stmt = $db->prepare('SELECT username FROM User');
 		$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -27,12 +27,22 @@
 		global $db;
 		$shaPassword = sha1($password);
 		
-		$stmt = $db->prepare('SELECT * FROM User WHERE name=:username AND password=:password');
+		$stmt = $db->prepare('SELECT * FROM User WHERE username=:username AND password=:password');
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':password', $shaPassword);
 		$stmt->execute();
 
 		return $stmt->fetch() !== false;
+	}
+
+	//Returns the user id given his username
+	function getUserId($username) {
+		global $db;
+
+		$stmt = $db->prepare('SELECT idUser FROM User WHERE username = :username');
+		$stmt->bindParam(':username', $username);
+		$stmt->execute();
+		return $stmt->fetch();
 	}
 
 	// User actions
@@ -43,7 +53,7 @@
 			return false;
 		$shaPassword = sha1($password);
 		
-		$stmt = $db->prepare('INSERT INTO User (email, name, password, owner) VALUES (:email, :username, :password, :owner)');
+		$stmt = $db->prepare('INSERT INTO User (email, username, password, owner) VALUES (:email, :username, :password, :owner)');
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':password', $shaPassword);

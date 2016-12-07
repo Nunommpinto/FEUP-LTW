@@ -6,7 +6,7 @@
     include_once('db_review.php');
     include_once('db_restaurants.php');
 
-    registerReview($_POST['rating'], $_POST['review'], $_POST['idRestaurant'], 1);
+    registerReview($_POST['rating'], $_POST['review'], $_POST['idRestaurant'], $_SESSION['idUser']);
     updateScore($_POST['idRestaurant']);
 
     header('Location: ../templates/restaurant.php?idRestaurant=' . $_POST['idRestaurant']);
