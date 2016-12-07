@@ -6,27 +6,37 @@
 
     <label>Name: </label> <input type="text" name="name" required="required"> *
     <label>Description: </label><textarea name="description" required="required" rows="4" cols="40"></textarea> *
-
-    <label>Average Price: </label> <input type="number" name="price" min="0">
-
+	
+	<br><br>
+    <label>Average Price (per person): </label> <input type="number" name="price" min="0">
+	
+	<br><br>
     <label>Categories: </label>
+	<br>
     <input type="checkbox" name="categories" value="Gourmet">Gourmet
     <input type="checkbox" name="categories" value="FastFood">Fast Food
     <input type="checkbox" name="categories" value="Vegetarian">Vegetarian
-
+	<input type="checkbox" name="categories" value="Snackbar">Snackbar
+	
+	<br><br>
     <label>Are dogs allowed? </label><input type="checkbox" name="dogAllowed" value="true">
-
+	
+	<br><br>
     <label>Open hours: </label><input type="time" name="openHours">
     <label>Close hours: </label><input type="time" name="closeHours">
-
+	
+	<br><br>
     <label>Country: </label> <input type="text" name="country">
     <label>City: </label> <input type="text" name="city">
     <label>Road: </label> <input type="text" name="road">
     <label>Postal Code: </label> <input type="text" name="postalCode">
 
     <label>Title: </label> <input type="text" name="title">
+	
+	<br><br>
     <label>Upload Image: </label> <input type="file" name="image">
-
+	
+	<br><br>
     <input type="submit" value="Register">
     <!-- Do integration with google maps -->
 </form>
