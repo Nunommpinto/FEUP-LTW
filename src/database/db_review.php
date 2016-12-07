@@ -48,4 +48,14 @@
         $stmt->execute();
         return $stmt->fetch();
     }
+	
+	function deleteReview($id) {
+    global $db;
+
+    $stmt = $db->prepare('DELETE FROM Review WHERE idReview = :id');
+    $stmt->bindParam('id', $id);
+	$stmt->execute();
+
+    return true;
+	}
 ?>

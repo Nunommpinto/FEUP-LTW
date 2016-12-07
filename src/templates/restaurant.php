@@ -84,7 +84,7 @@
         <?php if($localization['postalCode']) { ?>
             <p>Postal Code: <?=$localization['postalCode']?></p>
         <?php } else { ?>
-            <p>No posta code available</p>
+            <p>No postal code available</p>
         <?php } ?>
     </div>
     <div id="photos">
@@ -99,7 +99,7 @@
                 <label>Score: </label><?=$review['score']?>
                 <br>
                 <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
-                <a href="">Remove</a>
+                <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>">Remove</a>
                 <a href="">Reply</a>
                 <br><br>
             <?php } ?>
