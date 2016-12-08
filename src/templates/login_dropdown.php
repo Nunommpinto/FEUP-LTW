@@ -1,18 +1,38 @@
+<?php include_once('../database/constants.php'); ?>
+
 <div class="login-dropdown">
     <a href="#">Sign In</a>
-    <div class="login-dropdown-content">
+    <?php
+        if (isset($_SESSION[$LOGIN_KEY]))
+            echo '<div class="login-dropdown-content show">';
+        else 
+            echo '<div class="login-dropdown-content">'
+    ?>
         <ul class="login-dropdown-tabs">
-            <li><a href="#" id="login-tablink" class="login-dropdown-tablinks">Login</a></li>
+            <li><a href="#" id="login-tablink" class="login-dropdown-tablinks header-elem-active">Login</a></li>
             <li><a href="#" id="register-tablink" class="login-dropdown-tablinks">Register</a></li>
         </ul>
+        
         <div id="login-tab" class="login-dropdown-tabcontent">
             <form action="../database/action_login.php" method="post">
                 <div class="container">
                     <label class="login-label"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required>
-                    
+                    <?php
+                        if(isset($_SESSION[$LOGIN_KEY])) {
+                            if ($_SESSION[$LOGIN_KEY] == $LOGIN_WRONG_USER)
+                                echo '<input type="text" placeholder="Enter Username" name="username" required autofocus>';
+                            else
+                                echo '<input type="text" placeholder="Enter Username" name="username" value="' . $_SESSION[$LOGIN_KEY] . '" required>';
+                        } else
+                            echo '<input type="text" placeholder="Enter Username" name="username" required>';
+                    ?>
                     <label class="login-label"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
+                    <?php
+                        if(isset($_SESSION[$LOGIN_KEY]) && $_SESSION[$LOGIN_KEY] != $LOGIN_WRONG_USER)
+                            echo '<input type="password" placeholder="Enter Password" name="password" required autofocus>';
+                        else 
+                            echo '<input type="password" placeholder="Enter Password" name="password" required>';
+                    ?>
 
                     <button type="submit" value="Login">Login</button>
                 </div>
@@ -41,7 +61,6 @@
                         </label>
                         <label class="login-label">Owner</label>
                     </div>
-
                     <button type="submit">Register</button>
                 </div>
             </form>

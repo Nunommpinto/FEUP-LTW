@@ -32,7 +32,4 @@ $(document).ready(function() {
     // Add login and register tablinks functionality
     $('#login-tablink').on('click', function() { loginDropdownTablinks('login-tab'); });
     $('#register-tablink').on('click', function() { loginDropdownTablinks('register-tab'); });
-
-    // Open default tab
-    loginDropdownTablinks('login-tab'); 
 });

@@ -1,10 +1,11 @@
 <?php
 
     include_once('db_user.php');
+    include_once('constants.php');
+    include_once('../templates/alert.php');
 
-    session_start();
-
-    $referer;
+    if (session_status() == PHP_SESSION_NONE) 
+        session_start();
 
     if (isset($_COOKIE['redirect'])) $referer = $_COOKIE['redirect'];
     else $referer = '../index.php';
@@ -12,14 +13,17 @@
     if (checkCredentials($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['userId'] = getUserId($_POST['username']);
-        header('Location: ' . $referer);
-    }
-
+        if (isset($_SESSION[$LOGIN_KEY]))
+            unset($_SESSION[$LOGIN_KEY]);
+    } 
     else if (isRegistered($_POST['username'])) {
-        echo "<script>alert('Wrong password!')</script>";
-        //header('Location: ' . $referer);
+        addWarn("Wrong password.", 'Warning!');
+        $_SESSION[$LOGIN_KEY] = $_POST['username'];
     }
-    
-    else echo "<script>alert('User is not registered!')</script>";
-
+    else {
+        addWarn("Wrong username.", 'Warning!');
+        $_SESSION[$LOGIN_KEY] = $LOGIN_WRONG_USER;
+    }
+        
+    header('Location: ' . $referer);
 ?>

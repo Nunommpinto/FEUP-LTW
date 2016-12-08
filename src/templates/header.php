@@ -1,3 +1,4 @@
+<?php include_once('../templates/alert.php'); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,15 +10,18 @@
                 crossorigin="anonymous">
         </script>
         <script type="text/javascript" src="../javascript/header.js"></script>
+        <script type="text/javascript" src="../javascript/alert.js"></script>
         <script type="text/javascript" src="../javascript/login_dropdown.js"></script>
         <script type="text/javascript" src="../javascript/user_dropdown.js"></script>
 		<link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/alert.css">
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/login_dropdown.css">
         <link rel="stylesheet" href="../css/user_dropdown.css">
     </head>
 
     <body>
+        <?php echo getAlert(); ?>
         <div id="header">
             <h1>FEUPrant</h1>
             <h2>The definitive restaurant reviews website!</h2>
