@@ -52,13 +52,13 @@
 	function deleteReview($id) {
     global $db;
 
-    $stmt = $db->prepare('DELETE FROM Review WHERE idReview = :id');
-    $stmt->bindParam('id', $id);
-	$stmt->execute();
+    $stmt = $db->prepare('DELETE FROM Review WHERE idReview = :idReview');
+    $stmt->bindParam('idReview', $idReview);
+    $stmt->execute();
 	
-	$stmt = $db->prepare('DELETE FROM Reply WHERE idReview = :id');
-    $stmt->bindParam('id', $id);
-	$stmt->execute();
+	$stmt = $db->prepare('DELETE FROM Reply WHERE idReview = :idReview');
+    $stmt->bindParam('idReview', $idReview);
+    $stmt->execute();
 
     return true;
 	}
