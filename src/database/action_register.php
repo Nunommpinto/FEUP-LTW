@@ -16,5 +16,5 @@
 
     else echo "<script>alert('Successfully registered')</script>";
 
-    //header('Location: ' . $referer);
+   header('Location: ' . $referer);
 ?>

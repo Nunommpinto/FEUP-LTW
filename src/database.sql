@@ -96,7 +96,7 @@ CREATE TABLE PhotoRestaurant(
 
 /********** DEFAULT INSERTIONS **********/
 /* Non-SHA1 password:  */
-INSERT INTO User VALUES(null,'pintovic@gmail.com','pintovic','793f970c52ded1276b9264c742f19d1888cbaf73', 1, null,null);
+INSERT INTO User VALUES(null,'pintovic@gmail.com','pintovic','olaolaola', 1, null,null);
 INSERT INTO Restaurant VALUES (null, 'Rest1', 'A', 0, 1, 1);
 INSERT INTO Restaurant VALUES (null, 'Rest2', 'A', 0, 1, 1);
 INSERT INTO Restaurant VALUES (null, 'Rest3', 'A', 0, 1, 1);

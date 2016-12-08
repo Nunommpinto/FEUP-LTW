@@ -4,13 +4,11 @@
 	include_once('connection.php');
 	include_once('db_review.php');
 
-	$id = $_GET['idReview'];
-	$user = getUserId($id);
-	$review = getReviewById($id);
+	$review = getReviewById($_GET['idReview']);
 
-	if (isset($_SESSION['name'])) {
-		if ($_SESSION['idUser'] == $user)
-			deleteReview($id, $_SESSION['name']);
+	if (isset($_SESSION['username'])) {
+		if ($_SESSION['userId'] == getUserId($_GET['idReview']))
+			deleteReview($_GET['idReview']);
 	}
 
 	header('Location: ../templates/restaurant.php?idRestaurant=' . $_SESSION['idRestaurant']);

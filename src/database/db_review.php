@@ -55,6 +55,10 @@
     $stmt = $db->prepare('DELETE FROM Review WHERE idReview = :id');
     $stmt->bindParam('id', $id);
 	$stmt->execute();
+	
+	$stmt = $db->prepare('DELETE FROM Reply WHERE idReview = :id');
+    $stmt->bindParam('id', $id);
+	$stmt->execute();
 
     return true;
 	}
