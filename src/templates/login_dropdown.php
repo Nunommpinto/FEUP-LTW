@@ -67,3 +67,4 @@
         </div>
     </div>
 </div>
+<?php if (isset($_SESSION[$LOGIN_KEY])) unset($_SESSION[$LOGIN_KEY]); ?>
