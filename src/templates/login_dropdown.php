@@ -1,4 +1,4 @@
-<?php include_once('../database/constants.php'); ?>
+<?php include_once('../templates/constants.php'); ?>
 
 <div class="login-dropdown">
     <?php

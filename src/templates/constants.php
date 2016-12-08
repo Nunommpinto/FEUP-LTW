@@ -1,7 +1,7 @@
 <?php
     /* 
      * Tag to include this file:
-     * <?php include_once('../database/constants.php'); ?> 
+     * <?php include_once('../templates/constants.php'); ?> 
      */
 
     /* 

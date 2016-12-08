@@ -1,7 +1,7 @@
 <?php
 
     include_once('db_user.php');
-    include_once('constants.php');
+    include_once('../templates/constants.php');
     include_once('../templates/alert.php');
 
     if (session_status() == PHP_SESSION_NONE) 
