@@ -3,7 +3,8 @@ loginDropdownTablinks = function (tabName) {
     $('.login-dropdown-tabcontent').hide();
 
     // Get all elements with class="login-dropdown-tablinks" and remove the class "active"
-    $('login-dropdown-tablinks').removeClass('header-elem-active')
+    $('#register-tablink').removeClass('header-elem-active')
+    $('#login-tablink').removeClass('header-elem-active')
 
     // Show the current tab, and add an "active" class to the link that opened the tab
     $('#' + tabName).show();

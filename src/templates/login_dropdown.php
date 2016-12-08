@@ -1,7 +1,14 @@
 <?php include_once('../database/constants.php'); ?>
 
 <div class="login-dropdown">
-    <a href="#">Sign In</a>
+    <?php
+        if(isset($_SESSION[$LOGIN_KEY]))
+            echo '<a class="header-elem-active" href="#">Sign In</a>';
+        else 
+            echo '<a href="#">Sign In</a>';
+    ?>
+
+    
     <?php
         if (isset($_SESSION[$LOGIN_KEY]))
             echo '<div class="login-dropdown-content show">';
