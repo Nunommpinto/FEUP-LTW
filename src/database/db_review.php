@@ -49,7 +49,7 @@
         return $stmt->fetch();
     }
 	
-	function deleteReview($id) {
+	function deleteReview($idReview) {
         global $db;
 
         $stmt = $db->prepare('DELETE FROM Review WHERE idReview = :idReview');
