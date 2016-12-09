@@ -53,10 +53,8 @@ drop table if exists Reply;
 CREATE TABLE Reply(
     idReply     INTEGER PRIMARY KEY AUTOINCREMENT,
     comment     STRING NOT NULL,
-
     idReview    INTEGER REFERENCES Review(idReview),
-    idOwner     INTEGER REFERENCES Owner(idOwner),
-    idReviewer  INTEGER REFERENCES Reviewer(idReviewer)
+    idReplier	INTEGER REFERENCES User(idUser)
 );
 
 drop table if exists RestaurantInfo;

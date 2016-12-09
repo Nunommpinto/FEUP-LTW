@@ -4,14 +4,16 @@
 	include_once('connection.php');
 	include_once('db_review.php');
 
-	$user = getUserId($_GET['idReview']);
-
+	$revuser = getUserId($_GET['idReview']);
+	$user = $_SESSION['idUser'];
+	
+	
 	if (isset($_SESSION['username'])) {
-		//if ($_SESSION['idUser'] == $user)
+		//if ($user == $revuser)
 			deleteReview($_GET['idReview']);
 		
 		//else echo "<script>alert('Cannot remove review!')</script>";
 	}
 
-	//header('Location: ../templates/restaurant.php?idRestaurant=' . $_SESSION['idRestaurant']);
+	header('Location: ../templates/restaurant.php?idRestaurant=' . $_SESSION['idRestaurant']);
 ?>

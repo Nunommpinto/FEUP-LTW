@@ -44,7 +44,7 @@
         global $db;
 
         $stmt = $db->prepare('SELECT idUser FROM Review WHERE idReview = :idReview');
-        $stmt->bindParam('idReview', $idReview);
+        $stmt->bindParam(':idReview', $idReview);
         $stmt->execute();
         return $stmt->fetch();
     }
@@ -62,4 +62,16 @@
 
         return true;
 	}
+	
+	function replyReview($reply, $idReview, $idReplier) {
+        global $db;
+
+        $stmt = $db->prepare('INSERT INTO Reply VALUES (null, :comment, :idReview, :idReplier)');
+        $stmt->bindParam(':comment', $reply);
+        $stmt->bindParam(':idReview', $idReview);
+		$stmt->bindParam(':idReplier', $idReplier);
+        $stmt->execute();
+		
+		return true;
+    }
 ?>
