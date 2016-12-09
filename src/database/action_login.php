@@ -10,15 +10,15 @@
     if (isset($_COOKIE['redirect'])) $referer = $_COOKIE['redirect'];
     else $referer = '../index.php';
 
+    $_SESSION['idUser'] = 5;//getUserId('carro');
+
     if (checkCredentials($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $_POST['username'];
-        $_SESSION['userId'] = getUserId($_POST['username']);
-    } 
-    else if (isRegistered($_POST['username'])) {
+        $_SESSION['idUser'] = getUserId($_POST['username']);
+    } else if (isRegistered($_POST['username'])) {
         addWarn("Wrong password.", 'Warning!');
         $_SESSION[$LOGIN_KEY] = $_POST['username'];
-    }
-    else {
+    } else {
         addWarn("Wrong username.", 'Warning!');
         $_SESSION[$LOGIN_KEY] = $LOGIN_WRONG_USER;
     }

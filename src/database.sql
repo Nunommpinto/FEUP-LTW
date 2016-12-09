@@ -41,12 +41,12 @@ CREATE TABLE Restaurant(
 
 drop table if exists Review;
 CREATE TABLE Review(
-    idReview    INTEGER PRIMARY KEY AUTOINCREMENT,
-    score       INTEGER NOT NULL,
-    comment     STRING,
+    idReview        INTEGER PRIMARY KEY AUTOINCREMENT,
+    score           INTEGER NOT NULL,
+    comment         STRING,
 
     idRestaurant    INTEGER REFERENCES Restaurant(idRestaurant),
-    idUser      INTEGER REFERENCES User(idUser)
+    idUser          INTEGER REFERENCES User(idUser)
 );
 
 drop table if exists Reply;

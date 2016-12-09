@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) 
+        session_start();
 
     if(!isset($_GET['idReview']))
         die('Review id not set!');
@@ -7,14 +8,15 @@
     include_once('../database/connection.php');
     include_once('../database/db_review.php');
 
-    $loggedUserId = getUserId($_SESSION['username']);
+    $loggedUserId = getUserId($_GET['idReview']);
+    
     var_dump($loggedUserId);
-    var_dump($_SESSION['userId']);
-    var_dump($_SESSION['username']);
-    /*if($loggedUserId != $_SESSION['userId'])
-        die(header('Location: ../pages/index.php'));
+    var_dump($_SESSION['idUser']);
 
-    $review = getReviewById($_GET['idReview']);*/
+    /*if($loggedUserId != $_SESSION['idUser'])
+        die(header('Location: ../pages/index.php'));*/
+
+    $review = getReviewById($_GET['idReview']);
 ?>
 
 <form id='form-component' action='../database/action_edit_review.php' method='post'>
