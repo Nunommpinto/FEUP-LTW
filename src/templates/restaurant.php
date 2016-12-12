@@ -65,30 +65,80 @@
         <?php } ?>
     </div>
     <div id="localization">
+        <label>Adress: </label>
         <?php if($localization['country']) { ?>
-            <p>Country: <?=$localization['country']?></p>
-        <?php } else { ?>
-            <p>No country available</p>
+            <div id="country"><?=$localization['country']?></div>
         <?php } ?>
 
         <?php if($localization['city']) { ?>
-            <p>City: <?=$localization['city']?></p>
-        <?php } else { ?>
-            <p>No city available</p>
+            <div id="city"><?=$localization['city']?></div>
         <?php } ?>
 
         <?php if($localization['road']) { ?>
-            <p>Road: <?=$localization['road']?></p>
-        <?php } else { ?>
-            <p>No road available</p>
+            <div id="road"><?=$localization['road']?></div>
         <?php } ?>
 
         <?php if($localization['postalCode']) { ?>
-            <p>Postal Code: <?=$localization['postalCode']?></p>
-        <?php } else { ?>
-            <p>No postal code available</p>
+            <div id="postalCode"><?=$localization['postalCode']?></div>
         <?php } ?>
+
+        <div id="map" style="width:100%; height:400px"></div>
     </div>
+
+    <script type="text/javascript">
+        function initMap() {
+            var country = document.getElementById("country").innerHTML;
+            var city = document.getElementById("city").innerHTML;
+            var road = document.getElementById("road").innerHTML;
+
+            var address = country + ', ' + city + ', ' + road;
+            
+            var geocoder = new google.maps.Geocoder();
+            var latLng = new google.maps.LatLng(-34.397, 150.644);
+            var myOptions;
+            var map;
+
+            if(geocoder) {
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                    if(status == google.maps.GeocoderStatus.OK) {
+                        if(status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                            myOptions = {
+                                zoom: 20,
+                                center: results[0].geometry.location,
+                                mapTypeControl: true,
+                                mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+                                navigationControl: true,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP  
+                            };
+
+                            map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+                            var infowindow = new google.maps.InfoWindow(
+                                { content: '<b>'+address+'</b>',
+                                size: new google.maps.Size(1000, 500)
+                                });
+
+                            var marker = new google.maps.Marker({
+                                position: results[0].geometry.location,
+                                map: map, 
+                                title: address
+                            }); 
+                            
+                            google.maps.event.addListener(marker, 'click', function() {
+                                infowindow.open(map,marker);
+                            });
+                        } else
+                            alert('No results found!');
+                    } else
+                        alert("Geocode was not initialized due to: " + status);
+                });
+            }
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap">
+    </script>
+
     <div id="photos">
         <?php if($photo) ?>
             <img src="../images/originals/<?=$photo['idPhoto']?>.jpg">
@@ -106,7 +156,6 @@
                 <br><br>
                 <?php
                     $replies = getRepliesFromReview($review['idReview']);
-                    //var_dump($replies);
                     foreach($replies as $reply) {
                 ?>
                     <label>Reply: </label> <?=$reply['comment']?> <br>
