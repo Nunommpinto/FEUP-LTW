@@ -175,5 +175,11 @@
             <br> <br>
             <?php } ?>
     </div>
-    <?php include_once('write_review.php'); ?>
+
+    <?php
+        var_dump($restaurant['idOwner']);
+        var_dump(intval($_SESSION['idUser'][0]));
+        if($restaurant['idOwner'] != intval($_SESSION['idUser'][0]))
+            include_once('write_review.php'); 
+    ?>
 </section>

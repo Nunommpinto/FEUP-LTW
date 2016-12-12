@@ -7,7 +7,7 @@
     if (isset($_COOKIE['redirect'])) $referer = $_COOKIE['redirect'];
     else $referer = '../index.php';
 
-    if (isset($_POST['owner'])) $owner = 1;
+    if (isset($_POST['owner'])) $owner = 0;
     else $owner = 0;
 
     if (!registerUser($_POST['email'], $_POST['username'], $_POST['password'], $owner)) {

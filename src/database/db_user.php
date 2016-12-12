@@ -45,6 +45,16 @@
 		return $stmt->fetch();
 	}
 
+	//Returns the owner property given his user id
+	function getIsOwnerById($idUser) {
+		global $db;
+
+		$stmt = $db->prepare('SELECT owner FROM User WHERE idUser = :idUser');
+		$stmt->bindParam(':idUser', $idUser);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
 	// User actions
 	function registerUser($email, $username, $password, $owner) {
 		global $db;
