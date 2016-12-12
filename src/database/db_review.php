@@ -79,4 +79,14 @@
 		
 		return true;
     }
+
+    //Returns all the replies from the given review
+    function getRepliesFromReview($idReview) {
+        global $db;
+
+        $stmt = $db->prepare('SELECT * FROM Reply WHERE idReview = :idReview');
+        $stmt->bindParam(':idReview', $idReview);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 ?>

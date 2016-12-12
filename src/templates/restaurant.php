@@ -104,7 +104,14 @@
                 <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>">Remove</a>
                 <a href="reply_review.php?idReview=<?=$review['idReview']?>">Reply</a>
                 <br><br>
-                <?php  ?>
+                <?php
+                    $replies = getRepliesFromReview($review['idReview']);
+                    //var_dump($replies);
+                    foreach($replies as $reply) {
+                ?>
+                    <label>Reply: </label> <?=$reply['comment']?> <br>
+                <?php } ?>
+            <br> <br>
             <?php } ?>
     </div>
     <?php include_once('write_review.php'); ?>
