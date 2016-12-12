@@ -131,4 +131,16 @@
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    function updateRestaurant($idRestaurant, $newName, $newDescription) {
+        global $db;
+
+        $stmt = $db->prepare('UPDATE Restaurant SET name = :newName, description = :newDescription WHERE idRestaurant = :idRestaurant');
+        $stmt->bindParam('newName', $newName);
+        $stmt->bindParam('newDescription', $newDescription);
+        $stmt->bindParam('idRestaurant', $idRestaurant);
+        $stmt->execute();
+        
+        return true;
+    }
 ?>

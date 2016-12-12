@@ -10,7 +10,7 @@
     <div id="user-dropdown-content" class="user-dropdown-content">
         <a href="#">Profile</a>
         <?php if($isOwner != 0) { ?>
-            <a href="../pages/manage_restaurant.php">My Restaurants</a>
+            <a href="../pages/owner_restaurants.php">My Restaurants</a>
         <?php } ?>
         <a href="#">Something Else</a>
         <div class="separator"> </div>
