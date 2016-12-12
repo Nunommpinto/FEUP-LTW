@@ -10,8 +10,6 @@
     if (isset($_COOKIE['redirect'])) $referer = $_COOKIE['redirect'];
     else $referer = '../index.php';
 
-    $_SESSION['idUser'] = 5;//getUserId('carro');
-
     if (checkCredentials($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['idUser'] = getUserId($_POST['username']);

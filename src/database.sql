@@ -20,10 +20,11 @@ CREATE TABLE UserInfo(
 drop table if exists User;
 CREATE TABLE User(
     idUser      INTEGER PRIMARY KEY AUTOINCREMENT,
-	email		VARCHAR,
+	email		STRING NOT NULL,
     username    STRING NOT NULL,
-    password    VARCHAR,
-    owner       BOOLEAN NOT NULL,       
+    password    STRING NOT NULL,
+    owner       BOOLEAN NOT NULL,
+
     idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
     idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
 );

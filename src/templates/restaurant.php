@@ -163,7 +163,7 @@
                 <label>Score: </label><?=$review['score']?>
                 <br>
                 <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
-                <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>">Remove</a>
+                <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>&idRestaurant=<?=$_GET['idRestaurant']?>">Remove</a>
                 <a href="reply_review.php?idReview=<?=$review['idReview']?>">Reply</a>
                 <br><br>
                 <?php

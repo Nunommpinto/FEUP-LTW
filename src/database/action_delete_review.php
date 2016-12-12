@@ -4,6 +4,7 @@
 
 	include_once('connection.php');
 	include_once('db_review.php');
+	include_once('db_restaurants.php');
 
 	$idUserReview = getUserId($_GET['idReview']);
 	$idUserReview = intval($idUserReview[0]);
@@ -13,5 +14,6 @@
 		die(header('Location: ../pages/index.php'));
 
 	deleteReview($_GET['idReview']);
+	updateScore($_GET['idRestaurant']);
 	header('Location: ../templates/restaurant.php?idRestaurant=' . $_SESSION['idRestaurant']);
 ?>
