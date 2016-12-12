@@ -43,7 +43,7 @@
     }
 
     //Returns the id of the user who wrote the review
-    function getUserId($idReview) {
+    function getUserIdFromReview($idReview) {
         global $db;
 
         $stmt = $db->prepare('SELECT idUser FROM Review WHERE idReview = :idReview');

@@ -6,7 +6,7 @@
 	include_once('db_review.php');
 	include_once('db_restaurants.php');
 
-	$idUserReview = getUserId($_GET['idReview']);
+	$idUserReview = getUserIdFromReview($_GET['idReview']);
 	$idUserReview = intval($idUserReview[0]);
 	$idUserSESSION = intval($_SESSION['idUser'][0]);
 	

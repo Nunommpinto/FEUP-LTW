@@ -38,7 +38,6 @@
         <h2><?=$restaurant['name']?></h2>
         <h3><?=$restaurant['description']?></h3>
         <h4>Average Score: <?=$restaurant['score']?></h3>
-    </article>
     <div id='restaurantInfo'>
         <?php if($info['price']) { ?>
             <p>Price: <?=$info['price']?></p>
@@ -75,7 +74,7 @@
         <div id="road"><?=$localization['road']?></div>
         <div id="postalCode"><?=$localization['postalCode']?></div>
 
-        <div id="map" style="width:100%; height:400px"></div>
+        <div id="map" style="width:20%; height:400px"></div>
     </div>
 
     <script type="text/javascript">
@@ -155,6 +154,7 @@
         <?php if($photo) ?>
             <img src="../images/originals/<?=$photo['idPhoto']?>.jpg">
     </div>
+
     <div id='reviews'>
         <?php if($reviews)
             foreach($reviews as $review) { ?>
@@ -162,9 +162,16 @@
                 <br>
                 <label>Score: </label><?=$review['score']?>
                 <br>
-                <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
-                <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>&idRestaurant=<?=$_GET['idRestaurant']?>">Remove</a>
-                <a href="reply_review.php?idReview=<?=$review['idReview']?>">Reply</a>
+                <?php 
+                    $idUserReview = getUserIdFromReview($review['idReview']);
+                    $idUserReview = intval($idUserReview[0]);
+                    $idUserSESSION = intval($_SESSION['idUser'][0]);
+                    if($idUserReview == $idUserSESSION) {
+                ?>
+                    <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
+                    <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>&idRestaurant=<?=$_GET['idRestaurant']?>">Remove</a>
+                    <a href="reply_review.php?idReview=<?=$review['idReview']?>">Reply</a>
+                <?php } ?>
                 <br><br>
                 <?php
                     $replies = getRepliesFromReview($review['idReview']);
@@ -172,14 +179,11 @@
                 ?>
                     <label>Reply: </label> <?=$reply['comment']?> <br>
                 <?php } ?>
-            <br> <br>
             <?php } ?>
     </div>
 
     <?php
-        var_dump($restaurant['idOwner']);
-        var_dump(intval($_SESSION['idUser'][0]));
-        if($restaurant['idOwner'] != intval($_SESSION['idUser'][0]))
+        if(isset($_SESSION['idUser']) && $restaurant['idOwner'] != intval($_SESSION['idUser'][0]))
             include_once('write_review.php'); 
     ?>
 </section>

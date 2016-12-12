@@ -12,7 +12,7 @@
 
     if (checkCredentials($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $_POST['username'];
-        $_SESSION['idUser'] = getUserId($_POST['username']);
+        $_SESSION['idUser'] = getUserIdFromUser($_POST['username']);
     } else if (isRegistered($_POST['username'])) {
         addWarn("Wrong password.", 'Warning!');
         $_SESSION[$LOGIN_KEY] = $_POST['username'];

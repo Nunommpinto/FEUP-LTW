@@ -8,7 +8,7 @@
     include_once('../database/connection.php');
     include_once('../database/db_review.php');
 
-    $idUserReview = getUserId($_GET['idReview']);
+    $idUserReview = getUserIdFromReview($_GET['idReview']);
     $idUserReview = intval($idUserReview[0]);
 	$idUserSESSION = intval($_SESSION['idUser'][0]);
 

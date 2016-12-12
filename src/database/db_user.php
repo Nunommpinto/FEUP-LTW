@@ -36,7 +36,7 @@
 	}
 
 	//Returns the user id given his username
-	function getUserId($username) {
+	function getUserIdFromUser($username) {
 		global $db;
 
 		$stmt = $db->prepare('SELECT idUser FROM User WHERE username = :username');
