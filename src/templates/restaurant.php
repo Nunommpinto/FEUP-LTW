@@ -8,7 +8,9 @@
     include_once('../database/db_localization.php');
     include_once('../database/db_review.php');
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) 
+        session_start();
+        
     $restaurant;
 
     if(isset($_GET['idRestaurant'])) {
