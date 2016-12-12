@@ -5,12 +5,13 @@
     if (session_status() == PHP_SESSION_NONE) 
         session_start();
 
-    if(!isset($_POST['reply']))
+    if(!isset($_POST['comment']))
         die('The user did not follow the protocol');
 
-    //var_dump($_SESSION['idUser']);
+    $idUserSESSION = intval($_SESSION['idUser'][0]);
+    var_dump($idUserSESSION);
 
-    replyReview($_POST['reply'], $_POST['idReview'], $_SESSION['idUser']);
+    replyReview($_POST['comment'], $_POST['idReview'], $idUserSESSION);
 
     header('Location: ../templates/restaurant.php?idRestaurant=' . $_POST['idRestaurant']);
 ?>
