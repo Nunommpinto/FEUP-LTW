@@ -66,21 +66,10 @@
     </div>
     <div id="localization">
         <label>Adress: </label>
-        <?php if($localization['country']) { ?>
-            <div id="country"><?=$localization['country']?></div>
-        <?php } ?>
-
-        <?php if($localization['city']) { ?>
-            <div id="city"><?=$localization['city']?></div>
-        <?php } ?>
-
-        <?php if($localization['road']) { ?>
-            <div id="road"><?=$localization['road']?></div>
-        <?php } ?>
-
-        <?php if($localization['postalCode']) { ?>
-            <div id="postalCode"><?=$localization['postalCode']?></div>
-        <?php } ?>
+        <div id="country"><?=$localization['country']?></div>
+        <div id="city"><?=$localization['city']?></div>
+        <div id="road"><?=$localization['road']?></div>
+        <div id="postalCode"><?=$localization['postalCode']?></div>
 
         <div id="map" style="width:100%; height:400px"></div>
     </div>
@@ -90,16 +79,38 @@
             var country = document.getElementById("country").innerHTML;
             var city = document.getElementById("city").innerHTML;
             var road = document.getElementById("road").innerHTML;
+            var address;
+            var aux = false;
 
-            var address = country + ', ' + city + ', ' + road;
+            if(country) {
+                address = country;
+                aux = true;
+            }
+            if(city) {
+                if(aux)
+                    address += ', ' + city;
+                else
+                    address = city;
+                aux = true;
+            }
+            if(road) {
+                if(aux) {
+                    address += ', ' + road;
+                    console.warn("merda");
+                }
+                else
+                    address = road;
+                aux = true;
+            }
+
+            console.info("Adress: " + address);
             
             var geocoder = new google.maps.Geocoder();
-            var latLng = new google.maps.LatLng(-34.397, 150.644);
             var myOptions;
             var map;
 
             if(geocoder) {
-                geocoder.geocode( { 'address': address}, function(results, status) {
+                geocoder.geocode( { 'address': address }, function(results, status) {
                     if(status == google.maps.GeocoderStatus.OK) {
                         if(status != google.maps.GeocoderStatus.ZERO_RESULTS) {
                             myOptions = {
@@ -128,11 +139,13 @@
                                 infowindow.open(map,marker);
                             });
                         } else
-                            alert('No results found!');
+                            document.getElementById("map").remove();
                     } else
-                        alert("Geocode was not initialized due to: " + status);
+                        document.getElementById("map").remove();
                 });
             }
+            console.warn(document.getElementById("map"));
+            document.getElementById("map").remove();
         }
     </script>
     <script async defer
