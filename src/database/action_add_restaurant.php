@@ -1,9 +1,11 @@
 <?php
+    if(session_status() == PHP_SESSION_NONE)
+        session_start();
+
     if(!isset($_POST['name'])
         || trim($_POST['name']) == ''
         || !isset($_POST['description'])
-        || trim($_POST['description']) == ''
-        || !isset($_POST['idOwner']))
+        || trim($_POST['description']) == '')
         die('The user did not follow the protocol');
 
     include_once('connection.php');

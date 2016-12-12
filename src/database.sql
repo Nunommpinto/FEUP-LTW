@@ -36,7 +36,7 @@ CREATE TABLE Restaurant(
     description         STRING NOT NULL,
     score               FLOAT NOT NULL,
 
-    idOwner             INTEGER REFERENCES Owner(idOwner),
+    idOwner             INTEGER REFERENCES User(idUser),
     idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo)
 );
 

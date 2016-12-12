@@ -2,7 +2,6 @@
 <script type="text/javascript" src="../javascript/add_restaurant.js"></script>
 
 <form id="form-component" action="../database/action_add_restaurant.php" method="post" enctype="multipart/form-data">
-	<br>
     <label>Name: </label> <input type="text" name="name" required="required"> *
     <label>Description: </label><textarea name="description" required="required" rows="4" cols="40"></textarea> *
 	

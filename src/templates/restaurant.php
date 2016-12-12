@@ -146,9 +146,7 @@
         }
     </script>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap"></script>
 
     <div id="photos">
         <?php if($photo) ?>
@@ -166,14 +164,13 @@
                     $idUserReview = getUserIdFromReview($review['idReview']);
                     $idUserReview = intval($idUserReview[0]);
                     $idUserSESSION = intval($_SESSION['idUser'][0]);
-                    if($idUserReview == $idUserSESSION) {
+                    if(isset($_SESSION['idUser']) && $idUserReview == $idUserSESSION) {
                 ?>
                     <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
                     <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>&idRestaurant=<?=$_GET['idRestaurant']?>">Remove</a>
+                <?php } if(isset($_SESSION['idUser']) && ($idUserReview == $idUserSESSION || $idUserReview == $restaurant['idOwner'])) { ?>
                     <a href="reply_review.php?idReview=<?=$review['idReview']?>">Reply</a>
-                <?php } ?>
-                <br><br>
-                <?php
+                <?php }
                     $replies = getRepliesFromReview($review['idReview']);
                     foreach($replies as $reply) {
                 ?>
