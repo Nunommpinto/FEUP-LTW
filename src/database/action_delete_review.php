@@ -1,19 +1,17 @@
 <?php
-	session_start();
+	if(session_start() == PHP_SESSION_NONE)
+		session_start();
 
 	include_once('connection.php');
 	include_once('db_review.php');
 
-	$revuser = getUserId($_GET['idReview']);
-	$user = $_SESSION['idUser'];
+	$idUserReview = getUserId($_GET['idReview']);
+	$idUserReview = intval($idUserReview[0]);
+	$idUserSESSION = intval($_SESSION['idUser'][0]);
 	
-	
-	if (isset($_SESSION['username'])) {
-		//if ($user == $revuser)
-			deleteReview($_GET['idReview']);
-		
-		//else echo "<script>alert('Cannot remove review!')</script>";
-	}
+	if (!isset($_SESSION['idUser']) || $idUserReview != $idUserSESSION)
+		die(header('Location: ../pages/index.php'));
 
+	deleteReview($_GET['idReview']);
 	header('Location: ../templates/restaurant.php?idRestaurant=' . $_SESSION['idRestaurant']);
 ?>
