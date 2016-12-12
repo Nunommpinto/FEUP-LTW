@@ -94,16 +94,12 @@
                 aux = true;
             }
             if(road) {
-                if(aux) {
+                if(aux)
                     address += ', ' + road;
-                    console.warn("merda");
-                }
                 else
                     address = road;
                 aux = true;
             }
-
-            console.info("Adress: " + address);
             
             var geocoder = new google.maps.Geocoder();
             var myOptions;
@@ -144,10 +140,9 @@
                         document.getElementById("map").remove();
                 });
             }
-            console.warn(document.getElementById("map"));
-            document.getElementById("map").remove();
         }
     </script>
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap">
     </script>
