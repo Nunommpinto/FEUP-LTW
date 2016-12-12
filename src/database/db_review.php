@@ -1,12 +1,12 @@
 <?php
-    function registerReview($rating, $comment, $idRestaurant, $idReviewer) {
+    function registerReview($rating, $comment, $idRestaurant, $idUser) {
         global $db;
 
-        $stmt = $db->prepare('INSERT INTO Review VALUES (null, :score, :comment, :idRestaurant, :idReviewer)');
+        $stmt = $db->prepare('INSERT INTO Review VALUES (null, :score, :comment, :idRestaurant, :idUser)');
         $stmt->bindParam(':score', $rating);
         $stmt->bindParam(':comment', $comment);
         $stmt->bindParam(':idRestaurant', $idRestaurant);
-        $stmt->bindParam(':idReviewer', $idReviewer);
+        $stmt->bindParam(':idUser', $idUser);
         $stmt->execute();
     }
 

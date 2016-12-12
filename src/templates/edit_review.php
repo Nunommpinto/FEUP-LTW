@@ -8,13 +8,11 @@
     include_once('../database/connection.php');
     include_once('../database/db_review.php');
 
-    $loggedUserId = getUserId($_GET['idReview']);
-    
-    var_dump($loggedUserId);
-    var_dump($_SESSION['idUser']);
+    $loggedUserId = getUserId($_GET['idReview'][0]);
+    $loggedUserId = intval($loggedUserId[0]);
 
-    /*if($loggedUserId != $_SESSION['idUser'])
-        die(header('Location: ../pages/index.php'));*/
+    if($loggedUserId != intval($_SESSION['idUser'][0]))
+        die(header('Location: ../pages/index.php'));
 
     $review = getReviewById($_GET['idReview']);
 ?>

@@ -9,9 +9,7 @@
     include_once('db_review.php');
     include_once('db_restaurants.php');
 
-    var_dump($_SESSION['idUser']);
-
-    registerReview($_POST['rating'], $_POST['review'], $_POST['idRestaurant'], $_SESSION['idUser']);
+    registerReview($_POST['rating'], $_POST['review'], $_POST['idRestaurant'], intval($_SESSION['idUser'][0]));
     updateScore($_POST['idRestaurant']);
 
     header('Location: ../templates/restaurant.php?idRestaurant=' . $_POST['idRestaurant']);
