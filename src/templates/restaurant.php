@@ -65,7 +65,11 @@
         <?php } ?>
     </div>
     <div id="localization">
-        <label>Adress: </label>
+        <?php if(isset($localization['country']) || isset($localization['city']) || isset($localization['road'])) { ?>
+            <label>Adress: </label>
+        <?php } else { ?>
+            <label>No address available</label>
+        <?php } ?>
         <div id="country"><?=$localization['country']?></div>
         <div id="city"><?=$localization['city']?></div>
         <div id="road"><?=$localization['road']?></div>
