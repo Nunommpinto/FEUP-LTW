@@ -1,4 +1,5 @@
 <?php
+    //Register a review
     function registerReview($rating, $comment, $idRestaurant, $idUser) {
         global $db;
 
@@ -20,6 +21,7 @@
         return $stmt->fetchAll();
     }
 
+    //Returns a review given it's id
     function getReviewById($id) {
         global $db;
 
@@ -29,6 +31,7 @@
         return $stmt->fetch();
     }
 
+    //Updates a review
     function updateReview($id, $updatedScore, $updatedComment) {
         global $db;
 
@@ -49,6 +52,7 @@
         return $stmt->fetch();
     }
 	
+    //Deletes a review
 	function deleteReview($idReview) {
         global $db;
 
@@ -63,7 +67,8 @@
         return true;
 	}
 	
-	function replyReview($reply, $idReview, $idReplier) {
+    //Registers a reply
+	function registerReply($reply, $idReview, $idReplier) {
         global $db;
 
         $stmt = $db->prepare('INSERT INTO Reply VALUES (null, :comment, :idReview, :idReplier)');

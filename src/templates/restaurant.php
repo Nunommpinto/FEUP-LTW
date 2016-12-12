@@ -104,6 +104,7 @@
                 <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>">Remove</a>
                 <a href="reply_review.php?idReview=<?=$review['idReview']?>">Reply</a>
                 <br><br>
+                <?php  ?>
             <?php } ?>
     </div>
     <?php include_once('write_review.php'); ?>

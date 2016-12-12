@@ -11,6 +11,6 @@
     $idUserSESSION = intval($_SESSION['idUser'][0]);
     var_dump($idUserSESSION);
 
-    replyReview($_POST['comment'], $_POST['idReview'], $idUserSESSION);
+    registerReply($_POST['comment'], $_POST['idReview'], $idUserSESSION);
     header('Location: ../pages/index.php');
 ?>
