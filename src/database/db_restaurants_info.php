@@ -27,4 +27,17 @@
         //Returns the id so that we can reference it on the restaurant
         return $db->lastInsertId();
     }
+
+    function updateRestaurantInfo($idRestaurantInfo, $newPrice, $newOpenHours, $newCloseHours) {
+        global $db;
+
+        $stmt = $db->prepare('UPDATE RestaurantInfo SET price = :newPrice, openHours = :newOpenHours, closeHours = :newCloseHours WHERE idRestaurantInfo = :idRestaurantInfo');
+        $stmt->bindParam(':newPrice', $newPrice);
+        $stmt->bindParam(':newOpenHours', $newOpenHours);
+        $stmt->bindParam(':newCloseHours', $newCloseHours);
+        $stmt->bindParam(':idRestaurantInfo', $idRestaurantInfo);
+        $stmt->execute();
+
+        return true;
+    }
 ?>
