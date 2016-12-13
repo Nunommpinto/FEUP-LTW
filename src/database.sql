@@ -88,7 +88,9 @@ CREATE TABLE PhotoUser(
 drop table if exists PhotoRestaurant;
 CREATE TABLE PhotoRestaurant(
     idPhoto             INTEGER PRIMARY KEY AUTOINCREMENT,
+    type                STRING NOT NULL,
     title               STRING,
+    
     idRestaurantInfo    INTEGER REFERENCES RestaurantInfo(idRestaurantInfo)
 );
 

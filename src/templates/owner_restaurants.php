@@ -15,10 +15,10 @@
         $photo = getPhotoById($info['idRestaurantInfo']);
 ?>
 
-<a href="../pages/manage_restaurant.php?idRestaurant=<?=$restaurant['idRestaurant']?>">
-    <img src="../images/originals/<?=$photo['idPhoto']?>" alt="Restaurant" width="300" height="200"> <br>
+<a href="../pages/edit_restaurant.php?idRestaurant=<?=$restaurant['idRestaurant']?>">
+    <img src="../images/originals/<?=$photo['idPhoto']?>.<?=$photo['type']?>" alt="<?=$photo['title']?>" width="300" height="200"> <br>
 </a> <br>
-<a href="../pages/manage_restaurant.php?idRestaurant=<?=$restaurant['idRestaurant']?>"><?=$restaurant['name']?></a> <br>
+<a href="../pages/edit_restaurant.php?idRestaurant=<?=$restaurant['idRestaurant']?>"><?=$restaurant['name']?></a> <br>
 <?=$localization['city']?> <br>
 <?=$localization['road']?> <br>
 <?=$localization['postalCode']?>

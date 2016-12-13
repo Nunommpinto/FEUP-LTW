@@ -8,5 +8,5 @@
     $restaurant = getRestaurantById($_GET['idRestaurant']);
 
     include_once('../templates/header.php');
-    include_once('../templates/manage_restaurant.php');
+    include_once('../templates/edit_restaurant.php');
 ?>

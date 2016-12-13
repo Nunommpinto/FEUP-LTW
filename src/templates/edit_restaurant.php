@@ -43,6 +43,6 @@
     <label>Upload Image: </label> <input type="file" name="image">
 	
 	<br><br>
-    <input type="submit" value="Register">
+    <input type="submit" value="Save">
     <!-- Do integration with google maps -->
 </form>

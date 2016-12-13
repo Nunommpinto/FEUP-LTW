@@ -29,7 +29,6 @@
     $localization = getLocalizationById($info['idLocalization']);
     $photos = getAllPhotosFromRestaurant($info['idRestaurantInfo']);
     $reviews = getAllReviews($_GET['idRestaurant']);
-    var_dump($photos);
 
     include_once('header.php');
 ?>
@@ -163,7 +162,7 @@
 
     <div id="photos">
         <?php foreach($photos as $photo) { ?>
-            <img src="../images/originals/<?=$photo['idPhoto']?>.jpg">
+            <img src="../images/originals/<?=$photo['idPhoto']?>.<?=$photo['type']?>">
         <?php } ?>
     </div>
 

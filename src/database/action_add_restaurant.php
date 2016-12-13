@@ -24,8 +24,8 @@
         $ext = explode('.', basename($_FILES['image']['name'][$i]));
         $fileExtension = end($ext);
         if(in_array($fileExtension, $validExtensions)) {
-            $path = registerPhoto($_POST['title' . ($i + 1)], $idRestaurantInfo['idRestaurantInfo']);
-            move_uploaded_file($_FILES['image']['tmp_name'][$i], $path . $fileExtension);
+            $path = registerPhoto($idRestaurantInfo['idRestaurantInfo'], $fileExtension, $_POST['title' . ($i + 1)]);
+            move_uploaded_file($_FILES['image']['tmp_name'][$i], $path);
         }
     }
 
