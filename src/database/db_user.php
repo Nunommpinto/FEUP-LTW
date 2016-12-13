@@ -25,14 +25,12 @@
 
 	function checkCredentials($username, $password) {
 		global $db;
-		$shaPassword = sha1($password);
 		
-		$stmt = $db->prepare('SELECT * FROM User WHERE username=:username AND password=:password');
+		$stmt = $db->prepare('SELECT password FROM User WHERE username=:username');
 		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', $shaPassword);
 		$stmt->execute();
-
-		return $stmt->fetch() !== false;
+		$user = $stmt->fetch();
+		return ($user !== false && password_verify($password, $user['password']));
 	}
 
 	//Returns the user id given his username
@@ -61,12 +59,14 @@
 		
 		if (isRegistered($username)) 
 			return false;
-		$shaPassword = sha1($password);
+		
+		$options = ['cost' => 12];
+    	$hash = password_hash($password, PASSWORD_DEFAULT, $options);
 		
 		$stmt = $db->prepare('INSERT INTO User (email, username, password, owner) VALUES (:email, :username, :password, :owner)');
 		$stmt->bindParam(':email', $email);
 		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', $shaPassword);
+		$stmt->bindParam(':password', $hash);
 		$stmt->bindParam(':owner', $owner);
 		$stmt->execute();
 		return true;
