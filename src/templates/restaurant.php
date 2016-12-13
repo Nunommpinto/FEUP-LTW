@@ -166,6 +166,8 @@
         <?php } ?>
     </div>
 
+    <a href="../pages/add_photos.php?idRestaurant=<?=$_GET['idRestaurant']?>&idRestaurantInfo=<?=$info['idRestaurantInfo']?>">Add a Photo</a>
+
     <div id='reviews'>
         <?php if($reviews)
             foreach($reviews as $review) { ?>

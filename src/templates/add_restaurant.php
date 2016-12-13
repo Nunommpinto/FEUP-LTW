@@ -41,5 +41,4 @@
 	
 	<br><br>
     <input type="submit" value="Register">
-    <!-- Do integration with google maps -->
 </form>
