@@ -14,5 +14,5 @@
         echo "<script>alert('User is already registered, try again!')</script>";
     else echo "<script>alert('Successfully registered')</script>";
 
-   header('Location: ' . $referer);
+    header('Location: ' . $referer);
 ?>
