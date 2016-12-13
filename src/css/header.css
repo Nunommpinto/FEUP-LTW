@@ -5,7 +5,7 @@ html {
 }
 
 #header {
-  background-color: #626262;
+  background-color: #990000;
   color: white;
   padding: 0;
 }
@@ -16,7 +16,7 @@ html {
 }
 
 .nav-btns ul {
-  background-color: #626262;
+  background-color: #990000;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -30,11 +30,11 @@ html {
 }
 
 .nav-btns li:hover, #user-info a:hover {
-  background: #444;
+  background: #660000;
 }
 
 .nav-btns li:active, .header-elem-active{
-  background: #444;
+  background: #660000;
 }
 
 .nav-btns a, #back_btn {
@@ -54,13 +54,13 @@ html {
   width: 20%;
   margin-top: 20 px;
   text-align: center;
-  color: #626262;
+  color: #990000;
 }
 
 #panel a {
   text-decoration: none;
   font-weight: bold;
-  color: #626262;
+  color: #990000;
 }
 
 #panel a:hover {
@@ -74,7 +74,7 @@ html {
 }
 
 #footer {
-  background-color: #626262;
+  background-color: #990000;
   color: white;
   padding: 5px 10px;
 }
