@@ -10,7 +10,7 @@
         $stmt->execute();
 
         $id = $db->lastInsertId();
-        return "../images/originals/$id." . $type;
+        return "../images/originals/" . $id . '.' . $type;
     }
 
     //Retuns a photo given it's restaurant info id
