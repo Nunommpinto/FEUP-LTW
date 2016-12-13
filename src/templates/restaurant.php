@@ -79,29 +79,41 @@
 
     <script type="text/javascript">
         function initMap() {
+            var restaurantName = document.getElementById("restaurant").firstChild;
+            while(restaurantName.nodeType != 1)
+                restaurantName = restaurantName.nextSibling;
+            restaurantName = restaurantName.innerHTML;
+            
             var country = document.getElementById("country").innerHTML;
             var city = document.getElementById("city").innerHTML;
             var road = document.getElementById("road").innerHTML;
+            var postalCode = document.getElementById("postalCode").innerHTML;
             var address;
-            var aux = false;
+            var concatenate = false;
 
             if(country) {
                 address = country;
-                aux = true;
+                concatenate = true;
             }
             if(city) {
-                if(aux)
+                if(concatenate)
                     address += ', ' + city;
                 else
                     address = city;
-                aux = true;
+                concatenate = true;
             }
             if(road) {
-                if(aux)
+                if(concatenate)
                     address += ', ' + road;
                 else
                     address = road;
-                aux = true;
+                concatenate = true;
+            }
+            if(postalCode) {
+                if(concatenate)
+                    address += ', ' + postalCode;
+                else
+                    address = postalCode;
             }
             
             var geocoder = new google.maps.Geocoder();
@@ -131,7 +143,7 @@
                             var marker = new google.maps.Marker({
                                 position: results[0].geometry.location,
                                 map: map, 
-                                title: address
+                                title: restaurantName
                             }); 
                             
                             google.maps.event.addListener(marker, 'click', function() {
