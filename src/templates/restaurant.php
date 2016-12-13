@@ -181,7 +181,7 @@
                 ?>
                     <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
                     <a href="../database/action_delete_review.php?idReview=<?=$review['idReview']?>&idRestaurant=<?=$_GET['idRestaurant']?>">Remove</a>
-                <?php } if(isset($_SESSION['idUser']) && ($idUserReview == $idUserSESSION || $idUserSESSION == $restaurant['idOwner'])) { ?>
+                <?php } if(isset($_SESSION['idUser']) && ($idUserSESSION == $idUserReview || $idUserSESSION == $restaurant['idOwner'])) { ?>
                     <a href="reply_review.php?idReview=<?=$review['idReview']?>">Reply</a>
                 <?php }
                     $replies = getRepliesFromReview($review['idReview']);
