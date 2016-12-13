@@ -8,7 +8,7 @@
     else $referer = '../index.php';
 
     if (isset($_POST['owner'])) $owner = 1;
-    else $owner = 0;
+    else $owner = 1;
 
     if (!registerUser($_POST['email'], $_POST['username'], $_POST['password'], $owner)) {
         echo "<script>alert('User is already registered, try again!')</script>";

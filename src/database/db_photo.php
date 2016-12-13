@@ -1,4 +1,5 @@
 <?php
+    //Register a photo
     function registerPhoto($fileName, $idRestaurantInfo) {
         global $db;
 
@@ -11,13 +12,13 @@
         return "../images/originals/$id.";
     }
 
-    function getPhotoById($idRestaurantInfo) {
+    //Returns all photos given it's restaurant info id
+    function getAllPhotosFromRestaurant($idRestaurantInfo) {
         global $db;
 
-        $stmt = $db->prepare('SELECT * FROM PhotoRestaurant WHERE idRestaurantInfo = :id');
-        $stmt->bindParam(':id', $idRestaurantInfo);
+        $stmt = $db->prepare('SELECT * FROM PhotoRestaurant WHERE idRestaurantInfo = :idRestaurantInfo');
+        $stmt->bindParam(':idRestaurantInfo', $idRestaurantInfo);
         $stmt->execute();
-
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 ?>

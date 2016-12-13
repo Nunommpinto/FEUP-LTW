@@ -27,8 +27,9 @@
 
     $info = getInfoById($restaurant['idRestaurantInfo']);
     $localization = getLocalizationById($info['idLocalization']);
-    $photo = getPhotoById($info['idRestaurantInfo']);
+    $photos = getAllPhotosFromRestaurant($info['idRestaurantInfo']);
     $reviews = getAllReviews($_GET['idRestaurant']);
+    var_dump($photos);
 
     include_once('header.php');
 ?>
@@ -161,8 +162,9 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap"></script>
 
     <div id="photos">
-        <?php if($photo) ?>
+        <?php foreach($photos as $photo) { ?>
             <img src="../images/originals/<?=$photo['idPhoto']?>.jpg">
+        <?php } ?>
     </div>
 
     <div id='reviews'>
