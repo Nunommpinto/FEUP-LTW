@@ -29,7 +29,7 @@
 		$stmt = $db->prepare('SELECT password FROM User WHERE username=:username');
 		$stmt->bindParam(':username', $username);
 		$stmt->execute();
-		$user = $stmt.fetch();
+		$user = $stmt->fetch();
 		return ($user !== false && password_verify($password, $user['password']));
 	}
 
