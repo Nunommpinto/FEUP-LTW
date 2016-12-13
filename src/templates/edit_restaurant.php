@@ -36,13 +36,7 @@
     <label>City: </label> <input type="text" name="city" value=<?=$localization['city']?>>
     <label>Road: </label> <input type="text" name="road" value=<?=$localization['road']?>>
     <label>Postal Code: </label> <input type="text" name="postalCode" value=<?=$localization['postalCode']?>>
-
-    <label>Title: </label> <input type="text" name="title">
-	
-	<br><br>
-    <label>Upload Image: </label> <input type="file" name="image">
-	
-	<br><br>
+    
     <input type="submit" value="Save">
     <!-- Do integration with google maps -->
 </form>
