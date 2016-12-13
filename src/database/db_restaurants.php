@@ -38,7 +38,7 @@
     function registerRestaurant($name, $description, $idOwner, $idRestaurantInfo) {
         global $db;
 
-        $stmt = $db->prepare('INSERT INTO Restaurant VALUES (null, :name, :description, 0, :idOwner, :idRestaurantInfo)');
+        $stmt = $db->prepare('INSERT INTO Restaurant VALUES (null, :name, :description, null, :idOwner, :idRestaurantInfo)');
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':idOwner', $idOwner);
