@@ -1,7 +1,8 @@
 <!-- Displays all the restaurants in '$restaurants' -->
 
 <?php
-    if (session_status() == PHP_SESSION_NONE) { session_start(); }
+    if (session_status() == PHP_SESSION_NONE)
+        session_start();
 ?>
 
 <section id="restaurants">
