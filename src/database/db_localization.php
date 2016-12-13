@@ -1,4 +1,5 @@
 <?php
+    //Returns a localization given it's id
     function getLocalizationById($idLocalization) {
         global $db;
 
@@ -8,6 +9,7 @@
         return $stmt->fetch();
     }
 
+    //Registers a localization
     function registerLocalization($country, $city, $road, $postalCode) {
         global $db;
 
@@ -24,5 +26,20 @@
 
         //Returns the id so that we can reference it on the restaurantInfo
         return $db->lastInsertId();
+    }
+
+    //Updates localization
+    function updateLocalization($idLocalization, $newCountry, $newCity, $newRoad, $newPostalCode) {
+        global $db;
+
+        $stmt = $db->prepare('UPDATE Localization SET country = :newCountry, city = :newCity, road = :newRoad, postalCode = :newPostalCode WHERE idLocalization = :idLocalization');
+        $stmt->bindParam(':newCountry', $newCountry);
+        $stmt->bindParam(':newCity', $newCity);
+        $stmt->bindParam(':newRoad', $newRoad);
+        $stmt->bindParam(':newPostalCode', $newPostalCode);
+        $stmt->bindParam(':idLocalization', $idLocalization);
+        $stmt->execute();
+
+        return true;
     }
 ?>
