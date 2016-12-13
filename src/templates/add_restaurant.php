@@ -29,11 +29,14 @@
     <label>City: </label> <input type="text" name="city">
     <label>Road: </label> <input type="text" name="road">
     <label>Postal Code: </label> <input type="text" name="postalCode">
-
-    <label>Title: </label> <input type="text" name="title">
 	
 	<br><br>
-    <label>Upload Image: </label> <div id="file_div"><input type="file" class="image1" name="image[]"></div>
+    <label>Upload Image</label>
+    <div class="file_div1">
+        <input type="text" class="title1" name="title[]">
+        <input type="file" class="image1" name="image[]">
+    </div>
+
     <input type="button" id="btn_add_more" value="Add more photos" />
 	
 	<br><br>

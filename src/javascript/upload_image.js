@@ -1,4 +1,4 @@
-var numImages;
+var numImages;      //used so that every image has a different class
 
 $(document).ready(function () {
     numImages = 1;
@@ -9,8 +9,15 @@ $(document).ready(function () {
         var lastImage = $(".image" + numImages);
         if (lastImage.val()) {
             numImages++;
+
             var fileDiv = $("<div/>", {
-                id: 'file_div'
+                class: 'file_div' + numImages
+            });
+
+            var title = $("<input/>", {
+                type: 'text',
+                class: 'title' + numImages,
+                name: 'title[]'
             });
 
             var inputDiv = $("<input/>", {
@@ -19,7 +26,9 @@ $(document).ready(function () {
                 name: 'image[]'
             });
 
-            $(this).before(fileDiv.fadeIn('slow').append(inputDiv));
+            $(this).before(fileDiv);
+            $(".file_div" + numImages).append(title);
+            $(".file_div" + numImages).append(inputDiv);
         } else
             alert("Can't");
     });

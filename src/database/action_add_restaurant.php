@@ -16,8 +16,9 @@
 
     $idLocalization = registerLocalization($_POST['country'], $_POST['city'], $_POST['road'], $_POST['postalCode']);
     $idRestaurantInfo = registerRestaurantInfo($_POST['price'], $_POST['category'], $_POST['openHours'], $_POST['closeHours'], $idLocalization);
-    registerPhoto($_POST['title'], $idRestaurantInfo);
     $idRestaurant = registerRestaurant($_POST['name'], $_POST['description'], intval($_SESSION['idUser'][0]), $idRestaurantInfo);
+
+    registerPhoto($_POST['title'], $idRestaurantInfo);
 
     header('Location: ../templates/restaurant.php?idRestaurant=' .  $idRestaurant);
 ?>
