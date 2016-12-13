@@ -1,15 +1,15 @@
 <!-- Displays a restaurant individual page -->
 
 <?php
+    if (session_status() == PHP_SESSION_NONE) 
+        session_start();
+
     include_once('../database/connection.php');
     include_once('../database/db_restaurants.php');
     include_once('../database/db_restaurants_info.php');
     include_once('../database/db_photo.php');
     include_once('../database/db_localization.php');
     include_once('../database/db_review.php');
-
-    if (session_status() == PHP_SESSION_NONE) 
-        session_start();
         
     $restaurant;
 
@@ -37,7 +37,11 @@
     <div id='restaurant'>
         <h2><?=$restaurant['name']?></h2>
         <h3><?=$restaurant['description']?></h3>
-        <h4>Average Score: <?=$restaurant['score']?></h3>
+        <?php if($restaurant['score']) { ?>
+            <h4>Average Score: <?=$restaurant['score']?></h4>
+        <?php } ?>
+    </div>
+
     <div id='restaurantInfo'>
         <?php if($info['price']) { ?>
             <p>Price: <?=$info['price']?></p>
