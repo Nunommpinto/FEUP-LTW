@@ -4,6 +4,8 @@ $(document).ready(function () {
     numImages = 1;
 
     $("#btn_add_more").click(function () {
+        deleteCanceledImages();
+
         var lastImage = $(".image" + numImages);
         if (lastImage.val()) {
             numImages++;
@@ -18,9 +20,15 @@ $(document).ready(function () {
             });
 
             $(this).before(fileDiv.fadeIn('slow').append(inputDiv));
-        } else {
+        } else
             alert("Can't");
-            console.info(numImages);
-        }
     });
 });
+
+function deleteCanceledImages() {
+    for(var i = 0; i < numImages; i++) {
+        var image = $(".image" + i);
+        if(!image.val())
+            image.parent().remove();
+    }
+}
