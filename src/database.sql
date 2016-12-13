@@ -97,10 +97,3 @@ CREATE TABLE PhotoRestaurant(
 /********** MANY-TOO-MANY relationship table **********/
 
 /********** DEFAULT INSERTIONS **********/
-/* Non-SHA1 password:  */
-INSERT INTO User VALUES(null,'pintovic@gmail.com','pintovic','olaolaola', 1, null,null);
-INSERT INTO Restaurant VALUES (null, 'Rest1', 'A', 0, 1, 1);
-INSERT INTO Restaurant VALUES (null, 'Rest2', 'A', 0, 1, 1);
-INSERT INTO Restaurant VALUES (null, 'Rest3', 'A', 0, 1, 1);
-INSERT INTO Restaurant VALUES (null, 'Rest4', 'A', 0, 1, 1);
-INSERT INTO Restaurant VALUES (null, 'Rest5', 'A', 0, 1, 1);
