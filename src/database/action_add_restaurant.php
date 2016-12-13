@@ -18,7 +18,16 @@
     $idRestaurantInfo = registerRestaurantInfo($_POST['price'], $_POST['category'], $_POST['openHours'], $_POST['closeHours'], $idLocalization);
     $idRestaurant = registerRestaurant($_POST['name'], $_POST['description'], intval($_SESSION['idUser'][0]), $idRestaurantInfo);
 
-    registerPhoto($_POST['title'], $idRestaurantInfo);
+    //Photo handling
+    for($i = 0; $i < count($_FILES['image']['tmp_name']); $i++) {
+        $validExtensions = array('jpg', 'png', 'jpeg');
+        $ext = explode('.', basename($_FILES['image']['name'][$i]));
+        $fileExtension = end($ext);
+        if(in_array($fileExtension, $validExtensions)) {
+            $path = registerPhoto($_POST['title' . ($i + 1)], $idRestaurantInfo['idRestaurantInfo']);
+            move_uploaded_file($_FILES['image']['tmp_name'][$i], $path . $fileExtension))
+        }
+    }
 
     header('Location: ../templates/restaurant.php?idRestaurant=' .  $idRestaurant);
 ?>

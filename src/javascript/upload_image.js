@@ -16,8 +16,7 @@ $(document).ready(function () {
 
             var title = $("<input/>", {
                 type: 'text',
-                class: 'title' + numImages,
-                name: 'title[]'
+                name: 'title' + numImages
             });
 
             var inputDiv = $("<input/>", {

@@ -33,7 +33,7 @@
 	<br><br>
     <label>Upload Image</label>
     <div class="file_div1">
-        <input type="text" class="title1" name="title[]">
+        <input type="text" name="title1">
         <input type="file" class="image1" name="image[]">
     </div>
 

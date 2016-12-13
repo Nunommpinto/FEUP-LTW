@@ -8,10 +8,7 @@
         $stmt->execute();
 
         $id = $db->lastInsertId();
-        $originalFileName = "images/originals/$id.jpg";
-
-        if(move_uploaded_file($_FILES['image']['tmp_name'], $originalFileName));
-        //$original = imagecreatefromjpeg($originalFileName);
+        return "../images/originals/$id.";
     }
 
     function getPhotoById($idRestaurantInfo) {
