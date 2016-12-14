@@ -1,4 +1,6 @@
 <?php
+
+	
     //Register a review
     function registerReview($rating, $comment, $idRestaurant, $idUser) {
         global $db;

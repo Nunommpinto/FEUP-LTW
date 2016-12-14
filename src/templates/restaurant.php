@@ -1,4 +1,9 @@
 <!-- Displays a restaurant individual page -->
+<html>
+<head>
+<link rel="stylesheet" href="../css/restaurant.css">
+</head>
+</html>
 
 <?php
     if (session_status() == PHP_SESSION_NONE) 
@@ -10,6 +15,7 @@
     include_once('../database/db_photo.php');
     include_once('../database/db_localization.php');
     include_once('../database/db_review.php');
+	include_once('../database/db_user.php');
         
     $restaurant;
 
@@ -67,20 +73,7 @@
             <p>No close hours available</p>
         <?php } ?>
     </div>
-    <div id="localization">
-        <?php if(isset($localization['country']) || isset($localization['city']) || isset($localization['road'])) { ?>
-            <label>Adress: </label>
-        <?php } else { ?>
-            <label>No address available</label>
-        <?php } ?>
-        <div id="country"><?=$localization['country']?></div>
-        <div id="city"><?=$localization['city']?></div>
-        <div id="road"><?=$localization['road']?></div>
-        <div id="postalCode"><?=$localization['postalCode']?></div>
-
-        <div id="map" style="width:20%; height:400px"></div>
-    </div>
-
+	
     <script type="text/javascript">
         function initMap() {
             var restaurantName = document.getElementById("restaurant").firstChild;
@@ -163,24 +156,47 @@
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap"></script>
-
-    <div id="photos">
-        <?php foreach($photos as $photo) { ?>
-            <img src="../images/originals/<?=$photo['idPhoto']?>.<?=$photo['type']?>">
+	
+	<div class="localization">
+        <?php if(isset($localization['country']) || isset($localization['city']) || isset($localization['road'])) { ?>
+            <div id="map" style="width:200px; height:300px"></div>
+			<label>Address: </label>
+        <?php } else { ?>
+            <label>No address available</label>
         <?php } ?>
+        <div id="road"><?=$localization['road']?></div>
+		<div id="postalCode"><?=$localization['postalCode']?></div>
+		<div id="city"><?=$localization['city']?></div>
+		<div id="country"><?=$localization['country']?></div>
     </div>
 
+	<label> Photos: </label>
+    <div id="photos">
+        <?php foreach($photos as $photo) { ?>
+            <div id="photo">
+			<img src="../images/originals/<?=$photo['idPhoto']?>.<?=$photo['type']?> " width="200" height="200">
+			</div>
+        <?php } ?>
+    </div>
+	
+	<div id="add">
     <a href="../pages/add_photos.php?idRestaurant=<?=$_GET['idRestaurant']?>&idRestaurantInfo=<?=$info['idRestaurantInfo']?>">Add a Photo</a>
+	</div> 
 
     <div id='reviews'>
         <?php if($reviews)
             foreach($reviews as $review) { ?>
-                <label>Review: </label><?=$review['comment']?>
-                <br>
-                <label>Score: </label><?=$review['score']?>
-                <br>
+			<div class="review">
+				<label>Review by: </label><?=getUsernameById($review['idUser'])?> <br><br>
+               
+			<div class="rev2">
+			   <label>Score: </label><?=$review['score']?>
+			   <br>
+			   <label>Comment: </label><?=$review['comment']?>
+               <br>
+			</div>
                 <?php 
-                    $idUserReview = getUserIdFromReview($review['idReview']);
+					$idUserReview = getUserIdFromReview($review['idReview']);
                     $idUserReview = intval($idUserReview[0]);
                     $idUserSESSION = intval($_SESSION['idUser'][0]);
                     if(isset($_SESSION['idUser']) && $idUserReview == $idUserSESSION) {
@@ -193,8 +209,11 @@
                     $replies = getRepliesFromReview($review['idReview']);
                     foreach($replies as $reply) {
                 ?>
-                    <label>Reply: </label> <?=$reply['comment']?> <br>
+				<div class="response">
+					<label>Reply: </label> <?=$reply['comment']?> 
+				</div>
                 <?php } ?>
+				</div>
             <?php } ?>
     </div>
 

@@ -10,6 +10,14 @@
 		$stmt->execute();
 		return $stmt->fetch();
 	}
+	
+	function getUsernameById($idUser) {
+		global $db;
+		$stmt = $db->prepare('SELECT username FROM User WHERE idUser=:idUser');
+		$stmt->bindParam(':idUser', $idUser);
+		$stmt->execute();
+		return $stmt->fetch()['username'];
+	}
 
 	function updateEmail($username, $email) {
 		global $db;

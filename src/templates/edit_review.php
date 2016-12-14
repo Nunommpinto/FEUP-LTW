@@ -1,4 +1,6 @@
 <?php
+	include_once('../templates/header.php');
+	
     if (session_status() == PHP_SESSION_NONE) 
         session_start();
 
@@ -20,8 +22,9 @@
 
 <form id='form-component' action='../database/action_edit_review.php' method='post'>
     <input type="hidden" name="idReview" value="<?=$_GET['idReview']?>">
-
+	<br>
     <label>Comment: </label> <textarea name="comment" rows="6" cols="80"><?=$review['comment']?></textarea>
-    <label>Score: </label>  <input type="number" name="score" value="<?=$review['score']?>">
+	<br>
+    <label>Score: </label>  <input type="number" name="score" value="<?=$review['score']?>" min="0" max="5">
     <input type="submit" value="Save">
 </form>

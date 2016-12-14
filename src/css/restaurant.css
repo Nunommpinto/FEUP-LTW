@@ -1,0 +1,91 @@
+#restaurant h2 {
+	font-size: 30px;
+    line-height: 40px;
+}
+
+#restaurant h4{
+	color: #cc0000;
+}
+
+#restaurantInfo {
+	background-color: #e6e6e6;
+    width: 210px;
+    border: 1px groove #999999;
+	border-radius: 8px;
+    margin-left: 5px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.localization {
+	width: 210px;
+    border: 1px solid #595959;
+	padding-left: 7px;
+	padding-top: 6px;
+    margin: 5px 0px 30px 5px;
+}
+
+#map {
+	border: 1px solid #595959;
+	margin-bottom: 10px;	
+}
+
+#country, #road, #city, #postalCode {
+	padding-left: 15px;
+}
+
+#country {
+	margin-bottom: 10px;
+}
+
+#photos {
+	margin-bottom: 15px;
+}
+
+#photo {
+    margin: 5px 5px 10px 5px;
+    border: 1px solid #ccc;
+    width: 300px;
+	/*float:left;*/
+}
+
+#photo:hover {
+    border: 2px solid #777;
+}
+#photo img {
+    width: 100%;
+    height: auto;
+}
+
+#add {
+	padding: 20px 0px 20px 0px;
+
+}
+
+.review {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-top-style: hidden;
+    border-right-style: hidden;
+    border-bottom-style: groove;
+    border-left-style: hidden;
+	border-width: 1px;
+}
+
+#reviews {
+	padding-bottom: 15px;
+	border-top-style: groove;
+    border-right-style: hidden;
+    border-bottom-style: hidden;
+    border-left-style: hidden;
+	border-width: 1px;
+}
+
+.rev2 {
+	padding:0 0px 15px 50px;
+}
+
+.response {
+	margin-top: 10px;
+	margin-left: 100px;
+}

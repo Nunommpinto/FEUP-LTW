@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>FEUPrant</title>
+        <title>LTW Advisor</title>
         <meta charset="UTF-8">
 		<script 
                 src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -23,7 +23,7 @@
     <body>
         <?php echo getAlert(); ?>
         <div id="header">
-            <h1>FEUPrant</h1>
+            <h1>LTW Advisor</h1>
             <h2>The definitive restaurant reviews website!</h2>
         </div>
         <div id="nav-btns" class="nav-btns">

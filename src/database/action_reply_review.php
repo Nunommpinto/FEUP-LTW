@@ -12,5 +12,5 @@
     var_dump($idUserSESSION);
 
     registerReply($_POST['comment'], $_POST['idReview'], $idUserSESSION);
-    header('Location: ../pages/index.php');
+   header('Location: ../templates/restaurant.php?idRestaurant=' . $_SESSION['idRestaurant']);
 ?>
