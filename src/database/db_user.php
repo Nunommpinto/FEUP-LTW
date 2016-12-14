@@ -9,6 +9,22 @@
 		$stmt->execute();
 		return $stmt->fetch();
 	}
+	
+	function usernameExists($username) {
+		return getUser($username) !== false;
+	}
+
+	function emailExists($email) {
+		global $db;
+		$stmt = $db->prepare('SELECT * FROM User WHERE email=:email');
+		$stmt->bindParam(':email', $email);
+		$user = $stmt->execute();
+		return $stmt->fetch() !== false;
+	}
+
+	function isRegistered($username, $email) {
+		return usernameExists($username) || emailExists($email);
+	}
 
 	function getAllUsers() {
 		global $db;
@@ -17,10 +33,6 @@
 		$stmt->execute();
 
 		return $stmt->fetchAll();
-	}
-
-	function isRegistered($username) {
-		return getUser($username) !== false;
 	}
 
 	function checkCredentials($username, $password) {
@@ -57,7 +69,7 @@
 	function registerUser($email, $username, $password, $owner) {
 		global $db;
 		
-		if (isRegistered($username)) 
+		if (isRegistered($username, $email)) 
 			return false;
 		
 		$options = ['cost' => 12];
