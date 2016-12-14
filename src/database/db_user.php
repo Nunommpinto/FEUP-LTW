@@ -1,5 +1,6 @@
 <?php
 	include_once('connection.php');
+	include_once('../templates/constants.php');
 
 	// Database
 	function getUser($username) {
@@ -8,6 +9,31 @@
 		$stmt->bindParam(':username', $username);
 		$stmt->execute();
 		return $stmt->fetch();
+	}
+
+	function updateEmail($username, $email) {
+		global $db;
+		$stmt = $db->prepare('UPDATE User SET email=:email WHERE username=:username');
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':email', $email);
+		$stmt->execute();
+	}
+
+	function updatePassword($username, $password) {
+		global $db;
+		global $PASSWORD_HASH_COST;
+
+		$options = ['cost' => $PASSWORD_HASH_COST];
+    	$hash = password_hash($password, PASSWORD_DEFAULT, $options);
+		
+		$stmt = $db->prepare('UPDATE User SET password=:hash WHERE username=:username');
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':hash', $hash);
+		$stmt->execute();
+	}
+
+	function getEmail($username) {
+		return getUser($username)['email'];
 	}
 	
 	function usernameExists($username) {
@@ -24,6 +50,10 @@
 
 	function isRegistered($username, $email) {
 		return usernameExists($username) || emailExists($email);
+	}
+
+	function isOwner($username) {
+		return getUser($username)['owner'];
 	}
 
 	function getAllUsers() {
@@ -68,11 +98,12 @@
 	// User actions
 	function registerUser($email, $username, $password, $owner) {
 		global $db;
-		
+		global $PASSWORD_HASH_COST;
+
 		if (isRegistered($username, $email)) 
 			return false;
 		
-		$options = ['cost' => 12];
+		$options = ['cost' => $PASSWORD_HASH_COST];
     	$hash = password_hash($password, PASSWORD_DEFAULT, $options);
 		
 		$stmt = $db->prepare('INSERT INTO User (email, username, password, owner) VALUES (:email, :username, :password, :owner)');

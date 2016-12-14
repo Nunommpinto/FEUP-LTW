@@ -11,4 +11,7 @@
     $LOGIN_KEY = 'loginStatus';
     $LOGIN_SUCCESSFUL = 'login successful';
     $LOGIN_WRONG_USER = 'login wrong user';
+
+    $PASSWORD_MIN_CHAR = 5;
+    $PASSWORD_HASH_COST = 12;
 ?>

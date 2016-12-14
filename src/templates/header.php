@@ -30,7 +30,6 @@
             <ul>
                 <li><a href="../pages/index.php">Home</a></li>
                 <li><a href="../pages/top_restaurants.php">Top Restaurants</a></li>
-                <li><a href="#">Profile</a></li>
                 <li><a href="../pages/search_restaurant.php">Search a restaurant</a></li>
                 <li><a href="../pages/add_restaurant.php">Add a new restaurant</a></li>
                 <div id="user-info">
