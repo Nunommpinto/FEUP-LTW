@@ -47,26 +47,32 @@
             <h4>Average Score: <?=$restaurant['score']?></h4>
         <?php } ?>
     </div>
-
+	
     <div id='restaurantInfo'>
-        <?php if($info['price']) { ?>
-            <p>Price: <?=$info['price']?></p>
+        <div id="price"> 
+		<?php if($info['price']) { ?>
+			<p>Price: <?=$info['price']?> €</p>
         <?php } else { ?>
             <p>No prices available</p>
         <?php } ?>
-
+		 </div>
+		 
+		<div id="cat"> 
         <?php if($info['category']) { ?>
-            <p>Categories: <?=$info['category']?></p>
+			<p>Categories: <?=$info['category']?></p>
         <?php } else { ?>
             <p>No categories available</p>
         <?php } ?>
-
+		 </div>
+		
+		<div id="open">
         <?php if($info['openHours']) { ?>
             <p>Open Hours: <?=$info['openHours']?></p>
         <?php } else { ?>
             <p>No open hours available</p>
         <?php } ?>
-
+		</div>
+		
         <?php if($info['closeHours']) { ?>
             <p>Close hours: <?=$info['closeHours']?></p>
         <?php } else { ?>

@@ -1,0 +1,17 @@
+#restaurants li {
+	border-top-style: hidden;
+    border-right-style: groove;
+    border-bottom-style: groove;
+    border-left-style: hidden;
+	border-width: 1px;
+	font-size: medium;
+}
+
+#restaurants a {
+	color: #005ce6;
+	text-decoration: none;
+}
+
+#restaurants a:hover {
+	text-decoration: underline;
+}
