@@ -28,7 +28,7 @@
     <label>Country: </label> <input type="text" name="country">
     <label>City: </label> <input type="text" name="city">
     <label>Road: </label> <input type="text" name="road">
-    <label>Postal Code: </label> <input type="text" name="postalCode">
+    <label>Postal Code: </label> <input type="text" name="postalCode" pattern="[0-9]{4}-[0-9]{3}|[0-9]{4}" oninvalid="setCustomValidity('Format: NNNN-NNN or NNNN')">
 	
 	<br><br>
     <label>Upload Image</label>
@@ -36,7 +36,6 @@
         <input type="text" name="title1">
         <input type="file" class="image1" name="image[]">
     </div>
-
     <input type="button" id="btn_add_more" value="Add more photos" />
 	
 	<br><br>

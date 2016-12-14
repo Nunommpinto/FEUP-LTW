@@ -17,17 +17,20 @@
 
     if (!isset($_SESSION['username'])) {
          header('Location: ../pages/index.php');
-    } else if (!isset($_POST['name']) || !isset($_POST['description']) || !isset($_POST['categories']) || basename($_FILES['image']['name'][0]) == 0) {
+    } else if (!isset($_POST['name']) || !isset($_POST['description']) || !isset($_POST['categories']) || !isset($_FILES['image']['name'][0])) {
         $msg = "Please fill the required fields:";
         if (!isset($_POST['name'])) $msg = $msg . " Name";
         if (!isset($_POST['description'])) $msg = $msg . " Description";
         if (!isset($_POST['categories'])) $msg = $msg . " Categories(at least one)";
-        if (basename($_FILES['image']['name'][0]) == 0) $msg = $msg . " Images(at least one)";
+        if (!isset($_FILES['image']['name'][0])) $msg = $msg . " Images(at least one)";
         addWarn($msg, 'Missing information!');
-        header('Location: ../pages/add_restaurant.php');
-    
+        die(header('Location: ../pages/add_restaurant.php'));
     // Validated
     } else {
+
+        if(preg_match('/[0-9a-zA-Z]{2,}/', $_POST['name'], $matches) != 1)
+            die(header('Location: ../pages/add_restaurant.php'));
+
         $idLocalization = registerLocalization($_POST['country'], $_POST['city'], $_POST['road'], $_POST['postalCode']);
         $idRestaurantInfo = registerRestaurantInfo($_POST['price'], $_POST['categories'], $_POST['openHours'], $_POST['closeHours'], $idLocalization);
         $idRestaurant = registerRestaurant($_POST['name'], $_POST['description'], intval($_SESSION['idUser'][0]), $idRestaurantInfo);
