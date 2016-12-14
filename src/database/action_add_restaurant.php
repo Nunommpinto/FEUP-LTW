@@ -28,12 +28,12 @@
     // Validated
     } else {
 
-        if(preg_match('/[0-9a-zA-Z]{2,}/', $_POST['name'], $matches) != 1)
+        /*if(preg_match('/[0-9a-zA-Z]{2,}/', $_POST['name'], $matches) != 1)
             die(header('Location: ../pages/add_restaurant.php'));
         if(preg_match('/[0-9a-zA-Z]+/', $_POST['description'], $matches) != 1)
             die(header('Location: ../pages/add_restaurant.php'));
         if(preg_match('/[0-9]+/', $_POST['price'], $matches) != 1)
-            die(header('Location: ../pages/add_restaurant.php'));
+            die(header('Location: ../pages/add_restaurant.php'));*/
         /*if(preg_match('/[a-zA-Z]+/', $_POST['country'], $matches) != 1)
             die(header('Location: ../pages/add_restaurant.php'));
         if(preg_match('/[a-zA-Z]+/', $_POST['city'], $matches) != 1)
