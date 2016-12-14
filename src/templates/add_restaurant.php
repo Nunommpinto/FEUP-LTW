@@ -12,10 +12,10 @@
 	<br><br>
     <label>Categories: </label>
 	<br>
-    <input type="checkbox" name="categories" value="Gourmet">Gourmet
-    <input type="checkbox" name="categories" value="FastFood">Fast Food
-    <input type="checkbox" name="categories" value="Vegetarian">Vegetarian
-	<input type="checkbox" name="categories" value="Snackbar">Snackbar
+    <input type="checkbox" name="categories[]" value="Gourmet">Gourmet
+    <input type="checkbox" name="categories[]" value="FastFood">Fast Food
+    <input type="checkbox" name="categories[]" value="Vegetarian">Vegetarian
+	<input type="checkbox" name="categories[]" value="Snackbar">Snackbar
 	
 	<br><br>
     <label>Are dogs allowed? </label><input type="checkbox" name="dogAllowed" value="true">

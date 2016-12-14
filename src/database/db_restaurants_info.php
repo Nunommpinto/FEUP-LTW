@@ -8,20 +8,23 @@
         return $stmt->fetch();
     }
 
-    function registerRestaurantInfo($price, $category, $openHours, $closeHours, $idLocalization) {
+    function registerRestaurantInfo($price, $categories, $openHours, $closeHours, $idLocalization) {
         global $db;
-
-        $stmt = $db->prepare('INSERT INTO RestaurantInfo VALUES (null, :price, :category, :openHours, :closeHours, :idLocalization)');
+        
+        $stmt = $db->prepare('INSERT INTO RestaurantInfo (price, category, openHours, closeHours, idLocalization) VALUES (:price, :categories, :openHours, :closeHours, :idLocalization)');
         if($price != null)
             $stmt->bindParam(':price', $price);
-        if($category != null)
-            $stmt->bindParam(':category', $category);
         if($openHours != null)
             $stmt->bindParam(':openHours', $openHours);
         if($closeHours != null)
             $stmt->bindParam(':closeHours', $closeHours);
         if($idLocalization != null)
             $stmt->bindParam(':idLocalization', $idLocalization);
+        if($categories != null) {
+            $strCategories = implode(";", $categories); // $arr=explode(";",$str)
+            $stmt->bindParam(':categories', $strCategories);
+        }
+            
         $stmt->execute();
 
         //Returns the id so that we can reference it on the restaurant
