@@ -30,10 +30,20 @@
 
         if(preg_match('/[0-9a-zA-Z]{2,}/', $_POST['name'], $matches) != 1)
             die(header('Location: ../pages/add_restaurant.php'));
+        if(preg_match('/[0-9a-zA-Z]+/', $_POST['description'], $matches) != 1)
+            die(header('Location: ../pages/add_restaurant.php'));
+        if(preg_match('/[0-9]+/', $_POST['price'], $matches) != 1)
+            die(header('Location: ../pages/add_restaurant.php'));
+        /*if(preg_match('/[a-zA-Z]+/', $_POST['country'], $matches) != 1)
+            die(header('Location: ../pages/add_restaurant.php'));
+        if(preg_match('/[a-zA-Z]+/', $_POST['city'], $matches) != 1)
+            die(header('Location: ../pages/add_restaurant.php'));
+        if(preg_match('/[a-zA-Z]+/', $_POST['road'], $matches) != 1)
+            die(header('Location: ../pages/add_restaurant.php'));*/
 
         $idLocalization = registerLocalization($_POST['country'], $_POST['city'], $_POST['road'], $_POST['postalCode']);
         $idRestaurantInfo = registerRestaurantInfo($_POST['price'], $_POST['categories'], $_POST['openHours'], $_POST['closeHours'], $idLocalization);
-        $idRestaurant = registerRestaurant($_POST['name'], $_POST['description'], intval($_SESSION['idUser'][0]), $idRestaurantInfo);
+        $idRestaurant = registerRestaurant(trim(strip_tags($_POST['name'])), $_POST['description'], intval($_SESSION['idUser'][0]), $idRestaurantInfo);
 
         //Photo handling
         for($i = 0; $i < count($_FILES['image']['tmp_name']); $i++) {

@@ -103,7 +103,7 @@
         $operator = ' ';
 
         if(isset($name) && trim($name) != '') {
-            $query .= ' name = ' . '\'' . $name . '\'';
+            $query .= ' name LIKE \'%' . $name . '%\' ';
             $operator = ' AND ';
         }
         if(isset($minScore) && trim($minScore) != '') {
@@ -117,6 +117,8 @@
             }
         }
         
+        var_dump($query);
+
         $stmt = $db->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll();
