@@ -8,7 +8,7 @@
 <div class="user-dropdown">
     <a href="#"><?php echo $_SESSION['username']; ?></a>
     <div id="user-dropdown-content" class="user-dropdown-content">
-        <a href="../pages/profile.php">Profile</a>
+        <a id="user-dropdown-a-profile" href="#">Profile</a>
         <?php if($isOwner != 0) { ?>
             <a href="../pages/owner_restaurants.php">My Restaurants</a>
         <?php } ?>

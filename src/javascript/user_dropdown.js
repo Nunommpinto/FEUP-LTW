@@ -16,4 +16,9 @@ $(document).ready(function() {
         $('.user-dropdown').children('a').toggleClass('header-elem-active');
         $('.user-dropdown-content').toggleClass('show');
     });
+
+    // Add profile click handler
+    $('#user-dropdown-a-profile').on('click', function() {
+        $('#profile-form').show();
+    });
 });

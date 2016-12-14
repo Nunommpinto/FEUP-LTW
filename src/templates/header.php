@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/login_dropdown.css">
         <link rel="stylesheet" href="../css/user_dropdown.css">
+        <link rel="stylesheet" href="../css/profile.css">
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
+        
     </head>
 
     <body>
@@ -36,6 +39,7 @@
                     <?php
                         if (isset($_SESSION['username'])) {
                             include_once("../templates/user_dropdown.php");
+                            include_once("../templates/profile.php");
                         } else { 
                             include_once("../templates/login_dropdown.php");
                         }
