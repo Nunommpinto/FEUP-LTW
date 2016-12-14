@@ -89,4 +89,19 @@
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    function checkUserAlreadyReviewedRest($idRestaurant, $idUser) {
+        global $db;
+
+        $stmt = $db->prepare('SELECT * FROM Review WHERE idRestaurant = :idRestaurant AND idUser = :idUser');
+        $stmt->bindParam(':idRestaurant', $idRestaurant);
+        $stmt->bindParam(':idUser', $idUser);
+        $stmt->execute();
+        
+        $result = $stmt->fetch();
+        if($result)
+            return true;
+        else
+            return false;
+    }
 ?>

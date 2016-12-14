@@ -199,7 +199,7 @@
     </div>
 
     <?php
-        if(isset($_SESSION['idUser']) && $restaurant['idOwner'] != intval($_SESSION['idUser'][0]))
+        if(isset($_SESSION['idUser']) && $restaurant['idOwner'] != intval($_SESSION['idUser'][0]) && !checkUserAlreadyReviewedRest($_GET['idRestaurant'], intval($_SESSION['idUser'][0])))
             include_once('write_review.php'); 
     ?>
 </section>
