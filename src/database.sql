@@ -11,10 +11,8 @@ CREATE TABLE UserInfo(
     idUserInfo      INTEGER PRIMARY KEY AUTOINCREMENT,
     name            STRING NOT NULL,
     biography       STRING,
-    photo           STRING,
-    idUser          INTEGER REFERENCES User(idUser),
 
-    FOREIGN KEY(idUser) REFERENCES User(idUser)
+    idUser          INTEGER REFERENCES User(idUser)
 );
 
 drop table if exists User;
@@ -81,8 +79,11 @@ CREATE TABLE Localization(
 
 drop table if exists PhotoUser;
 CREATE TABLE PhotoUser(
-    idPhoto     INTEGER PRIMARY KEY AUTOINCREMENT,
-    fileName    STRING
+    idPhoto         INTEGER PRIMARY KEY AUTOINCREMENT,
+    type            STRING NOT NULL,
+    title           STRING
+
+    idUserInfo      INTEGER REFERENCES UserInfo(idUserInfo)
 );
 
 drop table if exists PhotoRestaurant;

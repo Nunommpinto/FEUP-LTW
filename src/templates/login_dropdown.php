@@ -55,7 +55,7 @@
                     <input type="text" placeholder="Enter Username" name="username" required>
                     
                     <label class="login-label"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
+                    <input type="password" placeholder="Enter Password" name="password" pattern="[0-9a-zA-Z]{6,}" required oninvalid="setCustomValidity('Only letters and numbers. At least 6 characters.')">
 
                     <label class="login-label"><b>Confirm Password</b></label>
                     <input type="password" placeholder="Re-enter Password" name="confirm" required>
