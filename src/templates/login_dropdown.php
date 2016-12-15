@@ -3,49 +3,17 @@
 <div class="login-dropdown">
     <a href="#">Sign In</a>
     <div class="login-dropdown-content">
-    <?php
-        /*if(isset($_SESSION[$LOGIN_KEY]))
-            echo '<a class="header-elem-active" href="#">Sign In</a>';
-        else 
-            echo '<a href="#">Sign In</a>';*/
-    ?>
-
-    
-    <?php
-        /*if (isset($_SESSION[$LOGIN_KEY]))
-            echo '<div class="login-dropdown-content show">';
-        else 
-            echo '<div class="login-dropdown-content">'*/
-    ?>
         <ul class="login-dropdown-tabs">
             <li><a href="#" id="login-tablink" class="login-dropdown-tablinks header-elem-active">Login</a></li>
             <li><a href="#" id="register-tablink" class="login-dropdown-tablinks">Register</a></li>
         </ul>
-        
         <div id="login-tab" class="login-dropdown-tabcontent">
-            <!--<form action="../database/action_login.php" method="post">-->
             <form action="javascript:void(0)">
                 <div class="container">
                     <label id="login-label-username" class="login-label"><b>Username</b></label>
                     <input id="login-input-username" type="text" placeholder="Enter Username" name="username" required>
-                    <?php
-                        /*if(isset($_SESSION[$LOGIN_KEY])) {
-                            if ($_SESSION[$LOGIN_KEY] == $LOGIN_WRONG_USER)
-                                echo '<input type="text" placeholder="Enter Username" name="username" required autofocus>';
-                            else
-                                echo '<input type="text" placeholder="Enter Username" name="username" value="' . $_SESSION[$LOGIN_KEY] . '" required>';
-                        } else
-                            echo '<input type="text" placeholder="Enter Username" name="username" required>';*/
-                    ?>
                     <label id="login-label-password" class="login-label"><b>Password</b></label>
                     <input id="login-input-password" type="password" placeholder="Enter Password" name="password" required>
-                    <?php
-                        /*if(isset($_SESSION[$LOGIN_KEY]) && $_SESSION[$LOGIN_KEY] != $LOGIN_WRONG_USER)
-                            echo '<input type="password" placeholder="Enter Password" name="password" required autofocus>';
-                        else 
-                            echo '<input type="password" placeholder="Enter Password" name="password" required>';*/
-                    ?>
-
                     <button id="login-btn" type="submit" value="Login">Login</button>
                 </div>
             </form>
