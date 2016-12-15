@@ -120,6 +120,16 @@ label[id*="profile-label"].error {
     color: #c01010;
 }
 
+/* Profile labels */
+i#profile-change-avatar {
+    color: #4169e1;
+}
+i#profile-change-avatar.success {
+    color: #3dd149;
+}
+i#profile-change-avatar.error {
+    color: #c01010;
+}
 
 /* PROFILE MODAL */
 

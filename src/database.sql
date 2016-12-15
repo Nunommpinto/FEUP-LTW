@@ -23,8 +23,8 @@ CREATE TABLE User(
     password    STRING NOT NULL,
     owner       BOOLEAN NOT NULL,
 
-    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo),
-    idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)
+    idUserInfo  INTEGER REFERENCES UserInfo(idUserInfo)/*,
+    idPhoto     INTEGER REFERENCES PhotoUser(idPhoto)*/
 );
 
 drop table if exists Restaurant;
@@ -77,14 +77,14 @@ CREATE TABLE Localization(
     postalCode          STRING
 );
 
-drop table if exists PhotoUser;
+/*drop table if exists PhotoUser;
 CREATE TABLE PhotoUser(
     idPhoto         INTEGER PRIMARY KEY AUTOINCREMENT,
     type            STRING NOT NULL,
     title           STRING
 
     idUserInfo      INTEGER REFERENCES UserInfo(idUserInfo)
-);
+);*/
 
 drop table if exists PhotoRestaurant;
 CREATE TABLE PhotoRestaurant(

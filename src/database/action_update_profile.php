@@ -8,9 +8,9 @@
     include_once('../templates/constants.php');
     include_once('../templates/alert.php');
 
-    if (!isset($_SESSION['username']) || !isset($_POST['updating']))
-        header('Location: ../pages/profile.php');
-    else {
+    if (!isset($_SESSION['username']) || !(isset($_POST['updating']) || isset($_FILES)))
+        header('Location: ../pages/index.php');
+    else if (isset($_POST['updating'])) {
         // Update email
         if ($_POST['updating'] == "email" && isset($_POST['data'])) {
             updateEmail($_SESSION['username'], $_POST['data']);
@@ -35,11 +35,32 @@
         } else if ($_POST['updating'] == "bio") {
             updateUserinfoBio($_SESSION['username'], $_POST['data']);
             echo 'Name updated successfully!';
-        // TODO UPDATE PICTURE
         } else 
             sendErrorWarn();
-    }
-
+    // Update picture
+    } else if (isset($_FILES)) {
+        if (count($_FILES) > 0) {
+            $file = $_FILES['file'];
+            $validExtensions = array('jpg', 'png', 'jpeg');
+            $ext = explode('/', $file['type'])[1];
+            if(in_array($ext, $validExtensions)) {
+                global $AVATAR_DIR;
+                $path = '../' . $AVATAR_DIR;
+                $name = getIdUser($_SESSION['username']) . '.' . $ext;
+                if(move_uploaded_file($file['tmp_name'], $path . $name)) {
+                    registerAvatar($_SESSION['username'], $name);
+                    echo 'file=' . $path . $name;
+                }
+                else 
+                    echo 'Could not move uploaded file!';
+            } else {
+                echo "Wrong file format: only .jpg, .jpeg and .png are accepted.";
+            }
+        } else {
+            echo "No file was received.";
+        }
+    } else 
+        sendErrorWarn();
     function sendErrorWarn() {
         echo 'An error occurred while updating profile!';
     }

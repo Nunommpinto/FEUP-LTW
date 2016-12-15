@@ -17,7 +17,13 @@
     <form class="profile modal-content animate" action="javascript:void(0);">
         <i id="profile-close" class="profile fa fa-times" aria-hidden="true"></i>
         <div class="imgcontainer profile">
-            <img src="../images/avatar/man.png" alt="Avatar" class="profile avatar">
+            <?php 
+                if (hasAvatar($_SESSION['username']))
+                    echo '<img id="profile-img-avatar" src="../images/avatar/' . getAvatar($_SESSION['username']) . '" alt="Avatar" class="profile avatar">';
+                else
+                    echo '<img id="profile-img-avatar" src="../images/avatar/man.png" alt="Avatar" class="profile avatar">';
+            ?>
+            <i id="profile-change-avatar" class="profile fa fa-camera" aria-hidden="true"></i>
         </div>
 
         <div class="container profile">
@@ -62,3 +68,6 @@
     </form>
 </div>
 <div id="profile-snackbar" class="snackbar">Error msg</div>
+<form id="profile-form-avatar" enctype="multipart/form-data">
+    <input id="profile-input-avatar" type="file" name="file" accept=".jpg, .jpeg, .png" hidden >
+</form>
