@@ -156,9 +156,9 @@ initAvatar = function() {
             //beforeSend: beforeSendHandler,
             success: function(result) {
                 if (result.indexOf('file=') == 0) {
-                    console.log(result);
                     $('#profile-change-avatar').addClass("success");
                     $('#profile-change-avatar').removeClass("error");
+                    
                     // "?" + new Date().getTime() prevents avatar cache
                     $('#profile-img-avatar').attr("src", result.substring(5) + "?" + new Date().getTime());
                 } else {
