@@ -175,8 +175,11 @@
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap"></script>
-
+	
+	<div id="ptit">
 	<label> Photos: </label>
+	</div>
+	
     <div id="photos">
         <?php foreach($photos as $photo) { ?>
             <div id="photo">
