@@ -1,0 +1,40 @@
+h3{
+	font-size:185%;
+	border-top: hidden;
+	border-bottom: 2px groove #990000;
+	margin-bottom: 40px;
+}
+
+
+form {
+	background-color: #f2f2f2;
+	border-top: hidden;
+	border-right: 1px solid #f2f2f2;
+	border-left: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+	padding: 20px 330px 20px 330px;
+	margin-left: 120px;
+}
+
+input[type=button] {
+	margin-top: 15px;
+	background-color:#333333;
+}
+
+input[type=button]:hover {
+	border: 2px solid #333333;
+}
+
+input[type=file] {
+	margin-top:10px;
+	margin-bottom: 10px;
+	border-width: 2px;
+}
+
+#descrip, #price, .cat, #info {
+	margin-top: 30px;
+}
+
+.labels {
+	margin-top:50px;
+}
