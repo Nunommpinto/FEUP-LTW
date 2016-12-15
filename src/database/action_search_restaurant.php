@@ -9,8 +9,8 @@
     $arrayCount = count($restaurants);
 
     if($arrayCount > 1) {
-        $_SESSION['restaurants'] = $restaurants;
-        header('Location: ../templates/restaurants.php');
+        include_once('../templates/header.php');
+        include_once('../templates/restaurants.php');
     } else if($arrayCount == 1)
         header('Location: ../templates/restaurant.php?idRestaurant=' . $restaurants[0]['idRestaurant']);
     else
