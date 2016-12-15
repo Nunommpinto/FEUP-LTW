@@ -56,6 +56,12 @@ img.avatar.profile {
     background-color: #4CAF50;
 }
 
+/* Save edit button disabled */
+.editsave.profile.disabled {
+    background-color: #555;
+    cursor: default;
+}
+
 /* Cancel edit button */
 .editcancel.profile {
     width: auto;
@@ -63,6 +69,12 @@ img.avatar.profile {
     padding: 10px 18px;
     border-radius: 50px;
     background-color: #f44336;
+}
+
+/* Cancel edit button disabled */
+.editcancel.profile.disabled {
+    background-color: #555;
+    cursor: default;
 }
 
 /* Edit icon on hover */
@@ -76,6 +88,14 @@ textarea.profile {
     resize: vertical;
     margin-top: 8px;
     border-radius: 10px;
+    outline: none !important;
+    border:1px solid #4169e1;
+}
+textarea.profile.success {
+    border:1px solid #3dd149;
+}
+textarea.profile.error {
+    border:1px solid #c01010;
 }
 
 /* Profile form close button */
@@ -89,8 +109,15 @@ textarea.profile {
     color: #bf2b2b;
 }
 
+/* Profile labels */
 label[id*="profile-label"] {
-    color: #bf2b2b;
+    color: #4169e1;
+}
+label[id*="profile-label"].success {
+    color: #3dd149;
+}
+label[id*="profile-label"].error {
+    color: #c01010;
 }
 
 
