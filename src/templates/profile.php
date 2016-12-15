@@ -17,11 +17,14 @@
     <form class="profile modal-content animate" action="javascript:void(0);">
         <i id="profile-close" class="profile fa fa-times" aria-hidden="true"></i>
         <div class="imgcontainer profile">
+            <i id="profile-remove-avatar" class="profile fa fa-minus-circle" aria-hidden="true"></i>
             <?php 
-                if (hasAvatar($_SESSION['username']))
-                    echo '<img id="profile-img-avatar" src="../images/avatar/' . getAvatar($_SESSION['username']) . '" alt="Avatar" class="profile avatar">';
-                else
-                    echo '<img id="profile-img-avatar" src="../images/avatar/man.png" alt="Avatar" class="profile avatar">';
+                if (!hasAvatar($_SESSION['username']))
+                    // Hides remove avatar button if avatar is already the default one
+                    echo '<script>$(document).ready(function() { $("#profile-remove-avatar").hide(); });</script>';
+
+                global $AVATAR_DIR;
+                echo '<img id="profile-img-avatar" src="../' . $AVATAR_DIR . getAvatar($_SESSION['username']) . '" alt="Avatar" class="profile avatar">';
             ?>
             <i id="profile-change-avatar" class="profile fa fa-camera" aria-hidden="true"></i>
         </div>

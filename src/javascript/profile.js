@@ -4,7 +4,7 @@ $(document).ready(function() {
     initElem('bio');
     initPw();
     initAvatar();
-
+    
     // Close button
     $('#profile-close').on('click', function() {
         $('#profile-form').hide();
@@ -139,60 +139,18 @@ initAvatar = function() {
         $('#profile-input-avatar').trigger('click');
     });
 
-    // Upload avatar on file change)
+    // Upload avatar on file change
     $('#profile-input-avatar').change(function() {
-        var formData = new FormData($('#profile-form-avatar')[0]);
-        $.ajax({
-            url: "../database/action_update_profile.php",
-            type: 'POST',
-            xhr: function() {  // Custom XMLHttpRequest
-                var myXhr = $.ajaxSettings.xhr();
-                /*if(myXhr.upload){ // Check if upload property exists
-                    myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
-                }*/
-                return myXhr;
-            },
-            //Ajax events
-            //beforeSend: beforeSendHandler,
-            success: function(result) {
-                if (result.indexOf('file=') == 0) {
-                    $('#profile-change-avatar').addClass("success");
-                    $('#profile-change-avatar').removeClass("error");
-                    
-                    // "?" + new Date().getTime() prevents avatar cache
-                    $('#profile-img-avatar').attr("src", result.substring(5) + "?" + new Date().getTime());
-                } else {
-                    $('#profile-change-avatar').removeClass("success");
-                    $('#profile-change-avatar').addClass("error");
+        updateAvatar();
+    });
 
-                    // Show snackbar
-                    $('#profile-snackbar')[0].innerHTML = result;
-                    $('#profile-snackbar').addClass("show");
-                    setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
-                }
-            },
-            error: function(result) {
-                // Show error label
-                $('#profile-label-' + elem).removeClass("success");
-                $('#profile-label-' + elem).addClass("error");
-                
-                // Show snackbar
-                $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
-                $('#profile-snackbar').addClass("show");
-                setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
-            },
-            // Form data
-            data: formData,
-            //Options to tell jQuery not to process data or worry about content-type.
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    })
+    $('#profile-remove-avatar').on('click', function() {
+        removeAvatar();
+    });
 }
 
 
-/* AJAX Request */
+/* AJAX Requests */
 sendRequest = function(elem, data, confirm) {
     $.ajax({
         type: "POST",
@@ -233,6 +191,85 @@ sendRequest = function(elem, data, confirm) {
                 togglePw();
                 enablePw();
             }
+        }
+    });
+}
+
+updateAvatar = function() {
+    var formData = new FormData($('#profile-form-avatar')[0]);
+    $.ajax({
+        url: "../database/action_update_profile.php",
+        type: 'POST',
+        xhr: function() {  // Custom XMLHttpRequest
+            var myXhr = $.ajaxSettings.xhr();
+            return myXhr;
+        },
+        //Ajax events
+        //beforeSend: beforeSendHandler,
+        success: function(result) {
+            if (result.indexOf('file=') == 0) {
+                $('#profile-change-avatar').addClass("success");
+                $('#profile-change-avatar').removeClass("error");
+                
+                // "?" + new Date().getTime() prevents avatar cache
+                $('#profile-img-avatar').attr("src", result.substring(5) + "?" + new Date().getTime());
+
+                // Shows remove avatar button
+                $('#profile-remove-avatar').show();
+            } else {
+                $('#profile-change-avatar').removeClass("success");
+                $('#profile-change-avatar').addClass("error");
+
+                // Show snackbar
+                $('#profile-snackbar')[0].innerHTML = result;
+                $('#profile-snackbar').addClass("show");
+                setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+            }
+        },
+        error: function(result) {
+            // Show error label
+            $('#profile-label-' + elem).removeClass("success");
+            $('#profile-label-' + elem).addClass("error");
+            
+            // Show snackbar
+            $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
+            $('#profile-snackbar').addClass("show");
+            setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+        },
+        // Form data
+        data: formData,
+        //Options to tell jQuery not to process data or worry about content-type.
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
+removeAvatar = function() {
+    $.ajax({
+        type: "POST",
+        url: "../database/action_update_profile.php",
+        data: {updating: 'removeAvatar'},
+        success: function(result) {
+            if (result.indexOf('file=') == 0) {
+                // "?" + new Date().getTime() prevents avatar cache
+                $('#profile-img-avatar').attr("src", result.substring(5) + "?" + new Date().getTime());
+
+                // Show snackbar
+                $('#profile-remove-avatar').hide();
+                $('#profile-snackbar')[0].innerHTML = 'Avatar was reset!';
+            } else 
+                $('#profile-snackbar')[0].innerHTML = result;
+            
+            // Show snackbar
+            $('#profile-snackbar').addClass("show");
+            setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+        },
+        error: function(result) {
+            // Show snackbar
+            $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
+            $('#profile-snackbar').addClass("show");
+            setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
         }
     });
 }
