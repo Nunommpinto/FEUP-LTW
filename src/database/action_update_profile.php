@@ -35,6 +35,17 @@
         } else if ($_POST['updating'] == "bio") {
             updateUserinfoBio($_SESSION['username'], $_POST['data']);
             echo 'Name updated successfully!';
+        // Removes avatar to default one
+        } else if ($_POST['updating'] == "removeAvatar") {
+            global $AVATAR_DIR;
+            $path = '../' . $AVATAR_DIR;
+            $file = $path . getAvatar($_SESSION['username']);
+            if (unlink ($file)) {
+                removeAvatar($_SESSION['username']);
+                echo 'file=' . $path . 'man.png';
+            }
+            else
+                echo 'Error while removing avatar';
         } else 
             sendErrorWarn();
     // Update picture

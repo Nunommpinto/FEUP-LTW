@@ -67,7 +67,9 @@
     }
 
     function getAvatar($username) {
-        return getUserinfo($username)['photo'];
+        if (hasAvatar($username))
+            return getUserinfo($username)['photo'];
+        return 'man.png';
     }
 
     function removeAvatar($username) {
