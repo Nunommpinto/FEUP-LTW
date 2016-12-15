@@ -1,11 +1,5 @@
-html {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  height: 100%;
-}
-
 #header {
-  background-color: #990000;
+  background-color: #E53935;
   color: white;
   padding: 0;
 }
@@ -17,7 +11,7 @@ html {
 }
 
 .nav-btns ul {
-  background-color: #990000;
+  background-color: #E53935;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -31,11 +25,11 @@ html {
 }
 
 .nav-btns li:hover, #user-info a:hover {
-  background: #660000;
+  background: #B71C1C;
 }
 
 .nav-btns li:active, .header-elem-active{
-  background: #660000;
+  background: #B71C1C;
 }
 
 .nav-btns a, #back_btn {
