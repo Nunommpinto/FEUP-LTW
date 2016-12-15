@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="../css/user_dropdown.css">
         <link rel="stylesheet" href="../css/profile.css">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
-        
+		<link rel="stylesheet" href="../css/search_restaurant.css">        
     </head>
 
     <body>
