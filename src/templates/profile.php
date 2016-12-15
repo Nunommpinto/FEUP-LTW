@@ -60,6 +60,10 @@
             <button id="profile-cancel-bio" class="profile editcancel">Discard</button>
         </div>
     </form>
+<<<<<<< HEAD
 </div>
 
 <div id="profile-snackbar" class="snackbar">Error msg</div>
+=======
+</div>
+>>>>>>> 31dad9c3116ca8ee2612b2490419f649cd1e75ec
