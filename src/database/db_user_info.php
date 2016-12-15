@@ -19,14 +19,31 @@
         return getUserinfo($username)['biography'];
     }
 
-    function updateUserinfoBio($username, $name, $bio) {
+    function updateUserinfoName($username, $name) {
         global $db;
         $user = getUser($username);
-        var_dump($user);
+		$stmt = $db->prepare('UPDATE UserInfo SET name=:name WHERE idUser=:idUser');
+		$stmt->bindParam(':idUser', $user['idUser']);
+		$stmt->bindParam(':name', $name);
+		$stmt->execute();
+    }
+
+    function updateUserinfoBio($username, $bio) {
+        global $db;
+        $user = getUser($username);
+		$stmt = $db->prepare('UPDATE UserInfo SET biography=:bio WHERE idUser=:idUser');
+		$stmt->bindParam(':idUser', $user['idUser']);
+		$stmt->bindParam(':bio', $bio);
+		$stmt->execute();
+    }
+
+    /*function updateUserinfoBio($username, $name, $bio) {
+        global $db;
+        $user = getUser($username);
 		$stmt = $db->prepare('UPDATE UserInfo SET name=:name, biography=:bio WHERE idUser=:idUser');
 		$stmt->bindParam(':idUser', $user['idUser']);
 		$stmt->bindParam(':name', $name);
         $stmt->bindParam(':bio', $bio);
 		$stmt->execute();
-    }
+    }*/
 ?>

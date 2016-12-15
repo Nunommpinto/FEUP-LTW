@@ -31,12 +31,12 @@
             <label><b>Email:</b></label>
             <label id="profile-label-email"><?php echo getEmail($_SESSION['username']); ?></label>
             <i id="profile-edit-email" class="profile fa fa-pencil-square-o"></i>
-            <input id="profile-input-email" class="profile" type="text" placeholder="Enter Email" name="email" value="<?php echo getEmail($_SESSION['username']); ?>">
+            <input id="profile-input-email" class="profile" type="text" placeholder="Enter Email" name="email">
             <button id="profile-save-email" class="profile editsave">Save</button>
             <button id="profile-cancel-email" class="profile editcancel">Discard</button>
 
             <br><br>
-            <label><b>Change Password</b></label>
+            <label id="profile-label-pw"><b>Change Password</b></label>
             <i id="profile-edit-pw" class="profile fa fa-pencil-square-o"></i>
             <input id="profile-input-pw" class="profile" type="password" name="pw">
             <input id="profile-input-pw-confirm" class="profile" type="password" name="pw">
@@ -47,17 +47,19 @@
             <label><b>Name:</b></label>
             <label id="profile-label-name"><?php echo getUserinfoName($_SESSION['username']); ?></label>
             <i id="profile-edit-name" class="profile fa fa-pencil-square-o"></i>
-            <input id="profile-input-name" class="profile" type="text" placeholder="Enter Name" name="name" value="<?php echo getUserinfoName($_SESSION['username']); ?>">
+            <input id="profile-input-name" class="profile" type="text" placeholder="Enter Name" name="name">
             <button id="profile-save-name" class="profile editsave">Save</button>
             <button id="profile-cancel-name" class="profile editcancel">Discard</button>
 
             <br><br>
             <label><b>Biography:</b></label>
             <i id="profile-edit-bio" class="profile fa fa-pencil-square-o"></i>
-            <label id="profile-label-bio"><br><?php echo getUserinfoBio($_SESSION['username']); ?></label>
-            <textarea id="profile-input-bio" class="profile" rows="4" name="biography"><?php echo getUserinfoBio($_SESSION['username']); ?></textarea>
+            <textarea id="profile-label-bio" class="profile" rows="8" readonly><?php echo getUserinfoBio($_SESSION['username']); ?></textarea>
+            <textarea id="profile-input-bio" class="profile" rows="8" name="biography"></textarea>
             <button id="profile-save-bio" class="profile editsave">Save</button>
             <button id="profile-cancel-bio" class="profile editcancel">Discard</button>
         </div>
     </form>
 </div>
+
+<div id="profile-snackbar" class="snackbar">Error msg</div>
