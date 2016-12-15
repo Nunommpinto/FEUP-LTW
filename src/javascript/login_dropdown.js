@@ -33,4 +33,53 @@ $(document).ready(function() {
     // Add login and register tablinks functionality
     $('#login-tablink').on('click', function() { loginDropdownTablinks('login-tab'); });
     $('#register-tablink').on('click', function() { loginDropdownTablinks('register-tab'); });
+
+    // Add login event handler
+    $('#login-btn').on('click', function() { login($('#login-input-username').val(), $('#login-input-username').val()); });
 });
+
+disableLogin = function() {
+
+}
+
+enableLogin = function() {
+
+}
+
+login = function(username, password) {
+    console.log("TESTE");
+    $.ajax({
+        type: "POST",
+        url: "../database/action_login.php",
+        data: {username: username, password: password},
+        success: function(result) {
+            if (result.indexOf('success') != -1) {
+                location.reload();
+            } else {
+                console.log("CHAMOU1");
+                // Show error button
+                $('#login-btn').addClass("error");
+
+                // Show snackbar
+                $('#profile-snackbar')[0].innerHTML = result;
+                $('#profile-snackbar').removeClass("show");
+                $('#profile-snackbar').addClass("show");
+                setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+            }
+        },
+        error: function(result) {
+            console.log("CHAMOU2");
+            // Show error button
+            $('#login-btn').addClass("error");
+            
+            // Show snackbar
+            $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
+            $('#profile-snackbar').removeClass("show");
+            $('#profile-snackbar').addClass("show");
+            setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+        },
+        complete: function() {
+            enableLogin();
+        }
+    });
+}

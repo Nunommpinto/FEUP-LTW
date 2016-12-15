@@ -1,19 +1,21 @@
 <?php include_once('../templates/constants.php'); ?>
 
 <div class="login-dropdown">
+    <a href="#">Sign In</a>
+    <div class="login-dropdown-content">
     <?php
-        if(isset($_SESSION[$LOGIN_KEY]))
+        /*if(isset($_SESSION[$LOGIN_KEY]))
             echo '<a class="header-elem-active" href="#">Sign In</a>';
         else 
-            echo '<a href="#">Sign In</a>';
+            echo '<a href="#">Sign In</a>';*/
     ?>
 
     
     <?php
-        if (isset($_SESSION[$LOGIN_KEY]))
+        /*if (isset($_SESSION[$LOGIN_KEY]))
             echo '<div class="login-dropdown-content show">';
         else 
-            echo '<div class="login-dropdown-content">'
+            echo '<div class="login-dropdown-content">'*/
     ?>
         <ul class="login-dropdown-tabs">
             <li><a href="#" id="login-tablink" class="login-dropdown-tablinks header-elem-active">Login</a></li>
@@ -21,27 +23,30 @@
         </ul>
         
         <div id="login-tab" class="login-dropdown-tabcontent">
-            <form action="../database/action_login.php" method="post">
+            <!--<form action="../database/action_login.php" method="post">-->
+            <form action="javascript:void(0)">
                 <div class="container">
-                    <label class="login-label"><b>Username</b></label>
+                    <label id="login-label-username" class="login-label"><b>Username</b></label>
+                    <input id="login-input-username" type="text" placeholder="Enter Username" name="username" required>
                     <?php
-                        if(isset($_SESSION[$LOGIN_KEY])) {
+                        /*if(isset($_SESSION[$LOGIN_KEY])) {
                             if ($_SESSION[$LOGIN_KEY] == $LOGIN_WRONG_USER)
                                 echo '<input type="text" placeholder="Enter Username" name="username" required autofocus>';
                             else
                                 echo '<input type="text" placeholder="Enter Username" name="username" value="' . $_SESSION[$LOGIN_KEY] . '" required>';
                         } else
-                            echo '<input type="text" placeholder="Enter Username" name="username" required>';
+                            echo '<input type="text" placeholder="Enter Username" name="username" required>';*/
                     ?>
-                    <label class="login-label"><b>Password</b></label>
+                    <label id="login-label-password" class="login-label"><b>Password</b></label>
+                    <input id="login-input-password" type="password" placeholder="Enter Password" name="password" required>
                     <?php
-                        if(isset($_SESSION[$LOGIN_KEY]) && $_SESSION[$LOGIN_KEY] != $LOGIN_WRONG_USER)
+                        /*if(isset($_SESSION[$LOGIN_KEY]) && $_SESSION[$LOGIN_KEY] != $LOGIN_WRONG_USER)
                             echo '<input type="password" placeholder="Enter Password" name="password" required autofocus>';
                         else 
-                            echo '<input type="password" placeholder="Enter Password" name="password" required>';
+                            echo '<input type="password" placeholder="Enter Password" name="password" required>';*/
                     ?>
 
-                    <button type="submit" value="Login">Login</button>
+                    <button id="login-btn" type="submit" value="Login">Login</button>
                 </div>
             </form>
         </div>
@@ -74,4 +79,4 @@
         </div>
     </div>
 </div>
-<?php if (isset($_SESSION[$LOGIN_KEY])) unset($_SESSION[$LOGIN_KEY]); ?>
+<div id="profile-snackbar" class="snackbar">Error msg</div>
