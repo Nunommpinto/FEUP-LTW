@@ -35,19 +35,20 @@ $(document).ready(function() {
     $('#register-tablink').on('click', function() { loginDropdownTablinks('register-tab'); });
 
     // Add login event handler
-    $('#login-btn').on('click', function() { login($('#login-input-username').val(), $('#login-input-username').val()); });
+    $('#login-btn').on('click', function() { login($('#login-input-username').val(), $('#login-input-password').val()); });
 });
 
 disableLogin = function() {
-
+    $('#login-input-username').prop("disabled", true);
+    $('#login-input-password').prop("disabled", true);
 }
 
 enableLogin = function() {
-
+    $('#login-input-username').prop("disabled", false);
+    $('#login-input-password').prop("disabled", false);
 }
 
 login = function(username, password) {
-    console.log("TESTE");
     $.ajax({
         type: "POST",
         url: "../database/action_login.php",
@@ -56,9 +57,15 @@ login = function(username, password) {
             if (result.indexOf('success') != -1) {
                 location.reload();
             } else {
-                console.log("CHAMOU1");
-                // Show error button
-                $('#login-btn').addClass("error");
+                // Show error in username label
+                if (result.indexOf('sername') != -1) 
+                    $('#login-label-username').addClass("error");
+                else
+                    $('#login-label-username').removeClass("error");
+                if (result.indexOf('assword') != -1) 
+                    $('#login-label-password').addClass("error");
+                else
+                    $('#login-label-password').removeClass("error");
 
                 // Show snackbar
                 $('#profile-snackbar')[0].innerHTML = result;
@@ -68,7 +75,6 @@ login = function(username, password) {
             }
         },
         error: function(result) {
-            console.log("CHAMOU2");
             // Show error button
             $('#login-btn').addClass("error");
             
