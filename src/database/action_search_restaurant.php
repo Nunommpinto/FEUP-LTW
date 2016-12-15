@@ -9,18 +9,9 @@
     $arrayCount = count($restaurants);
 
     if($arrayCount > 0) {
-        echo "success,";
-        foreach($restaurants as $restaurant) {
-            echo $restaurant['name'] . ',';
-        }
+        echo 'success=';
+        foreach($restaurants as $restaurant)
+            echo $restaurant['idRestaurant'] . ',' . $restaurant['name'] . ',';
     } else
-        echo "failure, no matches."
-/*
-    if($arrayCount > 1) {
-        //include_once('../templates/header.php');
-        include_once('../templates/restaurants.php');
-    } else if($arrayCount == 1)
-        header('Location: ../templates/restaurant.php?idRestaurant=' . $restaurants[0]['idRestaurant']);
-    else
-        header('Location: ../pages/index.php');*/
+        echo 'failure.';
 ?>

@@ -17,8 +17,6 @@
         global $db;
 
         $stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurant = :id');
-        if($stmt == false)
-            echo 'FALSE';
         $stmt->bindParam(':id', $idRestaurant);
         $stmt->execute();
         return $stmt->fetch();

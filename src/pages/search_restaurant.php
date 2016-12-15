@@ -30,5 +30,6 @@
 		<label>City: </label>
 		<input id="search-input-city" class="search" type="text" name="city">
 	</div>
-    <input type="submit" value="Search">
+
+	<div id="search-output-restaurant" class="search"></div>
 </form>
