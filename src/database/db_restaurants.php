@@ -105,92 +105,44 @@
     }
 
     //Searches all the restaurants that match user's specifications
-    function advancedSearch($name, $minScore, $maxScore, $price, $country, $city) {
+    function retrieveAdvanceSearch($name, $minScore, $maxScore, $price, $country, $city) {
         global $db;
-        include_once('db_restaurants_info.php');
-        include_once('db_localization.php');
 
-        $restaurantQuery = 'SELECT * FROM Restaurant WHERE';
-        $operator = ' ';
-        if(isset($name) && trim($name) != '') {
-            $restaurantQuery .= ' name LIKE \'%' . $name . '%\'';
-            $operator = ' AND ';
-        }
-        if(isset($minScore) && trim($minScore) != '') {
-            $restaurantQuery .= $operator . 'score >= ' . $minScore;
-            $operator = ' AND ';
-        }
+        $query = 
+        'SELECT Restaurant.idRestaurant, RestaurantInfo.idRestaurantInfo, Localization.idLocalization 
+        FROM Restaurant, RestaurantInfo, Localization 
+        WHERE Restaurant.idRestaurantInfo = RestaurantInfo.idRestaurantInfo 
+        AND RestaurantInfo.idLocalization = Localization.idLocalization';
+
+        $operator = ' AND ';
+        if(isset($name) && trim($name) != '')
+            $query .= $operator . 'Restaurant.name LIKE \'%' . $name . '%\'';
+        if(isset($minScore) && trim($minScore) != '')
+            $query .= $operator . 'Restaurant.score >= ' . $minScore;
         if(isset($maxScore) && trim($maxScore) != '')
             if((isset($minScore) && $maxScore >= $minScore) || !isset($minScore))
-                    $restaurantQuery .= $operator . 'score <= ' . $maxScore;
-        $restaurants;
-        if($operator != ' ') {
-            $stmt = $db->prepare($restaurantQuery);
-            $stmt->execute();
-            $restaurants = $stmt->fetchAll();
-        }
-        
+                $query .= $operator . 'Restaurant.score <= ' . $maxScore;
+        if(isset($price) && trim($price) != '')
+            $query .= $operator . 'RestaurantInfo.price = ' . $price;
+        if(isset($country) && trim($country) != '')
+            $query .= $operator . 'Localization.country LIKE \'%' . $country . '%\'';
+        if(isset($city) && trim($city) != '')
+            $query .= $operator . 'Localization.city LIKE \'%' . $city . '%\'';
 
-        $infoQuery = 'SELECT * FROM RestaurantInfo WHERE';
-        $operator = ' ';
-        if(isset($price) && trim($price) != '') {
-            $infoQuery .= $operator . 'price = ' . $price;
-            $operator = ' AND ';
-        }
-        $restaurantsInfo;
-        if($operator != ' ') {
-            $stmt = $db->prepare($infoQuery);
-            $stmt->execute();
-            $restaurantsInfo = $stmt->fetchAll();
-        }
-
-
-        $localizationQuery = 'SELECT * FROM Localization WHERE';
-        $operator = ' ';
-        if(isset($country) && trim($country) != '') {
-            $localizationQuery .= $operator . 'country LIKE \'%' . $country . '%\'';
-            $operator = ' AND ';
-        }
-        if(isset($city) && trim($city) != '') {
-            $localizationQuery .= $operator . 'city LIKE \'%' . $city . '%\'';
-            $operator = ' AND ';
-        }
-        $localizations;
-        if($operator != ' ') {
-            $stmt = $db->prepare($localizationQuery);
-            $stmt->execute();
-            $localizations = $stmt->fetchAll();
-        }
-
-        $results = array();
-        if(isset($restaurants)) {
-            foreach($restaurants as $restaurant) {
-                if(isset($restaurantsInfo)) {
-                    $restInfo = getInfoById($restaurant['idRestaurantInfo']);
-                    foreach($restaurantsInfo as $restaurantInfo) {
-                        if($restInfo['idRestaurantInfo'] == $restaurantInfo['idRestaurantInfo']) {
-                            array_push($results, $restaurant);
-                            break;
-                        }
-                    }
-                } else
-                    array_push($results, $restaurant);
-            }
-        } else if(isset($restaurantsInfo)) {
-            foreach($restaurantsInfo as $restaurantInfo) {
-                $restaurant = getRestaurantByIdRestaurantInfo($restaurantInfo['idRestaurantInfo']);
-                array_push($results, $restaurant);
-            }
-        } else if(isset($localizations)) {
-            foreach($localizations as $localization) {
-                $restaurantInfoWithLocal = getInfoByIdLocalization($localization['idLocalization']);
-                $restaurant = getRestaurantByIdRestaurantInfo($restaurantInfoWithLocal['idRestaurantInfo']);
-                array_push($results, $restaurant);
-            }
-        }
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        $results = $stmt->fetchAll();
 
         //var_dump($results);
-        return $results;
+
+        $restaurants = array();
+        foreach($results as $result) {
+            $restaurant = getRestaurantById($result['idRestaurant']);
+            //var_dump($restaurant);
+            array_push($restaurants, $restaurant);
+        }
+
+        return $restaurants;
     }
 
     //Returns all restaurants that user with id 'idOwner' has
