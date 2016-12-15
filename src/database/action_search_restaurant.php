@@ -12,8 +12,8 @@
         $_SESSION['restaurants'] = $restaurants;
         header('Location: ../templates/restaurants.php');
     } else if($arrayCount == 1) {
-        //var_dump($restaurants[0][0]['idRestaurant']);
-        header('Location: ../templates/restaurant.php?idRestaurant=' . $restaurants[0][0]['idRestaurant']);
+        //var_dump($restaurants);
+        header('Location: ../templates/restaurant.php?idRestaurant=' . $restaurants[0]['idRestaurant']);
     } else
         header('Location: ../pages/index.php');
 ?>

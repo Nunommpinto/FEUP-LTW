@@ -95,19 +95,20 @@
         return $stmt->fetchAll();
     }
 
-    function getRestaurantsByIdRestaurantInfo($idRestaurantInfo) {
+    function getRestaurantByIdRestaurantInfo($idRestaurantInfo) {
         global $db;
 
         $stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurantInfo = :idRestaurantInfo');
         $stmt->bindParam(':idRestaurantInfo', $idRestaurantInfo);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetch();
     }
 
     //Searches all the restaurants that match user's specifications
     function advancedSearch($name, $minScore, $maxScore, $price, $country, $city) {
         global $db;
         include_once('db_restaurants_info.php');
+        include_once('db_localization.php');
 
         $restaurantQuery = 'SELECT * FROM Restaurant WHERE';
         $operator = ' ';
@@ -147,18 +148,18 @@
         $localizationQuery = 'SELECT * FROM Localization WHERE';
         $operator = ' ';
         if(isset($country) && trim($country) != '') {
-            $infoQuery .= $operator . 'country LIKE \'%' . $country . '%\'';
+            $localizationQuery .= $operator . 'country LIKE \'%' . $country . '%\'';
             $operator = ' AND ';
         }
         if(isset($city) && trim($city) != '') {
-            $infoQuery .= $operator . 'city LIKE \'%' . $city . '%\'';
+            $localizationQuery .= $operator . 'city LIKE \'%' . $city . '%\'';
             $operator = ' AND ';
         }
-        $localization;
+        $localizations;
         if($operator != ' ') {
-            $stmt = $db->prepare($localization);
+            $stmt = $db->prepare($localizationQuery);
             $stmt->execute();
-            $localization = $stmt->fetchAll();
+            $localizations = $stmt->fetchAll();
         }
 
         $results = array();
@@ -177,7 +178,13 @@
             }
         } else if(isset($restaurantsInfo)) {
             foreach($restaurantsInfo as $restaurantInfo) {
-                $restaurant = getRestaurantsByIdRestaurantInfo($restaurantInfo['idRestaurantInfo']);
+                $restaurant = getRestaurantByIdRestaurantInfo($restaurantInfo['idRestaurantInfo']);
+                array_push($results, $restaurant);
+            }
+        } else if(isset($localizations)) {
+            foreach($localizations as $localization) {
+                $restaurantInfoWithLocal = getInfoByIdLocalization($localization['idLocalization']);
+                $restaurant = getRestaurantByIdRestaurantInfo($restaurantInfoWithLocal['idRestaurantInfo']);
                 array_push($results, $restaurant);
             }
         }

@@ -43,4 +43,13 @@
 
         return true;
     }
+
+    function getInfoByIdLocalization($idLocalization) {
+        global $db;
+
+        $stmt = $db->prepare('SELECT * FROM RestaurantInfo WHERE idLocalization = :idLocalization');
+        $stmt->bindParam(':idLocalization', $idLocalization);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 ?>
