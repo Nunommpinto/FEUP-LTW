@@ -21,6 +21,7 @@
 
     function updateUserinfoName($username, $name) {
         global $db;
+        if (!hasUserinfo($username)) createUserinfoEntry($username);
         $user = getUser($username);
 		$stmt = $db->prepare('UPDATE UserInfo SET name=:name WHERE idUser=:idUser');
 		$stmt->bindParam(':idUser', $user['idUser']);
@@ -30,6 +31,7 @@
 
     function updateUserinfoBio($username, $bio) {
         global $db;
+        if (!hasUserinfo($username)) createUserinfoEntry($username);
         $user = getUser($username);
 		$stmt = $db->prepare('UPDATE UserInfo SET biography=:bio WHERE idUser=:idUser');
 		$stmt->bindParam(':idUser', $user['idUser']);
@@ -37,13 +39,16 @@
 		$stmt->execute();
     }
 
-    /*function updateUserinfoBio($username, $name, $bio) {
-        global $db;
+    function hasUserinfo($username) {
+		return getUserinfo($username) !== false;
+    }
+
+    function createUserinfoEntry($username) {
+		global $db;
         $user = getUser($username);
-		$stmt = $db->prepare('UPDATE UserInfo SET name=:name, biography=:bio WHERE idUser=:idUser');
+        $stmt = $db->prepare('INSERT INTO Userinfo (name, idUser) VALUES (:name, :idUser)');
+        $stmt->bindParam(':name', $username);
 		$stmt->bindParam(':idUser', $user['idUser']);
-		$stmt->bindParam(':name', $name);
-        $stmt->bindParam(':bio', $bio);
 		$stmt->execute();
-    }*/
+    }
 ?>
