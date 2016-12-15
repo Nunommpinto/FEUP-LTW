@@ -95,18 +95,10 @@
         return $stmt->fetchAll();
     }
 
-    function getRestaurantByIdRestaurantInfo($idRestaurantInfo) {
-        global $db;
-
-        $stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurantInfo = :idRestaurantInfo');
-        $stmt->bindParam(':idRestaurantInfo', $idRestaurantInfo);
-        $stmt->execute();
-        return $stmt->fetch();
-    }
-
     //Searches all the restaurants that match user's specifications
     function retrieveAdvanceSearch($name, $minScore, $maxScore, $price, $country, $city) {
         global $db;
+        include_once('../templates/constants.php');
 
         $query = 
         'SELECT Restaurant.idRestaurant, RestaurantInfo.idRestaurantInfo, Localization.idLocalization 
@@ -123,7 +115,7 @@
             if((isset($minScore) && $maxScore >= $minScore) || !isset($minScore))
                 $query .= $operator . 'Restaurant.score <= ' . $maxScore;
         if(isset($price) && trim($price) != '')
-            $query .= $operator . 'RestaurantInfo.price = ' . $price;
+            $query .= $operator . 'RestaurantInfo.price <= ' . ($price + $ACCEPTABLE_PRICE_RANGE) . ' AND RestaurantInfo.price >= ' . ($price - $ACCEPTABLE_PRICE_RANGE);
         if(isset($country) && trim($country) != '')
             $query .= $operator . 'Localization.country LIKE \'%' . $country . '%\'';
         if(isset($city) && trim($city) != '')
@@ -133,12 +125,9 @@
         $stmt->execute();
         $results = $stmt->fetchAll();
 
-        //var_dump($results);
-
         $restaurants = array();
         foreach($results as $result) {
             $restaurant = getRestaurantById($result['idRestaurant']);
-            //var_dump($restaurant);
             array_push($restaurants, $restaurant);
         }
 

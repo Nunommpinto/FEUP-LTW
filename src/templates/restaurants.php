@@ -5,14 +5,9 @@
 </head>
 </html>
 
-<?php
-    if (session_status() == PHP_SESSION_NONE)
-        session_start();
-?>
-
 <section id="restaurants">
 	<ol>
-    <?php foreach($_SESSION['restaurants'] as $restaurant) { ?>
+    <?php foreach($restaurants as $restaurant) { ?>
     <article>
         <li> <a href="../templates/restaurant.php?idRestaurant=<?=$restaurant['idRestaurant']?>"><h2><?= $restaurant['name'] ?></h2></a> </li>
     </article>
