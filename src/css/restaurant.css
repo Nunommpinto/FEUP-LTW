@@ -19,7 +19,7 @@
     width: 210px;
     border: 1px groove #999999;
 	border-radius: 6px;
-	margin: 23px 200px 15px 200px;
+	margin: 23px 250px 15px 200px;
 	text-align: center;
 }
 
@@ -30,7 +30,7 @@
     border: 1px solid #595959;
 	padding-left: 7px;
 	padding-top: 6px;
-    margin: 20px 0px 30px 5px;
+    margin: 20px 100px 30px 5px;
 	float:right;
 }
 
@@ -53,7 +53,7 @@
 }
 
 #photo {
-    margin: 5px 5px 10px 5px;
+    margin: 15px 5px 10px 5px;
     border: 1px solid #ccc;
     width: 300px;
 	/*float:left;*/

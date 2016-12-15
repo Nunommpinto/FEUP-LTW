@@ -48,6 +48,19 @@
         <?php } ?>
     </div>
 	
+	<div class="localization">
+        <?php if(isset($localization['country']) || isset($localization['city']) || isset($localization['road'])) { ?>
+            <div id="map" style="width:200px; height:300px"></div>
+			<label>Address: </label>
+        <?php } else { ?>
+            <label>No address available</label>
+        <?php } ?>
+        <div id="road"><?=$localization['road']?></div>
+		<div id="postalCode"><?=$localization['postalCode']?></div>
+		<div id="city"><?=$localization['city']?></div>
+		<div id="country"><?=$localization['country']?></div>
+    </div>
+	
     <div id='restaurantInfo'>
         <div id="price"> 
 		<?php if($info['price']) { ?>
@@ -162,19 +175,6 @@
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE0pHcgGYzuvMNnK6LccmizdbYlnvezAk&callback=initMap"></script>
-	
-	<div class="localization">
-        <?php if(isset($localization['country']) || isset($localization['city']) || isset($localization['road'])) { ?>
-            <div id="map" style="width:200px; height:300px"></div>
-			<label>Address: </label>
-        <?php } else { ?>
-            <label>No address available</label>
-        <?php } ?>
-        <div id="road"><?=$localization['road']?></div>
-		<div id="postalCode"><?=$localization['postalCode']?></div>
-		<div id="city"><?=$localization['city']?></div>
-		<div id="country"><?=$localization['country']?></div>
-    </div>
 
 	<label> Photos: </label>
     <div id="photos">
