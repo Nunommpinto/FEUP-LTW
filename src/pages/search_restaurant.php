@@ -4,8 +4,8 @@
 
 <script type="text/javascript" src="../javascript/search_restaurant.js"></script>
 
-<form class="form-component" action="javascript:void(0);">
-    <h3> Insert the information above </h3>
+<form class="form-search" action="javascript:void(0);">
+    <h3> Insert the necessary information </h3>
 	<label>Name: </label>
 	<input id="search-input-name" class="search" type="text" name="name" value="Jose">
 	

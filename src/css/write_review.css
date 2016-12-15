@@ -1,0 +1,20 @@
+.form-component {
+	padding: 15px 0px 15px 45px;
+	background-color: #f2f2f2;
+	border: 1px groove #bfbfbf;
+	border-radius: 6px;
+	width: 82%;
+	margin:auto;
+}
+
+input[type=submit] {
+	margin-top: 15px;
+}
+
+input[type=submit]:hover {
+	border: 1px solid black;
+}
+
+#score{
+	margin-top: 15px;
+}

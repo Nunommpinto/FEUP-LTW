@@ -13,14 +13,17 @@
         <script type="text/javascript" src="../javascript/alert.js"></script>
         <script type="text/javascript" src="../javascript/login_dropdown.js"></script>
         <script type="text/javascript" src="../javascript/user_dropdown.js"></script>
+		<link rel="stylesheet" href="../css/search_restaurant.css">
+		<link rel="stylesheet" href="../css/restaurant.css">
+		<link rel="stylesheet" href="../css/top_rest.css">
+		<link rel="stylesheet" href="../css/write_review.css">
 		<link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/alert.css">
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/login_dropdown.css">
         <link rel="stylesheet" href="../css/user_dropdown.css">
         <link rel="stylesheet" href="../css/profile.css">
-        <link rel="stylesheet" href="../css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/search_restaurant.css">        
+        <link rel="stylesheet" href="../css/font-awesome.min.css">    
     </head>
 
     <body>

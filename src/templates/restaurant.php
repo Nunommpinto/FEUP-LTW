@@ -39,7 +39,7 @@
     include_once('header.php');
 ?>
 
-<section>
+<section id="pageres">
     <div id='restaurant'>
         <h2><?=$restaurant['name']?></h2>
         <h3><?=$restaurant['description']?></h3>

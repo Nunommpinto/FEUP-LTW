@@ -1,3 +1,14 @@
+#restaurants {
+	margin: auto;
+	width: 80%;
+	background-color: #f2f2f2;
+	border-top: hidden;
+	border-right: 1px solid #f2f2f2;
+	border-left: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+	padding: 20px 20px 20px 20px;
+}
+
 #restaurants li {
 	border-top-style: hidden;
     border-right-style: groove;
@@ -5,7 +16,8 @@
     border-left-style: hidden;
 	border-width: 1px;
 	font-size: medium;
-	width: 85%
+	width: 90%;
+	margin:auto;
 }
 
 #restaurants a {
@@ -15,8 +27,4 @@
 
 #restaurants a:hover {
 	text-decoration: underline;
-}
-
-#restaurants ol {
-	padding-left: 125px;
 }
