@@ -40,7 +40,9 @@
 	<br><br><br>
 	
     <label>Open hours: </label><input type="time" name="openHours">
+	<div id=close>
     <label>Close hours: </label><input type="time" name="closeHours">
+	</div>
 	<br>
 	
 	<div id="info">

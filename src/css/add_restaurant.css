@@ -47,3 +47,8 @@ input[type=submit]:hover {
 .labels {
 	margin-top:50px;
 }
+
+#close {
+	float:right;
+	margin-right: 50px;
+}

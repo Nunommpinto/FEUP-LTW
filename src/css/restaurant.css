@@ -7,6 +7,12 @@
 	color: #cc0000;
 }
 
+#price, #cat, #open {
+    border-bottom: 1px groove #f2f2f2;
+	margin: auto;
+	width: 75%;
+}
+
 #restaurantInfo {
 	float: right;
 	background-color: #e6e6e6;
@@ -17,13 +23,7 @@
 	text-align: center;
 }
 
-/*#price, #cat, #open {
-	border-top-style: hidden;
-    border-right-style: hidden;
-    border-bottom-style: groove;
-    border-left-style: hidden;
-	border-width: 1px;
-}*/
+
 
 .localization {
 	width: 210px;

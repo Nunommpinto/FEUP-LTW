@@ -13,6 +13,7 @@ html {
 #header h1, #header h2 {
   padding: 15px;
   margin: 0;
+  text-align: center;
 }
 
 .nav-btns ul {

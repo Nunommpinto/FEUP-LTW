@@ -5,6 +5,7 @@
     border-left-style: hidden;
 	border-width: 1px;
 	font-size: medium;
+	width: 85%
 }
 
 #restaurants a {
@@ -14,4 +15,8 @@
 
 #restaurants a:hover {
 	text-decoration: underline;
+}
+
+#restaurants ol {
+	padding-left: 125px;
 }
