@@ -1,12 +1,11 @@
 h3{
-	font-size:185%;
+	font-size:190%;
 	border-top: hidden;
 	border-bottom: 2px groove #990000;
 	margin-bottom: 40px;
 }
 
-
-#form-component {
+#search {
 	margin: auto;
 	width: 75%;
 	background-color: #f2f2f2;
@@ -17,33 +16,19 @@ h3{
 	padding: 20px 330px 20px 330px;
 }
 
-input[type=button] {
-	margin-top: 15px;
-	background-color:#333333;
-}
-
-input[type=button]:hover {
-	border: 2px solid #333333;
-}
-
-input[type=file] {
-	margin-top:10px;
-	margin-bottom: 10px;
-	border-width: 2px;
-}
-
 input[type=submit] {
-	margin-top: 10px;
+	margin-top: 15px;
 }
 
 input[type=submit]:hover {
 	border: 1px solid black;
 }
 
-#descrip, #price, .cat, #info {
-	margin-top: 30px;
+#labels {
+	margin-top: 15px;
 }
 
-.labels {
-	margin-top:50px;
+#max {
+	float:right;
+	margin-right: 100px;
 }

@@ -43,6 +43,10 @@
 	function getEmail($username) {
 		return getUser($username)['email'];
 	}
+
+	function getIdUser($username) {
+		return getUser($username)['idUser'];
+	}
 	
 	function usernameExists($username) {
 		return getUser($username) !== false;

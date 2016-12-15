@@ -15,5 +15,6 @@
     $PASSWORD_MIN_CHAR = 5;
     $PASSWORD_HASH_COST = 12;
 
+    $AVATAR_DIR = 'images/avatar/';
     $ACCEPTABLE_PRICE_RANGE = 7;
 ?>
