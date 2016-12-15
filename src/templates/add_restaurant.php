@@ -21,7 +21,7 @@
     <label>Description: </label><textarea name="description" required="required" rows="3" cols="40"></textarea> *
 	</div>
 	
-	<div id="price">
+	<div id="avgprice">
     <label>Average Price (per person): </label> <input type="number" name="price" min="0">
 	</div>
 	
