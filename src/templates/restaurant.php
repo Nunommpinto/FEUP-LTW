@@ -196,7 +196,7 @@
         <?php if($reviews)
             foreach($reviews as $review) { ?>
 			<div class="review">
-				<label>Review by: </label><?=getUsernameById($review['idUser'])?> <br><br>
+				<?=getUsernameById($review['idUser'])?><label>'s review: </label> <br><br>
                
 			<div class="rev2">
 			   <label>Score: </label><?=$review['score']?>
