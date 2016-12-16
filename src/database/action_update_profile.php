@@ -46,7 +46,7 @@
             }
         // Update biography
         } else if ($_POST['updating'] == "bio") {
-            if (!preg_match("/^[A-Za-z0-9_\-.,@!#()]{0,500}$/", $_POST['data'])) 
+            if (!preg_match("/^[A-Za-z0-9_\-.,@!#() ]{0,500}$/", $_POST['data'])) 
                 echo "Biography must:<br>
                     Start with a letter/number<br>
                     Have a maximum of 500 characters<br>

@@ -11,7 +11,7 @@ CREATE TABLE UserInfo(
     idUserInfo      INTEGER PRIMARY KEY AUTOINCREMENT,
     name            STRING NOT NULL,
     biography       STRING,
-
+    photo           STRING,
     idUser          INTEGER REFERENCES User(idUser)
 );
 
