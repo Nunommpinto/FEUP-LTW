@@ -219,7 +219,7 @@
                     foreach($replies as $reply) {
                 ?>
 				<div class="response">
-					<label>Reply: </label> <?=$reply['comment']?> 
+					<?=getUsernameById($reply['idReplier'])?><label>'s reply: </label> <?=$reply['comment']?> 
 				</div>
                 <?php } ?>
 				</div>
