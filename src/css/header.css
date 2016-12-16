@@ -1,5 +1,5 @@
 #header {
-  background-color: #E53935;
+  background-color: #cc0000;
   color: white;
   padding: 0;
 }
@@ -11,7 +11,7 @@
 }
 
 .nav-btns ul {
-  background-color: #E53935;
+  background-color: #cc0000;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -25,11 +25,11 @@
 }
 
 .nav-btns li:hover, #user-info a:hover {
-  background: #B71C1C;
+  background: #990000;
 }
 
 .nav-btns li:active, .header-elem-active{
-  background: #B71C1C;
+  background: #990000;
 }
 
 .nav-btns a, #back_btn {
@@ -43,33 +43,4 @@
 
 .nav-btns a:hover {
   color: white;
-}
-
-#panel {
-  width: 20%;
-  margin-top: 20 px;
-  text-align: center;
-  color: #990000;
-}
-
-#panel a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #990000;
-}
-
-#panel a:hover {
-  color: #444444;
-  font-weight: bold;
-}
-
-#panel input {
-  display: block;
-  width: 100%;
-}
-
-#footer {
-  background-color: #990000;
-  color: white;
-  padding: 5px 10px;
 }
