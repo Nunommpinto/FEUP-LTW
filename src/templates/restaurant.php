@@ -50,7 +50,7 @@
 	
 	<div class="localization">
         <?php if(isset($localization['country']) || isset($localization['city']) || isset($localization['road'])) { ?>
-            <div id="map" style="width:200px; height:300px"></div>
+            <div id="map" style="width:300px; height:400px"></div>
 			<label>Address: </label>
         <?php } else { ?>
             <label>No address available</label>
@@ -141,7 +141,7 @@
                     if(status == google.maps.GeocoderStatus.OK) {
                         if(status != google.maps.GeocoderStatus.ZERO_RESULTS) {
                             myOptions = {
-                                zoom: 20,
+                                zoom: 8,
                                 center: results[0].geometry.location,
                                 mapTypeControl: true,
                                 mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
