@@ -6,7 +6,6 @@
     include_once('db_user.php');
     include_once('db_user_info.php');
     include_once('../templates/constants.php');
-    include_once('../templates/alert.php');
 
     if (!isset($_SESSION['username']) || !(isset($_POST['updating']) || isset($_FILES)))
         header('Location: ../pages/index.php');

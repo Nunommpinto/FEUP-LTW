@@ -6,7 +6,7 @@
     $isOwner = intval($isOwner[0]);?>
 
 <div class="user-dropdown">
-    <a href="#"><?php echo $_SESSION['username']; ?></a>
+    <a id="user-dropdown-username" href="#"><?php echo $_SESSION['username']; ?></a>
     <div id="user-dropdown-content" class="user-dropdown-content">
         <a id="user-dropdown-a-profile" href="#">Profile</a>
         <?php if($isOwner != 0) { ?>

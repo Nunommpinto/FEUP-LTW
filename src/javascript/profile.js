@@ -11,6 +11,14 @@ $(document).ready(function() {
     });
 });
 
+// Called when profile modal is to become visible
+loadProfile = function(username, isCurrentUser) {
+    if (!isCurrentUser) { $('.profile.fa, #profile-span-pw').hide(); }
+    else $('.profile.fa').show();
+    getProfile(username);
+    $('#profile-form').show();
+}
+
 // Initializes (elem) elements
 initElem = function(elem) {
     // Icon click
@@ -31,17 +39,12 @@ initElem = function(elem) {
         toggleElem(elem);
     });
 
-    if ($('#profile-label-' + elem)[0].innerHTML.length > 0) {
-        // Hide input text
-        $('#profile-input-' + elem).toggle();
-        // Hide save button
-        $('#profile-save-' + elem).toggle();
-        // Hide cancel button
-        $('#profile-cancel-' + elem).toggle();    
-    } else {
-        $('#profile-label-' + elem).toggle();
-        $('#profile-edit-' + elem).toggle();
-    }
+    // Hide input text
+    $('#profile-input-' + elem).toggle();
+    // Hide save button
+    $('#profile-save-' + elem).toggle();
+    // Hide cancel button
+    $('#profile-cancel-' + elem).toggle();    
 }
 
 // Toggles all (elem) elements
@@ -266,6 +269,30 @@ removeAvatar = function() {
             setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
         },
         error: function(result) {
+            // Show snackbar
+            $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
+            $('#profile-snackbar').addClass("show");
+            setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+        }
+    });
+}
+
+getProfile = function(username) {
+    $.ajax({
+        type: "POST",
+        url: "../database/action_get_profile.php",
+        data: {username: username},
+        success: function(result) {
+            var profile = JSON.parse(result);
+            $('#profile-label-username').text(profile.username + " (" + profile.owner + ")");
+            $('#profile-label-email').text(profile.email);
+            $('#profile-label-name').text(profile.name);
+            $('#profile-label-bio').text(profile.bio);
+            $('#profile-img-avatar').attr("src", profile.avatar + "?" + new Date().getTime());
+        },
+        error: function(result) {
+            $('#profile-form').hide();
+            
             // Show snackbar
             $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
             $('#profile-snackbar').addClass("show");
