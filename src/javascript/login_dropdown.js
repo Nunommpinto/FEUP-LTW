@@ -36,6 +36,14 @@ $(document).ready(function() {
 
     // Add login event handler
     $('#login-btn').on('click', function() { login($('#login-input-username').val(), $('#login-input-password').val()); });
+
+    // Add regist event handler
+    $('#register-btn').on('click', function() { 
+        register($('#register-input-email').val(),
+                 $('#register-input-username').val(), 
+                 $('#register-input-password').val(),
+                 $('#register-input-password-confirm').val()); 
+    });
 });
 
 disableLogin = function() {
@@ -61,6 +69,7 @@ login = function(username, password) {
                 if (result.indexOf('sername') != -1) 
                     $('#login-label-username').addClass("error");
                 else
+                // Show error in password label
                     $('#login-label-username').removeClass("error");
                 if (result.indexOf('assword') != -1) 
                     $('#login-label-password').addClass("error");
@@ -81,6 +90,59 @@ login = function(username, password) {
             // Show snackbar
             $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
             $('#profile-snackbar').removeClass("show");
+            $('#profile-snackbar').addClass("show");
+            setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+        },
+        complete: function() {
+            enableLogin();
+        }
+    });
+}
+
+register = function(email, username, password, confirm) {
+    $.ajax({
+        type: "POST",
+        url: "../database/action_register.php",
+        data: {email: email, username: username, password: password, confirm: confirm},
+        success: function(result) {
+            console.log(result);
+            if (result.indexOf('success') != -1) {
+                location.reload();
+            } else {
+                // Remove all error classes
+                $('#register-label-email').removeClass("error");
+                $('#register-label-username').removeClass("error");
+                $('#register-label-password').removeClass("error");
+                $('#register-label-password-confirm').removeClass("error");
+
+                // Show error in email label
+                if (result.indexOf('Email') == 0) 
+                    $('#register-label-email').addClass("error");
+                
+                // Show error in username label
+                if (result.indexOf('Username') == 0) 
+                    $('#register-label-username').addClass("error");
+
+                // Show error in password label
+                if (result.indexOf('assword') != -1 && result.indexOf('Confirm') == -1) 
+                    $('#register-label-password').addClass("error");
+
+                // Show error in password confirm label
+                if (result.indexOf('Confirm') != -1 || result.indexOf('asswords') != -1) 
+                    $('#register-label-password-confirm').addClass("error");
+
+                // Show snackbar
+                $('#profile-snackbar')[0].innerHTML = result;
+                $('#profile-snackbar').addClass("show");
+                setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+            }
+        },
+        error: function(result) {
+            // Show error button
+            $('#login-btn').addClass("error");
+            
+            // Show snackbar
+            $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
             $('#profile-snackbar').addClass("show");
             setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
         },

@@ -169,7 +169,6 @@ sendRequest = function(elem, data, confirm) {
 
                 // Show snackbar
                 $('#profile-snackbar')[0].innerHTML = result;
-                $('#profile-snackbar').removeClass("show");
                 $('#profile-snackbar').addClass("show");
                 setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
             }
@@ -181,7 +180,6 @@ sendRequest = function(elem, data, confirm) {
             
             // Show snackbar
             $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
-            $('#profile-snackbar').removeClass("show");
             $('#profile-snackbar').addClass("show");
             setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
         },
@@ -224,7 +222,6 @@ updateAvatar = function() {
 
                 // Show snackbar
                 $('#profile-snackbar')[0].innerHTML = result;
-                $('#profile-snackbar').removeClass("show");
                 $('#profile-snackbar').addClass("show");
                 setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
             }
@@ -236,7 +233,6 @@ updateAvatar = function() {
             
             // Show snackbar
             $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
-            $('#profile-snackbar').removeClass("show");
             $('#profile-snackbar').addClass("show");
             setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
         },
@@ -266,14 +262,12 @@ removeAvatar = function() {
                 $('#profile-snackbar')[0].innerHTML = result;
             
             // Show snackbar
-            $('#profile-snackbar').removeClass("show");
             $('#profile-snackbar').addClass("show");
             setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
         },
         error: function(result) {
             // Show snackbar
             $('#profile-snackbar')[0].innerHTML = 'Unexpected error occured: ' + result['status'];
-            $('#profile-snackbar').removeClass("show");
             $('#profile-snackbar').addClass("show");
             setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
         }

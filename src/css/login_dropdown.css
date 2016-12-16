@@ -28,9 +28,9 @@ form {
     color: white;
 }
 
-/* Labels in login dropdown when error occurs */
-#login-label-username.error,
-#login-label-password.error {
+/* Labels in login and register dropdown when error occurs */
+label[id^="login-label-"].error,
+label[id^="register-label-"].error {
     color: #FFEB3B;
 }
 

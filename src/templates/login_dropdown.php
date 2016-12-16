@@ -19,19 +19,19 @@
             </form>
         </div>
         <div id="register-tab" class="login-dropdown-tabcontent">
-            <form action="../database/action_register.php" method="post">
+            <form action="javascript:void(0)">
                 <div class="container">
-                    <label class="login-label"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
+                    <label id="register-label-email" class="login-label"><b>Email</b></label>
+                    <input id="register-input-email" type="text" placeholder="Enter Email" name="email">
 
-                    <label class="login-label"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required>
+                    <label id="register-label-username" class="login-label"><b>Username</b></label>
+                    <input id="register-input-username" type="text" placeholder="Enter Username" name="username">
                     
-                    <label class="login-label"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" pattern="[0-9a-zA-Z]{6,}" required oninvalid="setCustomValidity('Only letters and numbers. At least 6 characters.')">
+                    <label id="register-label-password" class="login-label"><b>Password</b></label>
+                    <input id="register-input-password" type="password" placeholder="Enter Password" name="password">
 
-                    <label class="login-label"><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Re-enter Password" name="confirm" required>
+                    <label id="register-label-password-confirm" class="login-label"><b>Confirm Password</b></label>
+                    <input id="register-input-password-confirm" type="password" placeholder="Re-enter Password" name="confirm">
 
                     <div class="login-switch-container">
                         <label class="login-label">Reviewer</label>
@@ -41,7 +41,7 @@
                         </label>
                         <label class="login-label">Owner</label>
                     </div>
-                    <button type="submit">Register</button>
+                    <button id="register-btn" type="submit">Register</button>
                 </div>
             </form>
         </div>
