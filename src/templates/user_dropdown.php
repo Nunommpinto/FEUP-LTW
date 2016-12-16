@@ -18,9 +18,7 @@
         <?php if($isOwner != 0) { ?>
             <a href="../pages/owner_restaurants.php">My Restaurants</a>
         <?php } ?>
-        <a href="#">Something Else</a>
         <div class="separator"> </div>
-        <a href="#">Settings</a>
         <a href="../database/action_logout.php">Logout</a>
     </div>
 </div>
