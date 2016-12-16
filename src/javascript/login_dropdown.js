@@ -105,7 +105,6 @@ register = function(email, username, password, confirm) {
         url: "../database/action_register.php",
         data: {email: email, username: username, password: password, confirm: confirm},
         success: function(result) {
-            console.log(result);
             if (result.indexOf('success') != -1) {
                 location.reload();
             } else {
