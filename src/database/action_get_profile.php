@@ -10,7 +10,7 @@
     if (!isset($_POST['username']) || strlen($_POST['username']) == 0)
         echo "Error: Couldn't get profile!";
     else if (!usernameExists($_POST['username'])) 
-        echo "Username not found!";
+        echo "Error: Username not found!";
     else {
         global $AVATAR_DIR;
         $res = array('username' => $_POST['username'],

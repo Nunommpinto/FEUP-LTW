@@ -44,3 +44,6 @@
 .nav-btns a:hover {
   color: white;
 }
+
+/* Class to show a hidden object */
+.show {display:block;}

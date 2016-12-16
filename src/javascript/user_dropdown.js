@@ -19,6 +19,6 @@ $(document).ready(function() {
 
     // Add profile click handler
     $('#user-dropdown-a-profile').on('click', function() {
-        loadProfile($('#user-dropdown-username')[0].innerHTML, true);
+        loadProfile($('#header-span-username')[0].innerHTML, true);
     });
 });

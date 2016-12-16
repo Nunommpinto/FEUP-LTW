@@ -284,12 +284,20 @@ getProfile = function(username) {
         url: "../database/action_get_profile.php",
         data: {username: username},
         success: function(result) {
+            if (result.indexOf('Error:') != 0) {
             var profile = JSON.parse(result);
             $('#profile-label-username').text(profile.username + " (" + profile.owner + ")");
             $('#profile-label-email').text(profile.email);
             $('#profile-label-name').text(profile.name);
             $('#profile-label-bio').text(profile.bio);
             $('#profile-img-avatar').attr("src", profile.avatar + "?" + new Date().getTime());
+            } else {
+                $('#profile-form').hide();
+                // Show snackbar
+                $('#profile-snackbar')[0].innerHTML = result;
+                $('#profile-snackbar').addClass("show");
+                setTimeout(function(){ $('#profile-snackbar').removeClass("show"); }, 5000);
+            }
         },
         error: function(result) {
             $('#profile-form').hide();

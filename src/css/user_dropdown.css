@@ -20,5 +20,18 @@
     cursor: pointer;
 }
 
-/* Class to show a hidden object */
-.show {display:block;}
+#user-dropdown-username{
+    display: table;
+}
+
+#header-img-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+}
+
+#header-span-username {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 0.25em;
+}
