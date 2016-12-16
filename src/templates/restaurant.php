@@ -208,7 +208,7 @@
 					$idUserReview = getUserIdFromReview($review['idReview']);
                     $idUserReview = intval($idUserReview[0]);
                     
-                    $idUserSESSION = intval(isset($_SESSION['idUser'][0]) ? $_SESSION['idUser'] : -1);
+                    $idUserSESSION = intval(isset($_SESSION['idUser'][0]) ? $_SESSION['idUser'][0] : -1);
                     if(isset($_SESSION['idUser']) && $idUserReview == $idUserSESSION) {
                 ?>
                     <a href="edit_review.php?idReview=<?=$review['idReview']?>">Edit</a>
