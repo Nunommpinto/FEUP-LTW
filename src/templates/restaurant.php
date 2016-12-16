@@ -196,8 +196,8 @@
         <?php if($reviews)
             foreach($reviews as $review) { ?>
 			<div class="review">
-				<?=getUsernameById($review['idUser'])?><label>'s review: </label> <br><br>
-               
+				<?php echo "<a href='#' onclick='loadProfile(\"" . getUsernameById($review['idUser']) . "\")'>" . getUsernameById($review['idUser']) . "</a>"?>
+                <label>'s review: </label> <br><br>
 			<div class="rev2">
 			   <label>Score: </label><?=$review['score']?>
 			   <br>
@@ -219,7 +219,7 @@
                     foreach($replies as $reply) {
                 ?>
 				<div class="response">
-					<?=getUsernameById($reply['idReplier'])?><label>'s reply: </label> <?=$reply['comment']?> 
+                    <?php echo "<a href='#' onclick='loadProfile(\"" . getUsernameById($reply['idReplier']) . "\")'>" . getUsernameById($reply['idReplier']) . "</a>"?><label>'s reply: </label> <?=$reply['comment']?> 
 				</div>
                 <?php } ?>
 				</div>

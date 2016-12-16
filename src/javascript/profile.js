@@ -15,6 +15,7 @@ $(document).ready(function() {
 loadProfile = function(username, isCurrentUser) {
     if (!isCurrentUser) { $('.profile.fa, #profile-span-pw').hide(); }
     else $('.profile.fa').show();
+    $('#profile-close').show();
     getProfile(username);
     $('#profile-form').show();
 }
