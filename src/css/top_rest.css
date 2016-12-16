@@ -16,7 +16,7 @@
     border-left-style: hidden;
 	border-width: 1px;
 	font-size: medium;
-	width: 90%;
+	width: 80%;
 	margin:auto;
 }
 
@@ -27,4 +27,8 @@
 
 #restaurants a:hover {
 	text-decoration: underline;
+}
+
+#restaurants ol {
+	padding-left: 100px;
 }
