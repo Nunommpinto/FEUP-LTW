@@ -39,10 +39,13 @@ $(document).ready(function() {
 
     // Add regist event handler
     $('#register-btn').on('click', function() { 
+        var owner = $('#login-checkbox-owner').prop("checked") ? 1 : 0;
         register($('#register-input-email').val(),
                  $('#register-input-username').val(), 
                  $('#register-input-password').val(),
-                 $('#register-input-password-confirm').val()); 
+                 $('#register-input-password-confirm').val(),
+                 owner);
+
     });
 });
 
@@ -99,11 +102,11 @@ login = function(username, password) {
     });
 }
 
-register = function(email, username, password, confirm) {
+register = function(email, username, password, confirm, owner) {
     $.ajax({
         type: "POST",
         url: "../database/action_register.php",
-        data: {email: email, username: username, password: password, confirm: confirm},
+        data: {email: email, username: username, password: password, confirm: confirm, owner: owner},
         success: function(result) {
             if (result.indexOf('success') != -1) {
                 location.reload();

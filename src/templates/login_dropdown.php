@@ -36,7 +36,7 @@
                     <div class="login-switch-container">
                         <label class="login-label">Reviewer</label>
                         <label class="login-switch">
-                            <input type="checkbox" name="owner">
+                            <input id="login-checkbox-owner" type="checkbox" name="owner">
                             <div class="login-switch-slider"></div>
                         </label>
                         <label class="login-label">Owner</label>

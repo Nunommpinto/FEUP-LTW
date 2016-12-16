@@ -6,7 +6,7 @@
     if (session_status() == PHP_SESSION_NONE) 
         session_start();
 
-    if (isset($_POST['owner'])) $owner = 1;
+    if (isset($_POST['owner'])) $owner = intval($_POST['owner']);
     else $owner = 0;
 
     global $PASSWORD_MIN_CHAR;
