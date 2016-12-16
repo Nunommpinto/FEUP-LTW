@@ -47,18 +47,4 @@
         else
             echo "An error occured while creating your account, please try again later.";
     } 
-
-
-    //pattern="[0-9a-zA-Z]{6,}" 
-    /*
-    if (!registerUser($_POST['email'], $_POST['username'], $_POST['password'], $owner)) {
-        if (usernameExists($_POST['username']))
-            addWarn("Please try again with a different username.", 'Username already exists!');
-        else if (emailExists($_POST['email']))
-            addWarn("Please try again with a different email address.", 'Email already exists!');
-        else 
-            addWarn("Please try again later.", 'An error occurred!');
-    } else
-        addSuccess("Login with your new account.", 'Registration successful!');
-    */
 ?>
