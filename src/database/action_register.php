@@ -33,7 +33,7 @@
         echo "Passwords must:<br>
             Start with a letter/number<br>
             Have $PASSWORD_MIN_CHAR-$PASSWORD_MAX_CHAR characters<br>
-            Have etters, numbers _ - . , @ ! # only";
+            Have only letters, numbers _ - . , @ ! and #";
     else if (usernameExists($_POST['username']))
         echo "Username already exists, please try another username";
     else if (emailExists($_POST['email']))
