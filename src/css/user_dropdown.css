@@ -2,6 +2,7 @@
 .user-dropdown {
     float: right;
     position: relative;
+    height: 28px;
 }
 
 /* Login dropdown content (hidden by default) */
@@ -22,16 +23,18 @@
 
 #user-dropdown-username{
     display: table;
+    padding: 0px 10px;
 }
 
 #header-img-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 20px;
+    width: 28px;
+    height: 28px;
+    border-radius: 20px;
 }
 
 #header-span-username {
-  display: table-cell;
-  vertical-align: middle;
-  padding-left: 0.25em;
+    height: 28px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 0.25em;
 }
