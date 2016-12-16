@@ -28,7 +28,3 @@
 #restaurants a:hover {
 	text-decoration: underline;
 }
-
-#restaurants ol {
-	padding-left: 100px;
-}
